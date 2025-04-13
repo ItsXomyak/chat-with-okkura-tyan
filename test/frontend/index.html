@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Grok Chat</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body class="bg-gray-100 h-screen flex flex-col">
+		<header class="bg-blue-600 text-white p-4">
+			<h1 class="text-2xl font-bold">Grok Chat</h1>
+		</header>
+		<main class="flex-1 p-4 overflow-y-auto" id="chatArea">
+			<div id="messages" class="space-y-4"></div>
+		</main>
+		<footer class="bg-white p-4 border-t">
+			<form id="chatForm" class="flex gap-2">
+				<input
+					type="text"
+					id="messageInput"
+					placeholder="Type your message..."
+					class="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+				/>
+				<button
+					type="submit"
+					class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+				>
+					Send
+				</button>
+			</form>
+		</footer>
+
+		<script>
+			const messagesContainer = document.getElementById('messages')
+			const chatForm = document.getElementById('chatForm')
+			const messageInput = document.getElementById('messageInput')
+
+			// Загружаем сообщения из localStorage или инициализируем пустой массив
+			let messages = JSON.parse(localStorage.getItem('chatMessages')) || []
+
+			// Функция для отображения сообщений
+			function renderMessages() {
+				messagesContainer.innerHTML = ''
+				messages.forEach((msg, index) => {
+					const messageElement = document.createElement('div')
+					messageElement.className = `p-3 rounded-lg max-w-xs ${
+						msg.isUser
+							? 'bg-blue-500 text-white ml-auto'
+							: 'bg-gray-300 text-black'
+					}`
+					messageElement.innerText = msg.text
+					messagesContainer.appendChild(messageElement)
+				})
+				messagesContainer.scrollTop = messagesContainer.scrollHeight
+			}
+
+			// Функция для добавления сообщения
+			function addMessage(text, isUser) {
+				messages.push({ text, isUser })
+				localStorage.setItem('chatMessages', JSON.stringify(messages))
+				renderMessages()
+			}
+
+			// Имитация ответа бота
+			function botReply(userMessage) {
+				const replies = [
+					"Interesting thought! What's next?",
+					'Hmm, let me think... Okay, got it!',
+					'Cool, tell me more!',
+					"That's a great point!",
+				]
+				const randomReply = replies[Math.floor(Math.random() * replies.length)]
+				setTimeout(() => addMessage(randomReply, false), 500)
+			}
+
+			// Обработка отправки формы
+			chatForm.addEventListener('submit', e => {
+				e.preventDefault()
+				const messageText = messageInput.value.trim()
+				if (messageText) {
+					addMessage(messageText, true)
+					botReply(messageText)
+					messageInput.value = ''
+				}
+			})
+
+			// Инициализация чата
+			renderMessages()
+		</script>
+	</body>
+</html>

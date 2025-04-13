@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Okkura-Tyan Chat</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+		/>
+	</head>
+	<body class="bg-gray-100 min-h-screen font-sans flex flex-col">
+		<!-- Header -->
+		<header class="fixed top-0 w-full bg-white shadow-md z-10">
+			<div
+				class="container mx-auto px-4 py-3 flex justify-between items-center"
+			>
+				<h1 class="text-xl font-bold">Okkura-Tyan</h1>
+				<nav class="hidden md:flex space-x-4">
+					<a href="#" class="text-gray-600 hover:text-gray-900">Sign Up</a>
+					<a href="#" class="text-gray-600 hover:text-gray-900">Sign In</a>
+					<a href="#" class="text-gray-600 hover:text-gray-900">About Us</a>
+					<a href="#" class="text-gray-600 hover:text-gray-900">Support</a>
+					<a href="#" class="text-gray-600 hover:text-gray-900">News</a>
+					<a href="#" class="text-gray-600 hover:text-gray-900">Donate</a>
+				</nav>
+				<button id="mobile-menu-btn" class="md:hidden text-gray-600">
+					<i class="fas fa-bars"></i>
+				</button>
+			</div>
+		</header>
+
+		<!-- Chat Page -->
+		<main
+			class="flex-grow container mx-auto px-4 pt-20 pb-10 flex flex-col md:flex-row gap-4"
+		>
+			<!-- Chat Area -->
+			<section
+				class="w-full md:w-2/3 bg-white rounded-lg shadow-md p-6 flex flex-col"
+			>
+				<div class="flex justify-between items-center mb-4">
+					<h2 class="text-lg font-semibold">Чат с Okkura-тян</h2>
+					<button
+						id="toggle-chat-list"
+						class="text-gray-600 hover:text-gray-900"
+					>
+						<i class="fas fa-list"></i>
+					</button>
+				</div>
+				<div
+					id="chat-window"
+					class="flex-grow overflow-y-auto border rounded-lg p-4 bg-gray-50 mb-4"
+				></div>
+				<div class="flex gap-2">
+					<input
+						id="chat-input"
+						type="text"
+						placeholder="Напиши что-нибудь..."
+						class="flex-1 p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+					/>
+					<button
+						id="send-message"
+						class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
+					>
+						<i class="fas fa-paper-plane"></i>
+					</button>
+				</div>
+			</section>
+			<!-- Okkura-Tyan Placeholder -->
+			<aside class="w-full md:w-1/3 bg-white rounded-lg shadow-md p-6">
+				<div class="h-full flex items-center justify-center">
+					<p class="text-gray-500">[Место для анимированной Okkura-тян]</p>
+				</div>
+				<button
+					class="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300"
+				>
+					Кастомизация Okkura-тян
+				</button>
+			</aside>
+		</main>
+
+		<!-- Chat List Sidebar -->
+		<div
+			id="chat-list-sidebar"
+			class="fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 z-20"
+		>
+			<div class="p-4">
+				<div class="flex justify-between items-center mb-4">
+					<h2 class="text-lg font-semibold">Чаты</h2>
+					<button
+						id="close-chat-list"
+						class="text-gray-600 hover:text-gray-900"
+					>
+						<i class="fas fa-times"></i>
+					</button>
+				</div>
+				<div class="flex gap-2 mb-4">
+					<input
+						type="text"
+						placeholder="Поиск чатов..."
+						class="flex-1 p-2 border rounded-lg"
+					/>
+					<button
+						class="bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600"
+					>
+						<i class="fas fa-plus"></i>
+					</button>
+				</div>
+				<ul id="chat-list" class="space-y-2"></ul>
+			</div>
+		</div>
+
+		<!-- Footer (Commented out) -->
+		<!--
+  <footer class="bg-white shadow-md py-4">
+    <div class="container mx-auto px-4 text-center text-gray-600">
+      <p>© 2025 Okkura-Tyan. Все права защищены.</p>
+      <div class="mt-2">
+        <a href="#" class="text-gray-600 hover:text-gray-900 mx-2">Политика конфиденциальности</a>
+        <a href="#" class="text-gray-600 hover:text-gray-900 mx-2">Соцсети</a>
+      </div>
+    </div>
+  </footer>
+  -->
+
+		<script src="script.js"></script>
+	</body>
+</html>
