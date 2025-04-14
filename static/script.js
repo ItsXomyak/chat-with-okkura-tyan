@@ -9,11 +9,59 @@ const newChatNameInput = document.getElementById('new-chat-name')
 const chatList = document.getElementById('chat-list')
 const okkuraSvg = document.getElementById('okkura-svg')
 const okkuraMouth = document.getElementById('okkura-mouth')
+const searchToggle = document.getElementById('toggle-search')
+const searchPanel = document.getElementById('search-panel')
+const searchInput = document.getElementById('search-input')
+const searchResults = document.getElementById('search-results')
+const customizeBtn = document.getElementById('okkura-customize')
+const customizePanel = document.getElementById('customize-panel')
+const hairColor = document.getElementById('hair-color')
+const dressColor = document.getElementById('dress-color')
 
 let chats = []
 let currentChatId = null
 const userId = 'user123'
 let ws = null
+
+customizeBtn.addEventListener('click', () => {
+	customizePanel.classList.toggle('show')
+})
+
+hairColor.addEventListener('input', () => {
+	document
+		.querySelectorAll('.okkura-hair')
+		.forEach(el => el.setAttribute('fill', hairColor.value))
+})
+
+dressColor.addEventListener('input', () => {
+	document.querySelector('.okkura-dress').setAttribute('fill', dressColor.value)
+})
+
+searchToggle.addEventListener('click', () => {
+	searchPanel.classList.toggle('show')
+	if (searchPanel.classList.contains('show')) searchInput.focus()
+})
+
+searchInput.addEventListener('input', () => {
+	const query = searchInput.value.toLowerCase()
+	searchResults.innerHTML = ''
+	chats
+		.filter(chat => chat.name.toLowerCase().includes(query))
+		.forEach(chat => {
+			const li = document.createElement('li')
+			li.className = 'text-cyan-200 cursor-pointer'
+			li.textContent = chat.name
+			li.addEventListener('click', () => {
+				currentChatId = chat.id
+				connectWebSocket()
+				renderChatList()
+				renderMessages()
+				searchPanel.classList.remove('show')
+				searchInput.value = ''
+			})
+			searchResults.appendChild(li)
+		})
+})
 
 async function updateLastMessage(chatId, content) {
 	const chat = chats.find(c => c.id === chatId)
@@ -307,6 +355,20 @@ async function exportChat(id) {
 	} catch (err) {
 		console.error('Export chat error:', err)
 	}
+}
+
+const themeToggle = document.getElementById('theme-toggle')
+themeToggle.addEventListener('click', () => {
+	document.body.classList.toggle('light')
+	const isLight = document.body.classList.contains('light')
+	themeToggle.innerHTML = `<i class="fas fa-${isLight ? 'sun' : 'moon'}"></i>`
+	localStorage.setItem('theme', isLight ? 'light' : 'dark')
+})
+
+// Инициализация темы
+if (localStorage.getItem('theme') === 'light') {
+	document.body.classList.add('light')
+	themeToggle.innerHTML = '<i class="fas fa-sun"></i>'
 }
 
 async function deleteChat(id) {

@@ -20,11 +20,14 @@
 				class="container mx-auto px-4 py-3 flex justify-between items-center"
 			>
 				<h1 class="text-xl font-bold text-cyan-300">Okkura-Tyan</h1>
-				<nav class="hidden md:flex space-x-4">
+				<nav class="hidden md:flex space-x-4 items-center">
 					<a href="#" class="text-cyan-200 hover:text-pink-300">About Us</a>
 					<a href="#" class="text-cyan-200 hover:text-pink-300">Support</a>
 					<a href="#" class="text-cyan-200 hover:text-pink-300">News</a>
 					<a href="#" class="text-cyan-200 hover:text-pink-300">Donate</a>
+					<button id="theme-toggle" class="text-cyan-200 hover:text-pink-300">
+						<i class="fas fa-moon"></i>
+					</button>
 				</nav>
 				<button id="mobile-menu-btn" class="md:hidden text-cyan-200">
 					<i class="fas fa-bars"></i>
@@ -43,12 +46,32 @@
 					>
 						Чат с Okkura-тян
 					</h2>
-					<button
-						id="toggle-chat-list"
-						class="text-cyan-200 hover:text-pink-300"
-					>
-						<i class="fas fa-list"></i>
-					</button>
+					<div class="flex gap-2">
+						<button
+							id="toggle-search"
+							class="text-cyan-200 hover:text-pink-300"
+						>
+							<i class="fas fa-search"></i>
+						</button>
+						<button
+							id="toggle-chat-list"
+							class="text-cyan-200 hover:text-pink-300"
+						>
+							<i class="fas fa-list"></i>
+						</button>
+					</div>
+				</div>
+				<div
+					id="search-panel"
+					class="fixed top-20 right-4 w-64 bg-gray-800 p-4 rounded-lg shadow-lg transform translate-y-[-150%] transition-transform duration-300 hidden z-20"
+				>
+					<input
+						id="search-input"
+						type="text"
+						placeholder="Поиск по чатам..."
+						class="w-full p-2 border border-cyan-500 rounded-lg bg-gray-900 text-white"
+					/>
+					<ul id="search-results" class="mt-2 space-y-2"></ul>
 				</div>
 				<div
 					id="chat-window"
@@ -117,6 +140,21 @@
 				>
 					Кастомизация Okkura-тян
 				</button>
+				<div
+					id="customize-panel"
+					class="fixed bottom-20 right-4 w-64 bg-gray-800 p-4 rounded-lg shadow-lg transform translate-y-[150%] transition-transform duration-300 hidden z-20"
+				>
+					<h3 class="text-pink-300 mb-2">Кастомизация Okkura-тян</h3>
+					<label class="block text-cyan-200 mb-1">Цвет волос:</label>
+					<input
+						id="hair-color"
+						type="color"
+						value="#ff66b2"
+						class="w-full mb-2"
+					/>
+					<label class="block text-cyan-200 mb-1">Цвет платья:</label>
+					<input id="dress-color" type="color" value="#cc99ff" class="w-full" />
+				</div>
 			</aside>
 		</main>
 
