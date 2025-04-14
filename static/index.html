@@ -9,40 +9,7 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
 		/>
-		<style>
-			body {
-				background: linear-gradient(135deg, #1e1e2f, #2a2a4a);
-				color: #e0e0ff;
-			}
-			.neon-glow {
-				box-shadow: 0 0 10px rgba(0, 255, 255, 0.5),
-					0 0 20px rgba(255, 0, 255, 0.3);
-			}
-			.chat-message {
-				transition: transform 0.2s ease, background-color 0.2s ease;
-			}
-			.chat-message:hover {
-				transform: scale(1.02);
-			}
-			.sidebar {
-				background: linear-gradient(
-					to bottom,
-					rgba(30, 30, 47, 0.9),
-					rgba(42, 42, 74, 0.9)
-				);
-			}
-			@media (max-width: 768px) {
-				.chat-sidebar {
-					width: 100%;
-				}
-				.okkura-aside {
-					display: none;
-				}
-				.chat-section {
-					width: 100%;
-				}
-			}
-		</style>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body class="min-h-screen font-sans flex flex-col">
 		<!-- Header -->
@@ -70,7 +37,12 @@
 			<!-- Чат -->
 			<section class="flex-1 flex flex-col">
 				<div class="flex justify-between items-center mb-4">
-					<h2 class="text-lg font-semibold text-pink-300">Чат с Okkura-тян</h2>
+					<h2
+						class="text-lg font-semibold text-pink-300"
+						id="current-chat-name"
+					>
+						Чат с Okkura-тян
+					</h2>
 					<button
 						id="toggle-chat-list"
 						class="text-cyan-200 hover:text-pink-300"
@@ -99,14 +71,48 @@
 			</section>
 			<!-- Боковая панель Okkura-тян -->
 			<aside
-				class="w-64 hidden md:flex flex-col bg-gray-900 bg-opacity-80 rounded-lg shadow-md p-6 neon-glow"
+				class="okkura-aside w-64 hidden md:flex flex-col bg-gray-900 bg-opacity-80 rounded-lg shadow-md p-6 neon-glow"
 			>
-				<div class="flex-1 flex items-center justify-center">
-					<p class="text-cyan-300 text-center">
-						[Место для анимированной Okkura-тян]
-					</p>
+				<div class="okkura-container flex-1">
+					<svg id="okkura-svg" class="okkura-svg" viewBox="0 0 200 200">
+						<!-- Лицо -->
+						<circle cx="100" cy="100" r="60" fill="#ffe6e6" />
+						<!-- Волосы -->
+						<path
+							d="M40 80 Q100 20 160 80 Q140 120 100 100 Q60 120 40 80"
+							fill="#ff66b2"
+						/>
+						<path
+							d="M60 60 Q100 40 140 60"
+							fill="none"
+							stroke="#ff3399"
+							stroke-width="10"
+						/>
+						<!-- Кошачьи уши -->
+						<path d="M70 50 L60 30 L80 40 Z" fill="#ff66b2" />
+						<path d="M130 50 L140 30 L120 40 Z" fill="#ff66b2" />
+						<!-- Глаза -->
+						<circle cx="80" cy="80" r="12" fill="#fff" />
+						<circle cx="120" cy="80" r="12" fill="#fff" />
+						<circle cx="80" cy="80" r="6" fill="#3399ff" />
+						<circle cx="120" cy="80" r="6" fill="#3399ff" />
+						<!-- Рот -->
+						<path
+							id="okkura-mouth"
+							d="M90 110 Q100 120 110 110"
+							fill="none"
+							stroke="#ff3399"
+							stroke-width="3"
+						/>
+						<!-- Платье -->
+						<path
+							d="M80 140 Q100 160 120 140 L130 180 L70 180 Z"
+							fill="#cc99ff"
+						/>
+					</svg>
 				</div>
 				<button
+					id="okkura-customize"
 					class="mt-4 w-full bg-gradient-to-r from-cyan-500 to-pink-500 text-white py-2 rounded-lg hover:from-cyan-600 hover:to-pink-600 neon-glow"
 				>
 					Кастомизация Okkura-тян
@@ -148,5 +154,16 @@
 		</div>
 
 		<script src="script.js"></script>
+		<!-- тест фича -->
+		<!-- <div
+			id="okkura-avatar"
+			class="fixed bottom-4 left-4 w-24 h-24 z-50 pointer-events-none"
+		>
+			<img
+				src="okkura.png"
+				alt="Okkura-Tyan"
+				class="w-full h-full object-contain"
+			/>
+		</div> -->
 	</body>
 </html>

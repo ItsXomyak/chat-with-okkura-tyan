@@ -3,14 +3,14 @@ package main
 import (
 	"log"
 
-	"otaku-verse/chat-service/internal/db"
-	"otaku-verse/chat-service/internal/handler"
-	"otaku-verse/chat-service/internal/service"
-
 	"github.com/gin-gonic/gin"
 	"github.com/golang-migrate/migrate/v4"
 	_ "github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
+
+	"otaku-verse/chat-service/internal/db"
+	"otaku-verse/chat-service/internal/handler"
+	"otaku-verse/chat-service/internal/service"
 )
 
 func main() {

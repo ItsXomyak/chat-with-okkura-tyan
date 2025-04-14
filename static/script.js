@@ -7,11 +7,32 @@ const sendMessageBtn = document.getElementById('send-message')
 const createChatBtn = document.getElementById('create-chat')
 const newChatNameInput = document.getElementById('new-chat-name')
 const chatList = document.getElementById('chat-list')
+const okkuraSvg = document.getElementById('okkura-svg')
+const okkuraMouth = document.getElementById('okkura-mouth')
 
 let chats = []
 let currentChatId = null
 const userId = 'user123'
 let ws = null
+
+async function updateLastMessage(chatId, content) {
+	const chat = chats.find(c => c.id === chatId)
+	if (chat) chat.lastMessage = content
+	renderChatList()
+}
+
+function setOkkuraEmotion(emotion) {
+	okkuraSvg.classList.remove('okkura-happy', 'okkura-thinking')
+	if (emotion === 'happy') {
+		okkuraSvg.classList.add('okkura-happy')
+		okkuraMouth.setAttribute('d', 'M90 120 Q100 110 110 120')
+	} else if (emotion === 'thinking') {
+		okkuraSvg.classList.add('okkura-thinking')
+		okkuraMouth.setAttribute('d', 'M90 120 Q100 120 110 120')
+	} else {
+		okkuraMouth.setAttribute('d', 'M90 120 Q100 130 110 120')
+	}
+}
 
 async function loadChats() {
 	try {
@@ -21,6 +42,7 @@ async function loadChats() {
 		if (chats.length > 0 && !currentChatId) {
 			currentChatId = chats[0].id
 			connectWebSocket()
+			await renderMessages()
 		}
 		renderChatList()
 	} catch (err) {
@@ -33,7 +55,11 @@ function connectWebSocket() {
 	if (ws) ws.close()
 	if (!currentChatId) return
 	ws = new WebSocket(`ws://localhost:8080/ws/chats/${currentChatId}`)
-	ws.onmessage = () => renderMessages()
+	ws.onmessage = () => {
+		renderMessages()
+		setOkkuraEmotion('happy')
+		setTimeout(() => setOkkuraEmotion('normal'), 1000)
+	}
 	ws.onclose = () => setTimeout(connectWebSocket, 1000)
 }
 
@@ -41,7 +67,10 @@ async function sendMessage(content, isFromAI = false) {
 	if (!currentChatId || !ws) return
 	const msg = { user_id: userId, content, is_from_ai: isFromAI }
 	ws.send(JSON.stringify(msg))
+	await updateLastMessage(currentChatId, content)
 	chatInput.value = ''
+	setOkkuraEmotion('thinking')
+	setTimeout(() => setOkkuraEmotion('normal'), 1000)
 }
 
 async function renderMessages() {
@@ -57,10 +86,11 @@ async function renderMessages() {
 		const messages = await res.json()
 		chatWindow.innerHTML = ''
 		messages.forEach(msg => {
+			msg.isEditing = msg.isEditing || false
 			const messageElement = document.createElement('div')
 			messageElement.className = `flex ${
 				msg.user_id === userId ? 'justify-end' : 'justify-start'
-			} mb-4 group`
+			} mb-4 group chat-message`
 			messageElement.innerHTML = `
         <div class="flex flex-col items-${
 					msg.user_id === userId ? 'end' : 'start'
@@ -98,10 +128,12 @@ async function renderMessages() {
 							: ''
 					}
         </div>
+				
       `
+
 			chatWindow.appendChild(messageElement)
+			chatWindow.scrollTop = chatWindow.scrollHeight
 		})
-		chatWindow.scrollTop = chatWindow.scrollHeight
 	} catch (err) {
 		console.error('Render messages error:', err)
 		chatWindow.innerHTML =
@@ -111,24 +143,42 @@ async function renderMessages() {
 
 function renderChatList() {
 	chatList.innerHTML = ''
+	document.getElementById('current-chat-name').textContent =
+		chats.find(c => c.id === currentChatId)?.name || 'Чат с Okkura-тян'
 	chats.forEach(chat => {
 		const li = document.createElement('li')
 		li.className = `p-2 hover:bg-gray-700 rounded-lg flex justify-between items-center ${
 			chat.id === currentChatId ? 'bg-gray-600' : ''
 		}`
 		li.innerHTML = `
-      <span class="text-cyan-200">${chat.name}</span>
-      <div class="relative group">
-        <button class="text-cyan-200 hover:text-pink-300">
-          <i class="fas fa-ellipsis-v"></i>
-        </button>
-        <div class="absolute right-0 top-6 hidden group-hover:block bg-gray-800 rounded-lg shadow-lg p-2">
-          <button onclick="renameChat(${chat.id})" class="block text-cyan-200 hover:text-pink-300 w-full text-left">Переименовать</button>
-          <button onclick="exportChat(${chat.id})" class="block text-cyan-200 hover:text-pink-300 w-full text-left">Экспорт</button>
-          <button onclick="deleteChat(${chat.id})" class="block text-cyan-200 hover:text-pink-300 w-full text-left">Удалить</button>
-        </div>
-      </div>
-    `
+  <div class="flex items-center gap-3">
+    <i class="fas fa-comment-alt text-pink-300"></i>
+    <div>
+      <span class="text-cyan-200 font-semibold">${chat.name}</span>
+      <p class="text-sm text-gray-400 truncate w-32">${
+				chat.lastMessage || 'Нет сообщений'
+			}</p>
+    </div>
+  </div>
+  <div class="relative group">
+    <button class="text-cyan-200 hover:text-pink-300">
+      <i class="fas fa-ellipsis-v"></i>
+    </button>
+    <div class="absolute right-0 top-6 hidden group-hover:block bg-gray-800 rounded-lg shadow-lg p-2">
+      <button onclick="renameChat(${
+				chat.id
+			})" class="block text-cyan-200 hover:text-pink-300 w-full text-left">Переименовать</button>
+      <button onclick="exportChat(${
+				chat.id
+			})" class="block text-cyan-200 hover:text-pink-300 w-full text-left">Экспорт</button>
+      <button onclick="deleteChat(${
+				chat.id
+			})" class="block text-cyan-200 hover:text-pink-300 w-full text-left">Удалить</button>
+    </div>
+  </div>
+	
+`
+
 		li.addEventListener('click', e => {
 			if (!e.target.closest('button')) {
 				currentChatId = chat.id
