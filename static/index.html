@@ -1,199 +1,203 @@
 <!DOCTYPE html>
 <html lang="ru">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Okkura-Tyan Chat</title>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-		/>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body class="min-h-screen font-sans flex flex-col">
-		<!-- Header -->
-		<header
-			class="fixed top-0 w-full bg-gradient-to-r from-purple-900 to-blue-900 shadow-md z-10 neon-glow"
-		>
-			<div
-				class="container mx-auto px-4 py-3 flex justify-between items-center"
-			>
-				<h1 class="text-xl font-bold text-cyan-300">Okkura-Tyan</h1>
-				<nav class="hidden md:flex space-x-4 items-center">
-					<a href="#" class="text-cyan-200 hover:text-pink-300">About Us</a>
-					<a href="#" class="text-cyan-200 hover:text-pink-300">Support</a>
-					<a href="#" class="text-cyan-200 hover:text-pink-300">News</a>
-					<a href="#" class="text-cyan-200 hover:text-pink-300">Donate</a>
-					<button id="theme-toggle" class="text-cyan-200 hover:text-pink-300">
-						<i class="fas fa-moon"></i>
-					</button>
-				</nav>
-				<button id="mobile-menu-btn" class="md:hidden text-cyan-200">
-					<i class="fas fa-bars"></i>
-				</button>
-			</div>
-		</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Okkura-Tyan Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="min-h-screen font-sans flex flex-col">
+    <!-- Header -->
+    <header
+      class="fixed top-0 w-full bg-gradient-to-r from-purple-900 to-blue-900 shadow-md z-10 neon-glow"
+    >
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <h1 class="text-xl font-bold text-cyan-300">Okkura-Tyan</h1>
+        <nav class="hidden md:flex space-x-4 items-center">
+          <a
+            href="/static/aboutUsPage/aboutUs.html"
+            class="text-cyan-200 hover:text-pink-300"
+            >About Us</a
+          >
+          <a href="#" class="text-cyan-200 hover:text-pink-300">Support</a>
+          <a href="#" class="text-cyan-200 hover:text-pink-300">News</a>
+          <a href="#" class="text-cyan-200 hover:text-pink-300">Donate</a>
+          <button id="theme-toggle" class="text-cyan-200 hover:text-pink-300">
+            <i class="fas fa-moon"></i>
+          </button>
+        </nav>
+        <button id="mobile-menu-btn" class="md:hidden text-cyan-200">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
 
-		<!-- Chat Page -->
-		<main class="flex-grow container mx-auto px-4 pt-20 pb-10 flex gap-4">
-			<!-- Чат -->
-			<section class="flex-1 flex flex-col">
-				<div class="flex justify-between items-center mb-4">
-					<h2
-						class="text-lg font-semibold text-pink-300"
-						id="current-chat-name"
-					>
-						Чат с Okkura-тян
-					</h2>
-					<div class="flex gap-2">
-						<button
-							id="toggle-search"
-							class="text-cyan-200 hover:text-pink-300"
-						>
-							<i class="fas fa-search"></i>
-						</button>
-						<button
-							id="toggle-chat-list"
-							class="text-cyan-200 hover:text-pink-300"
-						>
-							<i class="fas fa-list"></i>
-						</button>
-					</div>
-				</div>
-				<div
-					id="search-panel"
-					class="fixed top-20 right-4 w-64 bg-gray-800 p-4 rounded-lg shadow-lg transform translate-y-[-150%] transition-transform duration-300 hidden z-20"
-				>
-					<input
-						id="search-input"
-						type="text"
-						placeholder="Поиск по чатам..."
-						class="w-full p-2 border border-cyan-500 rounded-lg bg-gray-900 text-white"
-					/>
-					<ul id="search-results" class="mt-2 space-y-2"></ul>
-				</div>
-				<div
-					id="chat-window"
-					class="flex-grow overflow-y-auto border border-cyan-500 rounded-lg p-4 bg-gray-800 bg-opacity-50 mb-4"
-				></div>
-				<div class="flex gap-2">
-					<input
-						id="chat-input"
-						type="text"
-						placeholder="Напиши что-нибудь..."
-						class="flex-1 p-2 border border-cyan-500 rounded-lg bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-pink-500"
-					/>
-					<button
-						id="send-message"
-						class="bg-gradient-to-r from-cyan-500 to-pink-500 text-white px-4 py-2 rounded-lg hover:from-cyan-600 hover:to-pink-600 neon-glow"
-					>
-						<i class="fas fa-paper-plane"></i>
-					</button>
-				</div>
-			</section>
-			<!-- Боковая панель Okkura-тян -->
-			<aside
-				class="okkura-aside w-64 hidden md:flex flex-col bg-gray-900 bg-opacity-80 rounded-lg shadow-md p-6 neon-glow"
-			>
-				<div class="okkura-container flex-1">
-					<svg id="okkura-svg" class="okkura-svg" viewBox="0 0 200 200">
-						<!-- Лицо -->
-						<circle cx="100" cy="100" r="60" fill="#ffe6e6" />
-						<!-- Волосы -->
-						<path
-							d="M40 80 Q100 20 160 80 Q140 120 100 100 Q60 120 40 80"
-							fill="#ff66b2"
-						/>
-						<path
-							d="M60 60 Q100 40 140 60"
-							fill="none"
-							stroke="#ff3399"
-							stroke-width="10"
-						/>
-						<!-- Кошачьи уши -->
-						<path d="M70 50 L60 30 L80 40 Z" fill="#ff66b2" />
-						<path d="M130 50 L140 30 L120 40 Z" fill="#ff66b2" />
-						<!-- Глаза -->
-						<circle cx="80" cy="80" r="12" fill="#fff" />
-						<circle cx="120" cy="80" r="12" fill="#fff" />
-						<circle cx="80" cy="80" r="6" fill="#3399ff" />
-						<circle cx="120" cy="80" r="6" fill="#3399ff" />
-						<!-- Рот -->
-						<path
-							id="okkura-mouth"
-							d="M90 110 Q100 120 110 110"
-							fill="none"
-							stroke="#ff3399"
-							stroke-width="3"
-						/>
-						<!-- Платье -->
-						<path
-							d="M80 140 Q100 160 120 140 L130 180 L70 180 Z"
-							fill="#cc99ff"
-						/>
-					</svg>
-				</div>
-				<button
-					id="okkura-customize"
-					class="mt-4 w-full bg-gradient-to-r from-cyan-500 to-pink-500 text-white py-2 rounded-lg hover:from-cyan-600 hover:to-pink-600 neon-glow"
-				>
-					Кастомизация Okkura-тян
-				</button>
-				<div
-					id="customize-panel"
-					class="fixed bottom-20 right-4 w-64 bg-gray-800 p-4 rounded-lg shadow-lg transform translate-y-[150%] transition-transform duration-300 hidden z-20"
-				>
-					<h3 class="text-pink-300 mb-2">Кастомизация Okkura-тян</h3>
-					<label class="block text-cyan-200 mb-1">Цвет волос:</label>
-					<input
-						id="hair-color"
-						type="color"
-						value="#ff66b2"
-						class="w-full mb-2"
-					/>
-					<label class="block text-cyan-200 mb-1">Цвет платья:</label>
-					<input id="dress-color" type="color" value="#cc99ff" class="w-full" />
-				</div>
-			</aside>
-		</main>
+    <!-- Chat Page -->
+    <main class="flex-grow container mx-auto px-4 pt-20 pb-10 flex gap-4">
+      <!-- Чат -->
+      <section class="flex-1 flex flex-col">
+        <div class="flex justify-between items-center mb-4">
+          <h2
+            class="text-lg font-semibold text-pink-300"
+            id="current-chat-name"
+          >
+            Чат с Okkura-тян
+          </h2>
+          <div class="flex gap-2">
+            <button
+              id="toggle-search"
+              class="text-cyan-200 hover:text-pink-300"
+            >
+              <i class="fas fa-search"></i>
+            </button>
+            <button
+              id="toggle-chat-list"
+              class="text-cyan-200 hover:text-pink-300"
+            >
+              <i class="fas fa-list"></i>
+            </button>
+          </div>
+        </div>
+        <div
+          id="search-panel"
+          class="fixed top-20 right-4 w-64 bg-gray-800 p-4 rounded-lg shadow-lg transform translate-y-[-150%] transition-transform duration-300 hidden z-20"
+        >
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Поиск по чатам..."
+            class="w-full p-2 border border-cyan-500 rounded-lg bg-gray-900 text-white"
+          />
+          <ul id="search-results" class="mt-2 space-y-2"></ul>
+        </div>
+        <div
+          id="chat-window"
+          class="flex-grow overflow-y-auto border border-cyan-500 rounded-lg p-4 bg-gray-800 bg-opacity-50 mb-4"
+        ></div>
+        <div class="flex gap-2">
+          <input
+            id="chat-input"
+            type="text"
+            placeholder="Напиши что-нибудь..."
+            class="flex-1 p-2 border border-cyan-500 rounded-lg bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-pink-500"
+          />
+          <button
+            id="send-message"
+            class="bg-gradient-to-r from-cyan-500 to-pink-500 text-white px-4 py-2 rounded-lg hover:from-cyan-600 hover:to-pink-600 neon-glow"
+          >
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </section>
+      <!-- Боковая панель Okkura-тян -->
+      <aside
+        class="okkura-aside w-64 hidden md:flex flex-col bg-gray-900 bg-opacity-80 rounded-lg shadow-md p-6 neon-glow"
+      >
+        <div class="okkura-container flex-1">
+          <svg id="okkura-svg" class="okkura-svg" viewBox="0 0 200 200">
+            <!-- Лицо -->
+            <circle cx="100" cy="100" r="60" fill="#ffe6e6" />
+            <!-- Волосы -->
+            <path
+              d="M40 80 Q100 20 160 80 Q140 120 100 100 Q60 120 40 80"
+              fill="#ff66b2"
+            />
+            <path
+              d="M60 60 Q100 40 140 60"
+              fill="none"
+              stroke="#ff3399"
+              stroke-width="10"
+            />
+            <!-- Кошачьи уши -->
+            <path d="M70 50 L60 30 L80 40 Z" fill="#ff66b2" />
+            <path d="M130 50 L140 30 L120 40 Z" fill="#ff66b2" />
+            <!-- Глаза -->
+            <circle cx="80" cy="80" r="12" fill="#fff" />
+            <circle cx="120" cy="80" r="12" fill="#fff" />
+            <circle cx="80" cy="80" r="6" fill="#3399ff" />
+            <circle cx="120" cy="80" r="6" fill="#3399ff" />
+            <!-- Рот -->
+            <path
+              id="okkura-mouth"
+              d="M90 110 Q100 120 110 110"
+              fill="none"
+              stroke="#ff3399"
+              stroke-width="3"
+            />
+            <!-- Платье -->
+            <path
+              d="M80 140 Q100 160 120 140 L130 180 L70 180 Z"
+              fill="#cc99ff"
+            />
+          </svg>
+        </div>
+        <button
+          id="okkura-customize"
+          class="mt-4 w-full bg-gradient-to-r from-cyan-500 to-pink-500 text-white py-2 rounded-lg hover:from-cyan-600 hover:to-pink-600 neon-glow"
+        >
+          Кастомизация Okkura-тян
+        </button>
+        <div
+          id="customize-panel"
+          class="fixed bottom-20 right-4 w-64 bg-gray-800 p-4 rounded-lg shadow-lg transform translate-y-[150%] transition-transform duration-300 hidden z-20"
+        >
+          <h3 class="text-pink-300 mb-2">Кастомизация Okkura-тян</h3>
+          <label class="block text-cyan-200 mb-1">Цвет волос:</label>
+          <input
+            id="hair-color"
+            type="color"
+            value="#ff66b2"
+            class="w-full mb-2"
+          />
+          <label class="block text-cyan-200 mb-1">Цвет платья:</label>
+          <input id="dress-color" type="color" value="#cc99ff" class="w-full" />
+        </div>
+      </aside>
+    </main>
 
-		<!-- Chat List Sidebar -->
-		<div
-			id="chat-list-sidebar"
-			class="chat-sidebar fixed inset-y-0 left-0 w-64 sidebar shadow-lg transform -translate-x-full transition-transform duration-300 z-20"
-		>
-			<div class="p-4">
-				<div class="flex justify-between items-center mb-4">
-					<h2 class="text-lg font-semibold text-pink-300">Чаты</h2>
-					<button
-						id="close-chat-list"
-						class="text-cyan-200 hover:text-pink-300"
-					>
-						<i class="fas fa-times"></i>
-					</button>
-				</div>
-				<div class="flex gap-2 mb-4">
-					<input
-						id="new-chat-name"
-						type="text"
-						placeholder="Название чата..."
-						class="flex-1 p-2 border border-cyan-500 rounded-lg bg-gray-900 text-white"
-					/>
-					<button
-						id="create-chat"
-						class="ml-[-10px] bg-gradient-to-r from-cyan-500 to-pink-500 text-white px-3 py-2 rounded-lg hover:from-cyan-600 hover:to-pink-600"
-					>
-						<i class="fas fa-plus"></i>
-					</button>
-				</div>
-				<ul id="chat-list" class="space-y-2"></ul>
-			</div>
-		</div>
+    <!-- Chat List Sidebar -->
+    <div
+      id="chat-list-sidebar"
+      class="chat-sidebar fixed inset-y-0 left-0 w-64 sidebar shadow-lg transform -translate-x-full transition-transform duration-300 z-20"
+    >
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-lg font-semibold text-pink-300">Чаты</h2>
+          <button
+            id="close-chat-list"
+            class="text-cyan-200 hover:text-pink-300"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="flex gap-2 mb-4">
+          <input
+            id="new-chat-name"
+            type="text"
+            placeholder="Название чата..."
+            class="flex-1 p-2 border border-cyan-500 rounded-lg bg-gray-900 text-white"
+          />
+          <button
+            id="create-chat"
+            class="ml-[-10px] bg-gradient-to-r from-cyan-500 to-pink-500 text-white px-3 py-2 rounded-lg hover:from-cyan-600 hover:to-pink-600"
+          >
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <ul id="chat-list" class="space-y-2"></ul>
+      </div>
+    </div>
 
-		<script src="script.js"></script>
-		<!-- тест фича -->
-		<!-- <div
+    <script src="script.js"></script>
+    <!-- тест фича -->
+    <!-- <div
 			id="okkura-avatar"
 			class="fixed bottom-4 left-4 w-24 h-24 z-50 pointer-events-none"
 		>
@@ -203,5 +207,5 @@
 				class="w-full h-full object-contain"
 			/>
 		</div> -->
-	</body>
+  </body>
 </html>
