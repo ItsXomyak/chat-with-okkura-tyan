@@ -24,6 +24,7 @@ go mod tidy
 Запустите контейнеры базы данных и нужных сервисов:
 
 ```bash
+cd backend/chat-service
 docker-compose up --build
 ```
 

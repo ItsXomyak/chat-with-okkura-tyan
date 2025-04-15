@@ -32,7 +32,7 @@ func (h *ChatHandler) CreateChat(c *gin.Context) {
     return
   }
   c.JSON(http.StatusOK, chat)
-}
+} // 123
 
 func (h *ChatHandler) SendMessage(c *gin.Context) {
   chatID, err := strconv.Atoi(c.Param("id"))
