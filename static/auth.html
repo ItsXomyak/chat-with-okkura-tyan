@@ -11,27 +11,34 @@
 		/>
 		<link rel="stylesheet" href="css/styles.css" />
 	</head>
-	<body class="bg-gray-900 text-white">
+	<body class="bg-pink-200 text-white">
 		<!-- Header -->
-		<header class="fixed w-full bg-gray-900/80 backdrop-blur-sm z-50">
+		<header class="fixed w-full bg-pink-200/80 backdrop-blur-sm z-50">
 			<nav class="container mx-auto px-4 py-4">
 				<div class="flex justify-between items-center">
-					<div class="text-2xl font-bold hover:text-purple-400 transition">
+					<div class="text-2xl font-bold hover:text-purple-200 transition">
 						<a href="index.html">Okkura-тян</a>
 					</div>
 					<div class="hidden md:flex space-x-6">
-						<a href="chat.html" class="hover:text-purple-400 transition">Чат</a>
-						<a href="news.html" class="hover:text-purple-400 transition"
+						<a href="chat.html" class="hover:text-purple-200 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-200 transition"
 							>Новости</a
 						>
-						<a href="about.html" class="hover:text-purple-400 transition"
+						<a href="about.html" class="hover:text-purple-200 transition"
 							>О нас</a
 						>
-						<a href="support.html" class="hover:text-purple-400 transition"
+						<a href="support.html" class="hover:text-purple-200 transition"
 							>Поддержка</a
 						>
-						<a href="donate.html" class="hover:text-purple-400 transition"
+						<a href="contacts.html" class="hover:text-purple-200 transition"
+							>Контакты</a
+						>
+						<a href="donate.html" class="hover:text-purple-200 transition"
 							>Донаты</a
+						>
+						<a href="lore.html" class="hover:text-purple-200 transition">Лор</a>
+						<a href="auth.html" class="hover:text-purple-200 transition"
+							>Вход</a
 						>
 					</div>
 					<button class="md:hidden">
@@ -49,7 +56,7 @@
 					<div class="flex mb-8">
 						<button
 							id="login-tab"
-							class="flex-1 py-4 text-center border-b-2 border-purple-600 text-purple-400"
+							class="flex-1 py-4 text-center border-b-2 border-purple-600 text-purple-200"
 						>
 							Вход
 						</button>
@@ -69,14 +76,14 @@
 						<h2 class="text-2xl font-bold mb-6 text-center">Вход в аккаунт</h2>
 						<form class="space-y-6">
 							<div>
-								<label class="block text-gray-300 mb-2">Email</label>
+								<label class="block text-white-300 mb-2">Email</label>
 								<input
 									type="email"
 									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
 								/>
 							</div>
 							<div>
-								<label class="block text-gray-300 mb-2">Пароль</label>
+								<label class="block text-white-300 mb-2">Пароль</label>
 								<input
 									type="password"
 									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
@@ -88,14 +95,14 @@
 										type="checkbox"
 										class="form-checkbox h-4 w-4 text-purple-600"
 									/>
-									<span class="ml-2 text-gray-300">Запомнить меня</span>
+									<span class="ml-2 text-white-300">Запомнить меня</span>
 								</label>
-								<a href="#" class="text-purple-400 hover:text-purple-300"
+								<a href="#" class="text-purple-200 hover:text-purple-300"
 									>Забыли пароль?</a
 								>
 							</div>
 							<button
-								class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-lg transition"
+								class="w-full bg-violet-200 hover:bg-purple-700 py-3 rounded-lg transition"
 							>
 								Войти
 							</button>
@@ -139,28 +146,30 @@
 						<h2 class="text-2xl font-bold mb-6 text-center">Создать аккаунт</h2>
 						<form class="space-y-6">
 							<div>
-								<label class="block text-gray-300 mb-2">Имя пользователя</label>
+								<label class="block text-white-300 mb-2"
+									>Имя пользователя</label
+								>
 								<input
 									type="text"
 									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
 								/>
 							</div>
 							<div>
-								<label class="block text-gray-300 mb-2">Email</label>
+								<label class="block text-white-300 mb-2">Email</label>
 								<input
 									type="email"
 									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
 								/>
 							</div>
 							<div>
-								<label class="block text-gray-300 mb-2">Пароль</label>
+								<label class="block text-white-300 mb-2">Пароль</label>
 								<input
 									type="password"
 									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
 								/>
 							</div>
 							<div>
-								<label class="block text-gray-300 mb-2"
+								<label class="block text-white-300 mb-2"
 									>Подтвердите пароль</label
 								>
 								<input
@@ -173,15 +182,15 @@
 									type="checkbox"
 									class="form-checkbox h-4 w-4 text-purple-600"
 								/>
-								<span class="ml-2 text-gray-300">
+								<span class="ml-2 text-white-300">
 									Я согласен с
-									<a href="#" class="text-purple-400 hover:text-purple-300"
+									<a href="#" class="text-purple-200 hover:text-purple-300"
 										>условиями использования</a
 									>
 								</span>
 							</div>
 							<button
-								class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-lg transition"
+								class="w-full bg-violet-200 hover:bg-purple-700 py-3 rounded-lg transition"
 							>
 								Зарегистрироваться
 							</button>
@@ -192,20 +201,20 @@
 		</main>
 
 		<!-- Footer -->
-		<footer class="bg-gray-900/80 backdrop-blur-sm py-8">
+		<footer class="bg-pink-200/80 backdrop-blur-sm py-8">
 			<div class="container mx-auto px-4">
 				<div class="flex flex-col md:flex-row justify-between items-center">
 					<div class="mb-4 md:mb-0">
 						<p>&copy; 2025 Okkura-тян. Все права защищены.</p>
 					</div>
 					<div class="flex space-x-4">
-						<a href="#" class="hover:text-purple-400 transition"
+						<a href="#" class="hover:text-purple-200 transition"
 							><i class="fab fa-discord text-2xl"></i
 						></a>
-						<a href="#" class="hover:text-purple-400 transition"
+						<a href="#" class="hover:text-purple-200 transition"
 							><i class="fab fa-twitter text-2xl"></i
 						></a>
-						<a href="#" class="hover:text-purple-400 transition"
+						<a href="#" class="hover:text-purple-200 transition"
 							><i class="fab fa-github text-2xl"></i
 						></a>
 					</div>
@@ -222,19 +231,19 @@
 			const registerForm = document.getElementById('register-form')
 
 			function switchToLogin() {
-				loginTab.classList.add('border-purple-600', 'text-purple-400')
+				loginTab.classList.add('border-purple-600', 'text-purple-200')
 				loginTab.classList.remove('border-gray-700', 'text-gray-400')
 				registerTab.classList.add('border-gray-700', 'text-gray-400')
-				registerTab.classList.remove('border-purple-600', 'text-purple-400')
+				registerTab.classList.remove('border-purple-600', 'text-purple-200')
 				loginForm.classList.remove('hidden')
 				registerForm.classList.add('hidden')
 			}
 
 			function switchToRegister() {
-				registerTab.classList.add('border-purple-600', 'text-purple-400')
+				registerTab.classList.add('border-purple-600', 'text-purple-200')
 				registerTab.classList.remove('border-gray-700', 'text-gray-400')
 				loginTab.classList.add('border-gray-700', 'text-gray-400')
-				loginTab.classList.remove('border-purple-600', 'text-purple-400')
+				loginTab.classList.remove('border-purple-600', 'text-purple-200')
 				registerForm.classList.remove('hidden')
 				loginForm.classList.add('hidden')
 			}

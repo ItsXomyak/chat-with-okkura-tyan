@@ -1,0 +1,36 @@
+1. Регистрация нового пользователя:
+curl -X POST http://localhost:8080/api/v1/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "newuser",
+    "email": "user@example.com",
+    "password": "securePassword123",
+    "firstName": "John",
+    "lastName": "Doe"
+  }'
+2. Аутентификация и вход пользователя:
+curl -X POST http://localhost:8080/api/v1/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com",
+    "password": "securePassword123"
+  }'
+3. Подтверждение зарегистрированного аккаунта:
+curl -X POST http://localhost:8080/api/v1/auth/confirm \
+  -H "Content-Type: application/json" \
+  -d '{
+    "token": "confirmation-token-received-via-email"
+  }'
+4. Запрос на сброс пароля:
+curl -X POST http://localhost:8080/api/v1/auth/password-reset-request \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "user@example.com"
+  }'
+5. Сброс пароля с использованием токена подтверждения:
+curl -X POST http://localhost:8080/api/v1/auth/password-reset-confirm \
+  -H "Content-Type: application/json" \
+  -d '{
+    "token": "reset-token-received-via-email",
+    "password": "newSecurePassword456"
+  }'

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Email подтвержден - Okkura-тян</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body class="bg-pink-200 text-white">
+		<!-- Header -->
+		<header class="fixed w-full bg-pink-200/80 backdrop-blur-sm z-50">
+			<nav class="container mx-auto px-4 py-4">
+				<div class="flex justify-between items-center">
+					<div class="text-2xl font-bold hover:text-purple-200 transition">
+						<a href="index.html">Okkura-тян</a>
+					</div>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Main Content -->
+		<main class="min-h-screen pt-20">
+			<div class="container mx-auto px-4">
+				<div
+					class="flex flex-col items-center justify-center min-h-[80vh] text-center"
+				>
+					<div
+						class="bg-white/20 backdrop-blur-sm p-8 rounded-lg max-w-md w-full"
+					>
+						<div class="text-6xl mb-6 text-green-400">
+							<i class="fas fa-check-circle"></i>
+						</div>
+						<h2
+							class="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text"
+						>
+							Email подтвержден!
+						</h2>
+						<p class="text-lg mb-6 text-white-300">
+							Ваш email адрес был успешно подтвержден. Теперь вы можете войти в
+							систему.
+						</p>
+						<a href="auth.html" class="inline-block">
+							<button
+								class="bg-violet-200 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105"
+							>
+								Войти в систему
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-pink-200/80 backdrop-blur-sm py-8">
+			<div class="container mx-auto px-4">
+				<div class="flex flex-col md:flex-row justify-between items-center">
+					<div class="mb-4 md:mb-0">
+						<p>&copy; 2024 Okkura-тян. Все права защищены.</p>
+					</div>
+					<div class="flex space-x-4">
+						<a href="#" class="hover:text-purple-200 transition">
+							<i class="fab fa-discord text-2xl"></i>
+						</a>
+						<a href="#" class="hover:text-purple-200 transition">
+							<i class="fab fa-twitter text-2xl"></i>
+						</a>
+						<a href="#" class="hover:text-purple-200 transition">
+							<i class="fab fa-github text-2xl"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/main.js"></script>
+	</body>
+</html>
