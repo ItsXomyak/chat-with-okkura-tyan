@@ -3,196 +3,376 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Вход и регистрация - Okkura-тян</title>
+		<title>Авторизация - Okkura-тян</title>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 		/>
 		<link rel="stylesheet" href="css/styles.css" />
+		<style>
+			:root {
+				--primary-color: #f472b6;
+				--secondary-color: #ec4899;
+				--background-color: #fdf2f8;
+				--text-color: #4b5563;
+				--border-radius: 12px;
+				--box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			}
+
+			.auth-container {
+				background-color: rgba(255, 255, 255, 0.8);
+				backdrop-filter: blur(10px);
+				border-radius: var(--border-radius);
+				padding: 2rem;
+				max-width: 400px;
+				width: 100%;
+				box-shadow: var(--box-shadow);
+				transition: transform 0.3s ease;
+			}
+
+			.auth-container:hover {
+				transform: translateY(-5px);
+			}
+
+			.tab-btn {
+				padding: 0.75rem 1.5rem;
+				border-radius: 8px;
+				transition: all 0.3s ease;
+				color: var(--text-color);
+				font-weight: 500;
+			}
+
+			.tab-btn:hover {
+				background-color: rgba(244, 114, 182, 0.1);
+			}
+
+			.tab-btn.active {
+				background-color: rgba(244, 114, 182, 0.2);
+				color: var(--secondary-color);
+			}
+
+			.tab-content {
+				display: none;
+				animation: fadeIn 0.5s ease;
+			}
+
+			.tab-content.active {
+				display: block;
+			}
+
+			.form-input {
+				background-color: rgba(255, 255, 255, 0.9);
+				border: 1px solid rgba(244, 114, 182, 0.2);
+				border-radius: 8px;
+				padding: 0.75rem 1rem;
+				width: 100%;
+				color: var(--text-color);
+				margin-bottom: 1rem;
+				transition: all 0.3s ease;
+			}
+
+			.form-input:focus {
+				outline: none;
+				border-color: var(--primary-color);
+				box-shadow: 0 0 0 2px rgba(244, 114, 182, 0.1);
+			}
+
+			.form-input::placeholder {
+				color: rgba(75, 85, 99, 0.6);
+			}
+
+			.btn-submit {
+				background: linear-gradient(
+					135deg,
+					var(--primary-color),
+					var(--secondary-color)
+				);
+				color: white;
+				font-weight: 600;
+				padding: 0.75rem 1.5rem;
+				border-radius: 8px;
+				transition: all 0.3s ease;
+			}
+
+			.btn-submit:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 4px 12px rgba(244, 114, 182, 0.3);
+			}
+
+			.error-message {
+				background-color: rgba(239, 68, 68, 0.1);
+				color: #ef4444;
+				padding: 0.75rem;
+				border-radius: 8px;
+				margin-bottom: 1rem;
+				display: none;
+				animation: slideIn 0.3s ease;
+			}
+
+			.success-message {
+				background-color: rgba(34, 197, 94, 0.1);
+				color: #22c55e;
+				padding: 0.75rem;
+				border-radius: 8px;
+				margin-bottom: 1rem;
+				display: none;
+				animation: slideIn 0.3s ease;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+				}
+				to {
+					opacity: 1;
+				}
+			}
+
+			@keyframes slideIn {
+				from {
+					transform: translateY(-10px);
+					opacity: 0;
+				}
+				to {
+					transform: translateY(0);
+					opacity: 1;
+				}
+			}
+
+			.nav-link {
+				position: relative;
+				transition: all 0.3s ease;
+			}
+
+			.nav-link::after {
+				content: '';
+				position: absolute;
+				bottom: -2px;
+				left: 0;
+				width: 0;
+				height: 2px;
+				background: var(--secondary-color);
+				transition: width 0.3s ease;
+			}
+
+			.nav-link:hover::after {
+				width: 100%;
+			}
+		</style>
 	</head>
-	<body class="bg-pink-200 text-white">
+	<body
+		class="bg-gradient-to-br from-pink-100 to-pink-200 text-gray-700 min-h-screen"
+	>
 		<!-- Header -->
-		<header class="fixed w-full bg-pink-200/80 backdrop-blur-sm z-50">
+		<header
+			class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm"
+		>
 			<nav class="container mx-auto px-4 py-4">
 				<div class="flex justify-between items-center">
-					<div class="text-2xl font-bold hover:text-purple-200 transition">
-						<a href="index.html">Okkura-тян</a>
+					<!-- Логотип -->
+					<div class="text-2xl font-bold">
+						<a
+							href="index.html"
+							class="text-black hover:text-pink-600 transition"
+						>
+							Okkura-тян
+						</a>
 					</div>
+
+					<!-- Навигация -->
 					<div class="hidden md:flex space-x-6">
-						<a href="chat.html" class="hover:text-purple-200 transition">Чат</a>
-						<a href="news.html" class="hover:text-purple-200 transition"
+						<a
+							href="chat.html"
+							class="text-black hover:text-purple-500 transition"
+							>Чат</a
+						>
+						<a
+							href="news.html"
+							class="text-black hover:text-purple-500 transition"
 							>Новости</a
 						>
-						<a href="about.html" class="hover:text-purple-200 transition"
+						<a
+							href="about.html"
+							class="text-black hover:text-purple-500 transition"
 							>О нас</a
 						>
-						<a href="support.html" class="hover:text-purple-200 transition"
+						<a
+							href="support.html"
+							class="text-black hover:text-purple-500 transition"
 							>Поддержка</a
 						>
-						<a href="contacts.html" class="hover:text-purple-200 transition"
+						<a
+							href="contacts.html"
+							class="text-black hover:text-purple-500 transition"
 							>Контакты</a
 						>
-						<a href="donate.html" class="hover:text-purple-200 transition"
+						<a
+							href="donate.html"
+							class="text-black hover:text-purple-500 transition"
 							>Донаты</a
 						>
-						<a href="lore.html" class="hover:text-purple-200 transition">Лор</a>
-						<a href="auth.html" class="hover:text-purple-200 transition"
+						<a
+							href="lore.html"
+							class="text-black hover:text-purple-500 transition"
+							>Лор</a
+						>
+						<a
+							href="auth.html"
+							class="text-black hover:text-purple-500 transition"
 							>Вход</a
 						>
 					</div>
+
+					<!-- Мобильная кнопка -->
 					<button class="md:hidden">
-						<i class="fas fa-bars text-2xl"></i>
+						<i class="fas fa-bars text-2xl text-black"></i>
 					</button>
 				</div>
 			</nav>
 		</header>
 
 		<!-- Main Content -->
-		<main class="pt-20 pb-12">
-			<div class="container mx-auto px-4">
-				<div class="max-w-md mx-auto">
-					<!-- Auth Tabs -->
-					<div class="flex mb-8">
-						<button
-							id="login-tab"
-							class="flex-1 py-4 text-center border-b-2 border-purple-600 text-purple-200"
-						>
-							Вход
-						</button>
-						<button
-							id="register-tab"
-							class="flex-1 py-4 text-center border-b-2 border-gray-700 text-gray-400"
-						>
-							Регистрация
-						</button>
+		<main class="container mx-auto px-4 py-20">
+			<div class="flex justify-center">
+				<div class="auth-container">
+					<!-- Tabs -->
+					<div class="flex space-x-2 mb-6">
+						<button class="tab-btn active" data-tab="login">Вход</button>
+						<button class="tab-btn" data-tab="register">Регистрация</button>
+						<button class="tab-btn" data-tab="reset">Сброс пароля</button>
 					</div>
 
 					<!-- Login Form -->
-					<div
-						id="login-form"
-						class="bg-gray-800/50 rounded-lg p-6 glass-effect"
-					>
-						<h2 class="text-2xl font-bold mb-6 text-center">Вход в аккаунт</h2>
-						<form class="space-y-6">
-							<div>
-								<label class="block text-white-300 mb-2">Email</label>
-								<input
-									type="email"
-									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-								/>
-							</div>
-							<div>
-								<label class="block text-white-300 mb-2">Пароль</label>
-								<input
-									type="password"
-									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-								/>
-							</div>
-							<div class="flex items-center justify-between">
-								<label class="flex items-center">
-									<input
-										type="checkbox"
-										class="form-checkbox h-4 w-4 text-purple-600"
-									/>
-									<span class="ml-2 text-white-300">Запомнить меня</span>
-								</label>
-								<a href="#" class="text-purple-200 hover:text-purple-300"
-									>Забыли пароль?</a
-								>
-							</div>
-							<button
-								class="w-full bg-violet-200 hover:bg-purple-700 py-3 rounded-lg transition"
-							>
-								Войти
-							</button>
-						</form>
-						<div class="mt-6">
-							<div class="relative">
-								<div class="absolute inset-0 flex items-center">
-									<div class="w-full border-t border-gray-700"></div>
+					<div id="login" class="tab-content active">
+						<form id="loginForm" class="space-y-4">
+							<input
+								type="email"
+								id="loginEmail"
+								class="form-input"
+								placeholder="Email"
+								required
+							/>
+							<input
+								type="password"
+								id="loginPassword"
+								class="form-input"
+								placeholder="Пароль"
+								required
+							/>
+							<button type="submit" class="w-full btn-submit">Войти</button>
+
+							<!-- Social Login -->
+							<div class="mt-6">
+								<div class="relative">
+									<div class="absolute inset-0 flex items-center">
+										<div class="w-full border-t border-gray-300"></div>
+									</div>
+									<div class="relative flex justify-center text-sm">
+										<span class="px-2 bg-white text-gray-500"
+											>Или войдите через</span
+										>
+									</div>
 								</div>
-								<div class="relative flex justify-center text-sm">
-									<span class="px-2 bg-gray-800/50 text-gray-400"
-										>Или войдите через</span
+
+								<div class="mt-6 grid grid-cols-2 gap-3">
+									<button
+										class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
 									>
+										<i class="fab fa-google text-red-500 mr-2"></i>
+										Google
+									</button>
+									<button
+										class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+									>
+										<i class="fab fa-github text-gray-800 mr-2"></i>
+										GitHub
+									</button>
+									<button
+										class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+									>
+										<i class="fab fa-discord text-indigo-500 mr-2"></i>
+										Discord
+									</button>
+									<button
+										class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+									>
+										<i class="fab fa-vk text-blue-500 mr-2"></i>
+										VK
+									</button>
 								</div>
 							</div>
-							<div class="mt-6 grid grid-cols-3 gap-3">
-								<button
-									class="flex-1 bg-gray-700/50 py-2 rounded-lg hover:bg-gray-700 transition"
-								>
-									<i class="fab fa-google text-red-400"></i>
-								</button>
-								<button
-									class="flex-1 bg-gray-700/50 py-2 rounded-lg hover:bg-gray-700 transition"
-								>
-									<i class="fab fa-discord text-indigo-400"></i>
-								</button>
-								<button
-									class="flex-1 bg-gray-700/50 py-2 rounded-lg hover:bg-gray-700 transition"
-								>
-									<i class="fab fa-vk text-blue-400"></i>
-								</button>
-							</div>
-						</div>
+						</form>
 					</div>
 
 					<!-- Register Form -->
-					<div
-						id="register-form"
-						class="bg-gray-800/50 rounded-lg p-6 glass-effect hidden"
-					>
-						<h2 class="text-2xl font-bold mb-6 text-center">Создать аккаунт</h2>
-						<form class="space-y-6">
-							<div>
-								<label class="block text-white-300 mb-2"
-									>Имя пользователя</label
-								>
-								<input
-									type="text"
-									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-								/>
-							</div>
-							<div>
-								<label class="block text-white-300 mb-2">Email</label>
-								<input
-									type="email"
-									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-								/>
-							</div>
-							<div>
-								<label class="block text-white-300 mb-2">Пароль</label>
-								<input
-									type="password"
-									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-								/>
-							</div>
-							<div>
-								<label class="block text-white-300 mb-2"
-									>Подтвердите пароль</label
-								>
-								<input
-									type="password"
-									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-								/>
-							</div>
-							<div class="flex items-center">
-								<input
-									type="checkbox"
-									class="form-checkbox h-4 w-4 text-purple-600"
-								/>
-								<span class="ml-2 text-white-300">
-									Я согласен с
-									<a href="#" class="text-purple-200 hover:text-purple-300"
-										>условиями использования</a
-									>
-								</span>
-							</div>
-							<button
-								class="w-full bg-violet-200 hover:bg-purple-700 py-3 rounded-lg transition"
-							>
+					<div id="register" class="tab-content">
+						<form id="registerForm" class="space-y-4">
+							<input
+								type="email"
+								id="registerEmail"
+								class="form-input"
+								placeholder="Email"
+								required
+							/>
+							<input
+								type="password"
+								id="registerPassword"
+								class="form-input"
+								placeholder="Пароль"
+								required
+							/>
+							<input
+								type="text"
+								id="registerFirstName"
+								class="form-input"
+								placeholder="Имя (необязательно)"
+							/>
+							<input
+								type="text"
+								id="registerLastName"
+								class="form-input"
+								placeholder="Фамилия (необязательно)"
+							/>
+							<button type="submit" class="w-full btn-submit">
 								Зарегистрироваться
+							</button>
+						</form>
+					</div>
+
+					<!-- Reset Password Form -->
+					<div id="reset" class="tab-content">
+						<form id="resetForm" class="space-y-4">
+							<input
+								type="email"
+								id="resetEmail"
+								class="form-input"
+								placeholder="Email"
+								required
+							/>
+							<button type="submit" class="w-full btn-submit">
+								Отправить инструкции
+							</button>
+						</form>
+
+						<!-- Reset Password Confirm Form -->
+						<form id="resetConfirmForm" class="space-y-4 mt-6 hidden">
+							<input
+								type="text"
+								id="resetToken"
+								class="form-input"
+								placeholder="Токен сброса пароля"
+								required
+							/>
+							<input
+								type="password"
+								id="newPassword"
+								class="form-input"
+								placeholder="Новый пароль"
+								required
+							/>
+							<button type="submit" class="w-full btn-submit">
+								Сбросить пароль
 							</button>
 						</form>
 					</div>
@@ -201,55 +381,16 @@
 		</main>
 
 		<!-- Footer -->
-		<footer class="bg-pink-200/80 backdrop-blur-sm py-8">
+		<footer class="fixed bottom-0 w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
 			<div class="container mx-auto px-4">
-				<div class="flex flex-col md:flex-row justify-between items-center">
-					<div class="mb-4 md:mb-0">
-						<p>&copy; 2025 Okkura-тян. Все права защищены.</p>
-					</div>
-					<div class="flex space-x-4">
-						<a href="#" class="hover:text-purple-200 transition"
-							><i class="fab fa-discord text-2xl"></i
-						></a>
-						<a href="#" class="hover:text-purple-200 transition"
-							><i class="fab fa-twitter text-2xl"></i
-						></a>
-						<a href="#" class="hover:text-purple-200 transition"
-							><i class="fab fa-github text-2xl"></i
-						></a>
-					</div>
+				<div class="flex justify-center">
+					<p class="text-gray-600">
+						&copy; 2025 Okkura-тян. Все права защищены.
+					</p>
 				</div>
 			</div>
 		</footer>
 
-		<script src="js/main.js"></script>
-		<script>
-			// Auth tabs functionality
-			const loginTab = document.getElementById('login-tab')
-			const registerTab = document.getElementById('register-tab')
-			const loginForm = document.getElementById('login-form')
-			const registerForm = document.getElementById('register-form')
-
-			function switchToLogin() {
-				loginTab.classList.add('border-purple-600', 'text-purple-200')
-				loginTab.classList.remove('border-gray-700', 'text-gray-400')
-				registerTab.classList.add('border-gray-700', 'text-gray-400')
-				registerTab.classList.remove('border-purple-600', 'text-purple-200')
-				loginForm.classList.remove('hidden')
-				registerForm.classList.add('hidden')
-			}
-
-			function switchToRegister() {
-				registerTab.classList.add('border-purple-600', 'text-purple-200')
-				registerTab.classList.remove('border-gray-700', 'text-gray-400')
-				loginTab.classList.add('border-gray-700', 'text-gray-400')
-				loginTab.classList.remove('border-purple-600', 'text-purple-200')
-				registerForm.classList.remove('hidden')
-				loginForm.classList.add('hidden')
-			}
-
-			loginTab.addEventListener('click', switchToLogin)
-			registerTab.addEventListener('click', switchToRegister)
-		</script>
+		<script src="js/auth.js"></script>
 	</body>
 </html>

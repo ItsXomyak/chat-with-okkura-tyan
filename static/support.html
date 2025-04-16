@@ -14,36 +14,68 @@
 
 	<body class="bg-pink-200 text-white">
 		<!-- Header -->
-		<header class="fixed w-full bg-pink-200/80 backdrop-blur-sm z-50">
+		<header
+			class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm"
+		>
 			<nav class="container mx-auto px-4 py-4">
 				<div class="flex justify-between items-center">
-					<div class="text-2xl font-bold hover:text-purple-200 transition">
-						<a href="index.html">Okkura-тян</a>
+					<!-- Логотип -->
+					<div class="text-2xl font-bold">
+						<a
+							href="index.html"
+							class="text-black hover:text-pink-600 transition"
+						>
+							Okkura-тян
+						</a>
 					</div>
+
+					<!-- Навигация -->
 					<div class="hidden md:flex space-x-6">
-						<a href="chat.html" class="hover:text-purple-200 transition">Чат</a>
-						<a href="news.html" class="hover:text-purple-200 transition"
+						<a
+							href="chat.html"
+							class="text-black hover:text-purple-500 transition"
+							>Чат</a
+						>
+						<a
+							href="news.html"
+							class="text-black hover:text-purple-500 transition"
 							>Новости</a
 						>
-						<a href="about.html" class="hover:text-purple-200 transition"
+						<a
+							href="about.html"
+							class="text-black hover:text-purple-500 transition"
 							>О нас</a
 						>
-						<a href="support.html" class="hover:text-purple-200 transition"
+						<a
+							href="support.html"
+							class="text-black hover:text-purple-500 transition"
 							>Поддержка</a
 						>
-						<a href="contacts.html" class="hover:text-purple-200 transition"
+						<a
+							href="contacts.html"
+							class="text-black hover:text-purple-500 transition"
 							>Контакты</a
 						>
-						<a href="donate.html" class="hover:text-purple-200 transition"
+						<a
+							href="donate.html"
+							class="text-black hover:text-purple-500 transition"
 							>Донаты</a
 						>
-						<a href="lore.html" class="hover:text-purple-200 transition">Лор</a>
-						<a href="auth.html" class="hover:text-purple-200 transition"
+						<a
+							href="lore.html"
+							class="text-black hover:text-purple-500 transition"
+							>Лор</a
+						>
+						<a
+							href="auth.html"
+							class="text-black hover:text-purple-500 transition"
 							>Вход</a
 						>
 					</div>
+
+					<!-- Мобильная кнопка -->
 					<button class="md:hidden">
-						<i class="fas fa-bars text-2xl"></i>
+						<i class="fas fa-bars text-2xl text-black"></i>
 					</button>
 				</div>
 			</nav>
@@ -219,23 +251,12 @@
 		</main>
 
 		<!-- Footer -->
-		<footer class="bg-pink-200/80 backdrop-blur-sm py-8">
+		<footer class="bottom-0 w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
 			<div class="container mx-auto px-4">
-				<div class="flex flex-col md:flex-row justify-between items-center">
-					<div class="mb-4 md:mb-0">
-						<p>&copy; 2025 Okkura-тян. Все права защищены.</p>
-					</div>
-					<div class="flex space-x-4">
-						<a href="#" class="hover:text-purple-200 transition"
-							><i class="fab fa-discord text-2xl"></i
-						></a>
-						<a href="#" class="hover:text-purple-200 transition"
-							><i class="fab fa-twitter text-2xl"></i
-						></a>
-						<a href="#" class="hover:text-purple-200 transition"
-							><i class="fab fa-github text-2xl"></i
-						></a>
-					</div>
+				<div class="flex justify-center">
+					<p class="text-gray-600">
+						&copy; 2025 Okkura-тян. Все права защищены.
+					</p>
 				</div>
 			</div>
 		</footer>
