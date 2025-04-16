@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Поддержка - Okkura-тян</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body class="bg-gray-900 text-white">
+		<!-- Header -->
+		<header class="fixed w-full bg-gray-900/80 backdrop-blur-sm z-50">
+			<nav class="container mx-auto px-4 py-4">
+				<div class="flex justify-between items-center">
+					<div class="text-2xl font-bold hover:text-purple-400 transition">
+						<a href="index.html">Okkura-тян</a>
+					</div>
+					<div class="hidden md:flex space-x-6">
+						<a href="chat.html" class="hover:text-purple-400 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-400 transition"
+							>Новости</a
+						>
+						<a href="about.html" class="hover:text-purple-400 transition"
+							>О нас</a
+						>
+						<a href="support.html" class="hover:text-purple-400 transition"
+							>Поддержка</a
+						>
+						<a href="contacts.html" class="hover:text-purple-400 transition"
+							>Контакты</a
+						>
+						<a href="donate.html" class="hover:text-purple-400 transition"
+							>Донаты</a
+						>
+						<a href="history.html" class="hover:text-purple-400 transition"
+							>Лор</a
+						>
+						<a href="auth.html" class="hover:text-purple-400 transition"
+							>Вход</a
+						>
+					</div>
+					<button class="md:hidden">
+						<i class="fas fa-bars text-2xl"></i>
+					</button>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Main Content -->
+		<main class="pt-20 pb-12">
+			<div class="container mx-auto px-4">
+				<!-- Support Chat Bot -->
+				<div class="max-w-2xl mx-auto mb-16">
+					<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
+						<div class="flex items-center space-x-4 mb-6">
+							<div
+								class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center"
+							>
+								<i class="fas fa-robot text-2xl"></i>
+							</div>
+							<div>
+								<h3 class="text-xl font-bold">Okkura-тян Support</h3>
+								<p class="text-gray-400">Чем могу помочь?</p>
+							</div>
+						</div>
+						<div class="space-y-4">
+							<div class="bg-gray-700/50 p-4 rounded-lg">
+								<p>
+									Здравствуйте! Я помогу вам решить вашу проблему. Выберите
+									категорию или опишите проблему:
+								</p>
+							</div>
+							<div class="grid grid-cols-2 gap-4">
+								<button
+									class="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700 transition"
+								>
+									<i class="fas fa-question-circle text-purple-400 mb-2"></i>
+									<p>Частые вопросы</p>
+								</button>
+								<button
+									class="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700 transition"
+								>
+									<i class="fas fa-book text-purple-400 mb-2"></i>
+									<p>Руководство</p>
+								</button>
+								<button
+									class="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700 transition"
+								>
+									<i class="fas fa-bug text-purple-400 mb-2"></i>
+									<p>Сообщить об ошибке</p>
+								</button>
+								<button
+									class="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700 transition"
+								>
+									<i class="fas fa-comments text-purple-400 mb-2"></i>
+									<p>Связаться с поддержкой</p>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- FAQ Section -->
+				<section class="mb-16">
+					<h2 class="text-3xl font-bold mb-8 text-center">
+						Часто задаваемые вопросы
+					</h2>
+					<div class="max-w-3xl mx-auto space-y-4">
+						<div
+							class="faq-item bg-gray-800/50 rounded-lg overflow-hidden glass-effect"
+						>
+							<button
+								class="w-full text-left p-4 flex justify-between items-center"
+							>
+								<span class="font-semibold"
+									>Как начать использовать Okkura-тян?</span
+								>
+								<i class="fas fa-chevron-down text-purple-400"></i>
+							</button>
+							<div class="p-4 border-t border-gray-700 hidden">
+								<p class="text-gray-300">
+									Для начала использования Okkura-тян достаточно
+									зарегистрироваться на сайте и перейти в раздел чата. Вы можете
+									начать общение сразу после регистрации.
+								</p>
+							</div>
+						</div>
+
+						<div
+							class="faq-item bg-gray-800/50 rounded-lg overflow-hidden glass-effect"
+						>
+							<button
+								class="w-full text-left p-4 flex justify-between items-center"
+							>
+								<span class="font-semibold"
+									>Какие функции доступны в бесплатной версии?</span
+								>
+								<i class="fas fa-chevron-down text-purple-400"></i>
+							</button>
+							<div class="p-4 border-t border-gray-700 hidden">
+								<p class="text-gray-300">
+									В бесплатной версии доступны базовые функции чата,
+									ограниченное количество запросов в день и стандартные эмоции
+									Okkura-тян.
+								</p>
+							</div>
+						</div>
+
+						<div
+							class="faq-item bg-gray-800/50 rounded-lg overflow-hidden glass-effect"
+						>
+							<button
+								class="w-full text-left p-4 flex justify-between items-center"
+							>
+								<span class="font-semibold"
+									>Как восстановить доступ к аккаунту?</span
+								>
+								<i class="fas fa-chevron-down text-purple-400"></i>
+							</button>
+							<div class="p-4 border-t border-gray-700 hidden">
+								<p class="text-gray-300">
+									Для восстановления доступа используйте функцию "Забыли пароль"
+									на странице входа. Вам будет отправлена инструкция на
+									указанный email.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Support Form -->
+				<section>
+					<h2 class="text-3xl font-bold mb-8 text-center">
+						Обращение в поддержку
+					</h2>
+					<div class="max-w-2xl mx-auto">
+						<form class="space-y-6">
+							<div>
+								<label class="block text-gray-300 mb-2">Тип обращения</label>
+								<select
+									class="w-full bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+								>
+									<option>Техническая проблема</option>
+									<option>Вопрос по функционалу</option>
+									<option>Предложение по улучшению</option>
+									<option>Другое</option>
+								</select>
+							</div>
+							<div>
+								<label class="block text-gray-300 mb-2"
+									>Описание проблемы</label
+								>
+								<textarea
+									class="w-full bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 h-32"
+									placeholder="Опишите вашу проблему как можно подробнее..."
+								></textarea>
+							</div>
+							<div>
+								<label class="block text-gray-300 mb-2">Email для ответа</label>
+								<input
+									type="email"
+									class="w-full bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+								/>
+							</div>
+							<button
+								class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-lg transition"
+							>
+								Отправить обращение
+							</button>
+						</form>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-gray-900/80 backdrop-blur-sm py-8">
+			<div class="container mx-auto px-4">
+				<div class="flex flex-col md:flex-row justify-between items-center">
+					<div class="mb-4 md:mb-0">
+						<p>&copy; 2025 Okkura-тян. Все права защищены.</p>
+					</div>
+					<div class="flex space-x-4">
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-discord text-2xl"></i
+						></a>
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-twitter text-2xl"></i
+						></a>
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-github text-2xl"></i
+						></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/main.js"></script>
+		<script>
+			// FAQ Accordion
+			document.querySelectorAll('.faq-item button').forEach(button => {
+				button.addEventListener('click', () => {
+					const content = button.nextElementSibling
+					const icon = button.querySelector('i')
+
+					content.classList.toggle('hidden')
+					icon.classList.toggle('fa-chevron-down')
+					icon.classList.toggle('fa-chevron-up')
+				})
+			})
+		</script>
+	</body>
+</html>

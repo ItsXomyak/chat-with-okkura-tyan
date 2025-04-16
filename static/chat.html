@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Чат с Okkura-тян</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="css/styles.css" />
+		<style>
+			.chat-list {
+				transform: translateX(-100%);
+				transition: transform 0.3s ease-in-out;
+				width: 100%;
+				max-width: 300px;
+			}
+
+			@media (min-width: 768px) {
+				.chat-list {
+					width: 25%;
+				}
+			}
+
+			.chat-list.active {
+				transform: translateX(0);
+			}
+
+			.toggle-chat-list {
+				position: fixed;
+				right: 20px;
+				bottom: 20px;
+				width: 50px;
+				height: 50px;
+				background: rgba(147, 51, 234, 0.8);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				z-index: 1001;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+			}
+
+			.toggle-chat-list:hover {
+				transform: scale(1.1) translateY(-5px);
+				background: rgba(147, 51, 234, 1);
+				box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+			}
+
+			.toggle-chat-list i {
+				font-size: 1.5rem;
+			}
+
+			.model-sidebar {
+				display: none;
+			}
+
+			@media (min-width: 1024px) {
+				.model-sidebar {
+					display: block;
+					width: 33.333333%;
+				}
+			}
+
+			.mobile-menu-button {
+				display: block;
+			}
+
+			@media (min-width: 768px) {
+				.mobile-menu-button {
+					display: none;
+				}
+			}
+
+			.message-input {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: rgba(31, 41, 55, 0.8);
+				backdrop-filter: blur(10px);
+				padding: 1rem;
+				z-index: 1000;
+			}
+
+			@media (min-width: 768px) {
+				.message-input {
+					position: static;
+					background: transparent;
+					backdrop-filter: none;
+				}
+			}
+
+			.chat-messages {
+				padding-bottom: 5rem;
+			}
+
+			@media (min-width: 768px) {
+				.chat-messages {
+					padding-bottom: 0;
+				}
+			}
+
+			.header {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				background: rgba(31, 41, 55, 0.8);
+				backdrop-filter: blur(10px);
+				z-index: 1000;
+				border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+			}
+
+			.main-content {
+				margin-top: 4rem;
+			}
+
+			.nav-item {
+				display: flex;
+				align-items: center;
+				padding: 0.75rem 1rem;
+				color: #9ca3af;
+				transition: all 0.3s ease;
+				border-radius: 0.5rem;
+			}
+
+			.nav-item:hover {
+				background: rgba(147, 51, 234, 0.1);
+				color: white;
+			}
+
+			.nav-item.active {
+				background: rgba(147, 51, 234, 0.2);
+				color: white;
+			}
+
+			.nav-item i {
+				width: 1.5rem;
+				margin-right: 0.75rem;
+			}
+		</style>
+	</head>
+	<body class="bg-gray-900 text-white">
+		<div class="flex h-screen">
+			<!-- Chat List (Left Sidebar) -->
+			<div
+				class="chat-list bg-gray-800/50 glass-effect border-r border-gray-700 fixed left-0 top-0 bottom-0 z-50"
+			>
+				<div class="p-4 h-full flex flex-col">
+					<!-- Navigation -->
+					<div class="mb-6">
+						<div class="flex items-center space-x-2 mb-4">
+							<div
+								class="w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center"
+							>
+								<i class="fas fa-robot"></i>
+							</div>
+							<span class="font-bold">Okkura-тян</span>
+						</div>
+						<nav class="space-y-1">
+							<a href="index.html" class="nav-item">
+								<i class="fas fa-home"></i>
+								<span>Главная</span>
+							</a>
+							<a href="chat.html" class="nav-item active">
+								<i class="fas fa-comments"></i>
+								<span>Чат</span>
+							</a>
+							<a href="news.html" class="nav-item">
+								<i class="fas fa-newspaper"></i>
+								<span>Новости</span>
+							</a>
+							<a href="about.html" class="nav-item">
+								<i class="fas fa-info-circle"></i>
+								<span>О нас</span>
+							</a>
+							<a href="support.html" class="nav-item">
+								<i class="fas fa-question-circle"></i>
+								<span>Поддержка</span>
+							</a>
+							<a href="donate.html" class="nav-item">
+								<i class="fas fa-heart"></i>
+								<span>Донаты</span>
+							</a>
+						</nav>
+					</div>
+
+					<!-- Chat Search -->
+					<div class="flex items-center justify-between mb-4">
+						<div class="flex items-center space-x-2 flex-1">
+							<button class="p-2 hover:bg-gray-700 rounded-lg">
+								<i class="fas fa-search"></i>
+							</button>
+							<input
+								type="text"
+								placeholder="Поиск чатов..."
+								class="bg-gray-700/50 px-4 py-2 rounded-lg w-full"
+							/>
+						</div>
+						<button class="p-2 hover:bg-gray-700 rounded-lg">
+							<i class="fas fa-plus"></i>
+						</button>
+					</div>
+
+					<!-- Chat List -->
+					<div class="space-y-2 flex-1 overflow-y-auto">
+						<div
+							class="chat-item p-3 hover:bg-gray-700/50 rounded-lg cursor-pointer flex justify-between items-center"
+						>
+							<div>
+								<h3 class="font-semibold">Новый чат</h3>
+								<p class="text-sm text-gray-400">Начните новый диалог</p>
+							</div>
+							<button class="p-2 hover:bg-gray-700 rounded-lg">
+								<i class="fas fa-ellipsis-v"></i>
+							</button>
+						</div>
+					</div>
+
+					<!-- User Profile -->
+					<div class="mt-auto pt-4 border-t border-gray-700">
+						<div class="flex items-center space-x-3">
+							<div
+								class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center"
+							>
+								<i class="fas fa-user"></i>
+							</div>
+							<div>
+								<p class="font-medium">Гость</p>
+								<p class="text-sm text-gray-400">Войти</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Main Chat Area -->
+			<div
+				class="flex-1 flex flex-col ml-0 transition-all duration-300"
+				id="mainContent"
+			>
+				<!-- Chat Messages -->
+				<div class="chat-messages flex-1 overflow-y-auto p-4 space-y-4">
+					<!-- Message from Okkura -->
+					<div class="flex items-start space-x-4">
+						<div
+							class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center"
+						>
+							<i class="fas fa-robot"></i>
+						</div>
+						<div class="flex-1 bg-gray-800/50 p-4 rounded-lg">
+							<p>Привет! Я Okkura-тян, твой AI-ассистент. Чем могу помочь?</p>
+							<div class="flex space-x-2 mt-2">
+								<button class="p-1 hover:bg-gray-700 rounded">
+									<i class="far fa-smile"></i>
+								</button>
+								<button class="p-1 hover:bg-gray-700 rounded">
+									<i class="far fa-edit"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Input Area -->
+				<div class="message-input">
+					<div class="flex items-center space-x-4">
+						<textarea
+							class="flex-1 bg-gray-800/50 p-4 rounded-lg resize-none focus:outline-none"
+							placeholder="Введите ваше сообщение..."
+							rows="1"
+						></textarea>
+						<button
+							class="bg-purple-600 hover:bg-purple-700 p-4 rounded-lg transition"
+						>
+							<i class="fas fa-paper-plane"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Okkura Character (Right Sidebar) -->
+			<div
+				class="model-sidebar bg-gray-800/50 glass-effect border-l border-gray-700 p-4"
+			>
+				<div class="okkura-character float-animation">
+					<!-- Здесь будет анимированная моделька Okkura-тян -->
+					<div class="text-center">
+						<div
+							class="w-32 h-32 mx-auto bg-purple-600 rounded-full flex items-center justify-center"
+						>
+							<i class="fas fa-robot text-6xl"></i>
+						</div>
+						<h3 class="text-xl font-bold mt-4">Okkura-тян</h3>
+						<p class="text-gray-400">Ваш AI-ассистент</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Toggle Chat List Button -->
+		<button class="toggle-chat-list" id="toggleChatList">
+			<i class="fas fa-bars"></i>
+		</button>
+
+		<script src="js/main.js"></script>
+		<script>
+			const toggleChatList = document.getElementById('toggleChatList')
+			const chatList = document.querySelector('.chat-list')
+			const mainContent = document.getElementById('mainContent')
+
+			toggleChatList.addEventListener('click', () => {
+				chatList.classList.toggle('active')
+				if (window.innerWidth >= 768) {
+					mainContent.classList.toggle('ml-0')
+					mainContent.classList.toggle('ml-1/4')
+				}
+			})
+
+			// Закрытие чат-листа при клике вне его области
+			document.addEventListener('click', e => {
+				if (
+					!chatList.contains(e.target) &&
+					!toggleChatList.contains(e.target)
+				) {
+					chatList.classList.remove('active')
+					if (window.innerWidth >= 768) {
+						mainContent.classList.remove('ml-1/4')
+						mainContent.classList.add('ml-0')
+					}
+				}
+			})
+
+			// Автоматическое закрытие чат-листа при изменении размера окна
+			window.addEventListener('resize', () => {
+				if (window.innerWidth >= 768) {
+					chatList.classList.remove('active')
+					mainContent.classList.remove('ml-1/4')
+					mainContent.classList.add('ml-0')
+				}
+			})
+		</script>
+	</body>
+</html>

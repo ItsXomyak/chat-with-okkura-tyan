@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Новости - Okkura-тян</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body class="bg-gray-900 text-white">
+		<!-- Header -->
+		<header class="fixed w-full bg-gray-900/80 backdrop-blur-sm z-50">
+			<nav class="container mx-auto px-4 py-4">
+				<div class="flex justify-between items-center">
+					<div class="text-2xl font-bold hover:text-purple-400 transition">
+						<a href="index.html">Okkura-тян</a>
+					</div>
+					<div class="hidden md:flex space-x-6">
+						<a href="chat.html" class="hover:text-purple-400 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-400 transition"
+							>Новости</a
+						>
+						<a href="about.html" class="hover:text-purple-400 transition"
+							>О нас</a
+						>
+						<a href="support.html" class="hover:text-purple-400 transition"
+							>Поддержка</a
+						>
+						<a href="contacts.html" class="hover:text-purple-400 transition"
+							>Контакты</a
+						>
+						<a href="donate.html" class="hover:text-purple-400 transition"
+							>Донаты</a
+						>
+						<a href="history.html" class="hover:text-purple-400 transition"
+							>Лор</a
+						>
+						<a href="auth.html" class="hover:text-purple-400 transition"
+							>Вход</a
+						>
+					</div>
+					<button class="md:hidden">
+						<i class="fas fa-bars text-2xl"></i>
+					</button>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Main Content -->
+		<main class="pt-20 pb-12">
+			<div class="container mx-auto px-4">
+				<!-- Search and Filters -->
+				<div class="mb-8">
+					<div class="flex flex-col md:flex-row gap-4">
+						<div class="flex-1">
+							<div class="relative">
+								<input
+									type="text"
+									placeholder="Поиск новостей..."
+									class="w-full bg-gray-800/50 px-4 py-3 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-purple-600"
+								/>
+								<i
+									class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+								></i>
+							</div>
+						</div>
+						<div class="flex gap-2">
+							<button
+								class="filter-btn active bg-purple-600 px-4 py-2 rounded-lg"
+							>
+								Все
+							</button>
+							<button
+								class="filter-btn bg-gray-800/50 px-4 py-2 rounded-lg hover:bg-gray-700"
+							>
+								Обновления
+							</button>
+							<button
+								class="filter-btn bg-gray-800/50 px-4 py-2 rounded-lg hover:bg-gray-700"
+							>
+								AI
+							</button>
+							<button
+								class="filter-btn bg-gray-800/50 px-4 py-2 rounded-lg hover:bg-gray-700"
+							>
+								Сообщество
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- News Grid -->
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					<!-- News Card 1 -->
+					<div
+						class="news-card bg-gray-800/50 rounded-lg overflow-hidden glass-effect hover:transform hover:scale-105 transition duration-300"
+					>
+						<div class="p-6">
+							<div class="flex items-center justify-between mb-4">
+								<span class="text-purple-400 text-sm">Обновления</span>
+								<span class="text-gray-400 text-sm">12.03.2025</span>
+							</div>
+							<h3 class="text-xl font-bold mb-2">Новые функции в Okkura-тян</h3>
+							<p class="text-gray-300 mb-4">
+								Добавлены новые эмоции и реакции для Okkura-тян, улучшена
+								производительность чата...
+							</p>
+							<button class="text-purple-400 hover:text-purple-300 transition">
+								Читать далее →
+							</button>
+						</div>
+					</div>
+
+					<!-- News Card 2 -->
+					<div
+						class="news-card bg-gray-800/50 rounded-lg overflow-hidden glass-effect hover:transform hover:scale-105 transition duration-300"
+					>
+						<div class="p-6">
+							<div class="flex items-center justify-between mb-4">
+								<span class="text-purple-400 text-sm">AI</span>
+								<span class="text-gray-400 text-sm">10.03.2025</span>
+							</div>
+							<h3 class="text-xl font-bold mb-2">Улучшения в работе AI</h3>
+							<p class="text-gray-300 mb-4">
+								Обновлена модель машинного обучения, теперь Okkura-тян стала ещё
+								умнее...
+							</p>
+							<button class="text-purple-400 hover:text-purple-300 transition">
+								Читать далее →
+							</button>
+						</div>
+					</div>
+
+					<!-- News Card 3 -->
+					<div
+						class="news-card bg-gray-800/50 rounded-lg overflow-hidden glass-effect hover:transform hover:scale-105 transition duration-300"
+					>
+						<div class="p-6">
+							<div class="flex items-center justify-between mb-4">
+								<span class="text-purple-400 text-sm">Сообщество</span>
+								<span class="text-gray-400 text-sm">08.03.2025</span>
+							</div>
+							<h3 class="text-xl font-bold mb-2">Конкурс артов Okkura-тян</h3>
+							<p class="text-gray-300 mb-4">
+								Объявляем конкурс на лучший арт с Okkura-тян! Призы и награды
+								ждут победителей...
+							</p>
+							<button class="text-purple-400 hover:text-purple-300 transition">
+								Читать далее →
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Subscribe Section -->
+				<div class="mt-12 text-center">
+					<h2 class="text-2xl font-bold mb-4">Подпишитесь на обновления</h2>
+					<p class="text-gray-300 mb-6">
+						Будьте в курсе всех новостей и обновлений Okkura-тян
+					</p>
+					<div class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+						<input
+							type="email"
+							placeholder="Ваш email"
+							class="flex-1 bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+						/>
+						<button
+							class="bg-purple-600 hover:bg-purple-700 px-6 py-3 rounded-lg transition"
+						>
+							Подписаться
+						</button>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-gray-900/80 backdrop-blur-sm py-8">
+			<div class="container mx-auto px-4">
+				<div class="flex flex-col md:flex-row justify-between items-center">
+					<div class="mb-4 md:mb-0">
+						<p>&copy; 2025 Okkura-тян. Все права защищены.</p>
+					</div>
+					<div class="flex space-x-4">
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-discord text-2xl"></i
+						></a>
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-twitter text-2xl"></i
+						></a>
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-github text-2xl"></i
+						></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/main.js"></script>
+		<script>
+			// News filtering functionality
+			document.querySelectorAll('.filter-btn').forEach(btn => {
+				btn.addEventListener('click', () => {
+					document
+						.querySelectorAll('.filter-btn')
+						.forEach(b => b.classList.remove('active', 'bg-purple-600'))
+					btn.classList.add('active', 'bg-purple-600')
+					// Здесь будет логика фильтрации новостей
+				})
+			})
+		</script>
+	</body>
+</html>

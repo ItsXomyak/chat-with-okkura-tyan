@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Контакты - Okkura-тян</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body class="bg-gray-900 text-white">
+		<!-- Header -->
+		<header class="fixed w-full bg-gray-900/80 backdrop-blur-sm z-50">
+			<nav class="container mx-auto px-4 py-4">
+				<div class="flex justify-between items-center">
+					<div class="text-2xl font-bold hover:text-purple-400 transition">
+						<a href="index.html">Okkura-тян</a>
+					</div>
+					<div class="hidden md:flex space-x-6">
+						<a href="chat.html" class="hover:text-purple-400 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-400 transition"
+							>Новости</a
+						>
+						<a href="about.html" class="hover:text-purple-400 transition"
+							>О нас</a
+						>
+						<a href="support.html" class="hover:text-purple-400 transition"
+							>Поддержка</a
+						>
+						<a href="contacts.html" class="hover:text-purple-400 transition"
+							>Контакты</a
+						>
+						<a href="donate.html" class="hover:text-purple-400 transition"
+							>Донаты</a
+						>
+						<a href="history.html" class="hover:text-purple-400 transition"
+							>Лор</a
+						>
+						<a href="auth.html" class="hover:text-purple-400 transition"
+							>Вход</a
+						>
+					</div>
+					<button class="md:hidden">
+						<i class="fas fa-bars text-2xl"></i>
+					</button>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Main Content -->
+		<main class="pt-20 pb-12">
+			<div class="container mx-auto px-4">
+				<!-- Hero Section -->
+				<section class="text-center mb-16">
+					<h1 class="text-4xl font-bold mb-4">Свяжитесь с нами</h1>
+					<p class="text-xl text-gray-300 max-w-2xl mx-auto">
+						Мы всегда рады общению с нашими пользователями. Выберите удобный
+						способ связи или заполните форму обратной связи.
+					</p>
+				</section>
+
+				<!-- Contact Methods -->
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+					<!-- Contact Form -->
+					<div class="bg-gray-800/50 rounded-lg p-8 glass-effect">
+						<h2 class="text-2xl font-bold mb-6">Форма обратной связи</h2>
+						<form class="space-y-6">
+							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+								<div>
+									<label class="block text-gray-300 mb-2">Имя</label>
+									<input
+										type="text"
+										class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+									/>
+								</div>
+								<div>
+									<label class="block text-gray-300 mb-2">Email</label>
+									<input
+										type="email"
+										class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+									/>
+								</div>
+							</div>
+							<div>
+								<label class="block text-gray-300 mb-2">Тема</label>
+								<input
+									type="text"
+									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+								/>
+							</div>
+							<div>
+								<label class="block text-gray-300 mb-2">Сообщение</label>
+								<textarea
+									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 h-32"
+								></textarea>
+							</div>
+							<button
+								class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-lg transition"
+							>
+								Отправить сообщение
+							</button>
+						</form>
+					</div>
+
+					<!-- Contact Info -->
+					<div class="space-y-8">
+						<!-- Email -->
+						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
+							<div class="flex items-center space-x-4">
+								<div
+									class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center"
+								>
+									<i class="fas fa-envelope text-2xl"></i>
+								</div>
+								<div>
+									<h3 class="text-xl font-bold">Email</h3>
+									<p class="text-gray-300">support@okkura-tyan.com</p>
+									<p class="text-gray-400 text-sm">Ответ в течение 24 часов</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Discord -->
+						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
+							<div class="flex items-center space-x-4">
+								<div
+									class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center"
+								>
+									<i class="fab fa-discord text-2xl"></i>
+								</div>
+								<div>
+									<h3 class="text-xl font-bold">Discord</h3>
+									<p class="text-gray-300">Okkura-тян Community</p>
+									<p class="text-gray-400 text-sm">
+										Присоединяйтесь к нашему сообществу
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Social Media -->
+						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
+							<h3 class="text-xl font-bold mb-4">Мы в социальных сетях</h3>
+							<div class="flex space-x-4">
+								<a
+									href="#"
+									class="w-12 h-12 rounded-full bg-gray-700/50 flex items-center justify-center hover:bg-gray-700 transition"
+								>
+									<i class="fab fa-twitter text-2xl"></i>
+								</a>
+								<a
+									href="#"
+									class="w-12 h-12 rounded-full bg-gray-700/50 flex items-center justify-center hover:bg-gray-700 transition"
+								>
+									<i class="fab fa-github text-2xl"></i>
+								</a>
+								<a
+									href="#"
+									class="w-12 h-12 rounded-full bg-gray-700/50 flex items-center justify-center hover:bg-gray-700 transition"
+								>
+									<i class="fab fa-vk text-2xl"></i>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Map Section -->
+				<section class="mb-16">
+					<h2 class="text-3xl font-bold mb-8 text-center">
+						Наше местоположение
+					</h2>
+					<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
+						<div class="aspect-w-16 aspect-h-9">
+							<iframe
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.3729499448334!2d37.617299315930474!3d55.75582628055214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a50b315e573%3A0xa886bf5a3d9b2e68!2z0JzQvtGB0LrQvtCy0YHQutC40Lkg0JrRgNC10LzQu9GM!5e0!3m2!1sru!2sru!4v1645000000000!5m2!1sru!2sru"
+								class="w-full h-96 rounded-lg"
+								style="border: 0"
+								allowfullscreen=""
+								loading="lazy"
+							>
+							</iframe>
+						</div>
+					</div>
+				</section>
+
+				<!-- FAQ Section -->
+				<section>
+					<h2 class="text-3xl font-bold mb-8 text-center">
+						Часто задаваемые вопросы
+					</h2>
+					<div class="max-w-3xl mx-auto space-y-4">
+						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
+							<h3 class="text-xl font-bold mb-2">
+								Как быстро вы отвечаете на сообщения?
+							</h3>
+							<p class="text-gray-300">
+								Мы стараемся отвечать на все сообщения в течение 24 часов. В
+								экстренных случаях ответ может быть получен быстрее.
+							</p>
+						</div>
+						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
+							<h3 class="text-xl font-bold mb-2">
+								Можно ли встретиться лично?
+							</h3>
+							<p class="text-gray-300">
+								Да, мы организуем встречи с нашими пользователями. Пожалуйста,
+								свяжитесь с нами для согласования деталей.
+							</p>
+						</div>
+						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
+							<h3 class="text-xl font-bold mb-2">Как стать частью команды?</h3>
+							<p class="text-gray-300">
+								Мы всегда рады новым талантам! Отправьте нам своё резюме и
+								портфолио на email, указанный выше.
+							</p>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-gray-900/80 backdrop-blur-sm py-8">
+			<div class="container mx-auto px-4">
+				<div class="flex flex-col md:flex-row justify-between items-center">
+					<div class="mb-4 md:mb-0">
+						<p>&copy; 2025 Okkura-тян. Все права защищены.</p>
+					</div>
+					<div class="flex space-x-4">
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-discord text-2xl"></i
+						></a>
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-twitter text-2xl"></i
+						></a>
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-github text-2xl"></i
+						></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/main.js"></script>
+	</body>
+</html>

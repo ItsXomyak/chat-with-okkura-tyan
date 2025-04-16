@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>About Us</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="/static/aboutUsPage/style.css" />
+	</head>
+	<body class="min-h-screen font-sans flex flex-col">
+		<!-- ========================= -->
+		<!--         HEADER            -->
+		<!-- ========================= -->
+		<header
+			class="fixed top-0 w-full bg-gradient-to-r from-purple-900 to-blue-900 shadow-md z-10 neon-glow"
+		>
+			<div
+				class="container mx-auto px-4 py-3 flex justify-between items-center"
+			>
+				<a href="/static/index.html"
+					><h1 class="text-xl font-bold text-cyan-300">Okkura-Tyan</h1></a
+				>
+
+				<div class="sun-and-lang">
+					<button id="theme-toggle" class="text-cyan-200 hover:text-pink-300">
+						<i class="fas fa-moon"></i>
+					</button>
+
+					<form class="max-w-sm mx-auto">
+						<div class="relative inline-block w-full text-left">
+							<button
+								type="button"
+								class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200"
+							>
+								<img
+									src="https://flagcdn.com/w40/gb.png"
+									alt="English"
+									class="w-5 h-5 mr-2 rounded-sm"
+								/>
+								English
+								<svg
+									class="w-4 h-4 ml-2"
+									aria-hidden="true"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M19 9l-7 7-7-7"
+									/>
+								</svg>
+							</button>
+
+							<div
+								class="absolute z-10 mt-2 w-36 origin-top-right bg-white border border-gray-200 rounded-md shadow-lg hidden"
+							>
+								<ul class="py-1 text-sm text-gray-700">
+									<li>
+										<a
+											href="#"
+											class="flex items-center px-4 py-2 hover:bg-gray-100"
+										>
+											<img
+												src="https://flagcdn.com/w40/ru.png"
+												alt="Русский"
+												class="w-5 h-5 mr-2 rounded-sm"
+											/>
+											Русский
+										</a>
+									</li>
+									<li>
+										<a
+											href="#"
+											class="flex items-center px-4 py-2 hover:bg-gray-100"
+										>
+											<img
+												src="https://flagcdn.com/w40/gb.png"
+												alt="English"
+												class="w-5 h-5 mr-2 rounded-sm"
+											/>
+											English
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</header>
+		<main>
+			<div
+				class="2xl:container 2xl:mx-auto lg:py-16 lg:px-20 md:py-12 md:px-6 py-9 px-4 mt-20"
+			>
+				<p
+					class="font-normal text-sm leading-3 text-indigo-700 dark:text-indigo-500 hover:text-indigo-800 cursor-pointer pb-2"
+				>
+					About
+				</p>
+				<div class="flex lg:flex-row flex-col lg:gap-8 sm:gap-10 gap-12">
+					<div class="w-full lg:w-6/12">
+						<h2
+							class="w-full font-bold lg:text-4xl text-3xl lg:leading-10 dark:text-white leading-9"
+						>
+							Okkura‑Tyan AI - Разговорчивый ассистент, который всегда рядом,
+							чтобы подсказать, вдохновить и просто поболтать.
+						</h2>
+						<p
+							class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 mt-6"
+						>
+							Okkura‑Tyan - это дружелюбный искусственный интеллект, созданный,
+							чтобы превращать вопросы в решения, идеи — в проекты,
+							а рутину — в простые шаги. Мы объединили машинное обучение, любовь
+							к языку и щепотку юмора, чтобы вы получили собеседника, который
+							одинаково хорошо разбирается в коде, кулинарии и кошачьих мемах.
+						</p>
+					</div>
+					<div class="w-full lg:w-6/12 ">
+						<img
+							class="lg:block hidden w-full rounded-md"
+							src="assets/okkura.jpeg"
+							alt="people discussing on board"
+						/>
+						<img
+							class="lg:hidden sm:block hidden w-full rounded-md"
+							src="assets/okkura.jpeg"
+							alt="people discussing on board"
+						/>
+						<img
+							class="sm:hidden block w-full rounded-md"
+							src="assets/okkura.jpeg"
+							alt="people discussing on board"
+						/>
+					</div>
+				</div>
+
+				<div class="relative mt-24">
+					<div class="grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
+						<div
+							class="z-20 w-12 h-12 bg-gray-800 rounded-full flex justify-center items-center"
+						>
+							<img
+								src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg1.svg"
+								alt="flag"
+							/>
+						</div>
+
+						<img
+							class="z-20"
+							src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg2.svg"
+							alt="note"
+						/>
+
+						<img
+							class="z-20 sm:block hidden"
+							src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg3.svg"
+							alt="users"
+						/>
+					</div>
+					<hr class="z-10 absolute top-2/4 w-full bg-gray-200" />
+				</div>
+				<div class="grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
+					<div>
+						<p
+							class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white mt-6"
+						>
+							Founded
+						</p>
+						<p
+							class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 mt-6"
+						>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+							repellat corporis blanditiis pariatur odit ab nisi.
+						</p>
+					</div>
+					<div>
+						<p
+							class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white mt-6"
+						>
+							Results
+						</p>
+						<p
+							class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 mt-6"
+						>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+							repellat corporis blanditiis pariatur odit ab nisi.
+						</p>
+					</div>
+					<div class="sm:block hidden">
+						<p
+							class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white mt-6"
+						>
+							Users
+						</p>
+						<p
+							class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 mt-6"
+						>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+							repellat corporis blanditiis pariatur odit ab nisi.
+						</p>
+					</div>
+				</div>
+				<div class="sm:hidden block relative mt-8">
+					<div class="grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
+						<img
+							src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg3.svg"
+							alt="user"
+						/>
+					</div>
+					<hr class="z-10 absolute top-2/4 w-full bg-gray-200" />
+				</div>
+				<div class="sm:hidden grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
+					<div>
+						<p
+							class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white mt-6"
+						>
+							400k User
+						</p>
+						<p
+							class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 mt-6"
+						>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
+							repellat corporis blanditiis pariatur odit ab nisi. Amet ratione
+							ullam, illum corrupti at, quae similique nobis ad modi placeat
+							voluptatibus aliquid.
+						</p>
+					</div>
+				</div>
+
+				<div
+					class="flex lg:flex-row flex-col md:gap-14 gap-16 justify-between lg:mt-20 mt-16"
+				>
+					<div class="w-full lg:w-6/12">
+						<h2
+							class="font-bold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 dark:text-white"
+						>
+							Наша миссия
+						</h2>
+						<p
+							class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 mt-6 w-full lg:w-10/12 xl:w-9/12"
+						>
+							Делать общение с технологиями таким же естественным, как разговор
+							с другом. Мы верим, что помощь должна быть доступной,
+							а знания — понятными. Okkura‑Tyan снимает барьеры между человеком
+							и машиной, отвечая на вопросы простыми словами и подстраиваясь под
+							стиль собеседника.
+						</p>
+						<p
+							class="font-normal text-base leading-6 text-gray-600 dark:text-gray-200 w-full lg:w-10/12 xl:w-9/12 mt-10"
+						>
+							Okkura‑Tyan уже умеет объяснять сложное простыми словами.
+							От алгоритмов до экономики. Генерировать идеи. Сценарии постов,
+							названия стартапов, темы для диплома. Поддерживать диалог.
+							Сарказм? Мотивация? Ламповый оффтоп? Легко. Помогать в работе.
+							Шаблоны кода, SQL‑запросы, чек‑листы. Учить новому. Пошаговые
+							гайды, квизы, подборка ресурсов.
+						</p>
+					</div>
+					<div class="w-full lg:w-6/12">
+						<div
+							class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 lg:gap-12 gap-10"
+						>
+							<!-- ========================= -->
+							<!--        TEAM CARD          -->
+							<!-- ========================= -->
+							<div class="flex p-4 shadow-md">
+								<div class="mr-6">
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+										<g
+											id="SVGRepo_tracerCarrier"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										></g>
+										<g id="SVGRepo_iconCarrier">
+											<path
+												d="M15 7C15 8.65685 13.6569 10 12 10C10.3431 10 9 8.65685 9 7C9 5.34315 10.3431 4 12 4C13.6569 4 15 5.34315 15 7Z"
+												stroke="#000000"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											></path>
+											<path
+												d="M10 16C10 17.6569 8.65685 19 7 19C5.34315 19 4 17.6569 4 16C4 14.3431 5.34315 13 7 13C8.65685 13 10 14.3431 10 16Z"
+												stroke="#000000"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											></path>
+											<path
+												d="M20 16C20 17.6569 18.6569 19 17 19C15.3431 19 14 17.6569 14 16C14 14.3431 15.3431 13 17 13C18.6569 13 20 14.3431 20 16Z"
+												stroke="#000000"
+												stroke-width="2"
+												stroke-linecap="round"
+												stroke-linejoin="round"
+											></path>
+										</g>
+									</svg>
+								</div>
+								<div class="">
+									<p
+										class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white"
+									>
+										Кто стоит за Okkura‑Tyan
+									</p>
+									<p
+										class="mt-2 font-normal text-base leading-6 text-gray-600 dark:text-gray-200"
+									>
+										Мы — маленькая команда энтузиастов - разрабов из Казахстана,
+										которая любит Go, JS и хороший чай. Мы разрабатываем
+										open‑source‑проекты, проводим митапы и всегда рады
+										контрибьюторам.
+									</p>
+								</div>
+							</div>
+
+							<!-- ========================= -->
+							<!--       BOARD CARD          -->
+							<!-- ========================= -->
+							<div class="flex p-4 shadow-md">
+								<div class="mr-6">
+									<img
+										src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg5.svg"
+										alt="board card"
+									/>
+								</div>
+								<div class="">
+									<p
+										class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white"
+									>
+										Планы на 2025  год
+									</p>
+									<p
+										class="mt-2 font-normal text-base leading-6 text-gray-600 dark:text-gray-200"
+									>
+										Многоязычие — полная поддержка 🇷🇺 Русского, 🇬🇧 English,
+										🇰🇿 Қазақша. Голосовой интерфейс — Okkura‑Tyan сможет
+										отвечать вслух. Интеграции — плагины для Telegram, VS Code
+										и Notion. Оффлайн‑режим — лёгкая версия для слабого
+										интернета.
+									</p>
+								</div>
+							</div>
+							<!-- ========================= -->
+							<!--        PRESS CARD         -->
+							<!-- ========================= -->
+							<div class="flex p-4 shadow-md">
+								<div class="mr-6">
+									<img
+										src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg6.svg"
+										alt="press card"
+									/>
+								</div>
+								<div class="">
+									<p
+										class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 dark:text-white"
+									>
+										Ценности проекта
+									</p>
+									<p
+										class="mt-2 font-normal text-base leading-6 text-gray-600 dark:text-gray-200"
+									>
+										Ценность Как проявляется Открытость Прозрачные модели,
+										честные ответы, без «чёрных ящиков». Эмпатия Мы слушаем
+										контекст и подстраиваем тон под пользователя. Безопасность
+										Защита данных и этичное использование ИИ — в приоритете.
+										Игровой дух Немного веселья делает обучение и работу
+										приятнее.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- ========================= -->
+		<!--          FOOTER           -->
+		<!-- ========================= -->
+		<footer>
+			<div
+				class="flex flex-col items-center px-4 py-9 md:px-6 md:py-12 lg:px-20 lg:py-12 bg-gradient-to-r from-purple-900 to-blue-900"
+			>
+				<div
+					class="flex flex-col md:flex-col items-center md:justify-between pb-10"
+				>
+					<div class="flex flex-col items-center">
+						<button
+							class="w-full md:w-auto px-24 py-2 dark:bg-white bg-gray-800 text-white dark:text-gray-800 border rounded-md text-xl font-semibold leading-tight hover:bg-gradient-to-r from-purple-900 to-blue-900 hover:text-white focus:ring-2 focus:outline-none focus:ring-gray-200 focus:ring-opacity-50"
+						>
+							Get started
+						</button>
+					</div>
+					<div></div>
+				</div>
+
+				<div
+					class="w-full px-8 dark:border-white border-gray-800 border rounded-md flex flex-col justify-start md:flex-row md:justify-between lg:justify-center gap-2 md:gap-20 py-6"
+				>
+					<p class="text-sm leading-none dark:text-gray-300 text-gray-600">
+						Alem, Mangilik El Avenue, C4.5, Astana
+					</p>
+					<div class="flex justify-start gap-4">
+						<img
+							class="bg-transparent rounded"
+							src="https://tuk-cdn.s3.amazonaws.com/can-uploader/footer_4-svg1.svg"
+							alt="Email"
+						/>
+						<p class="text-sm leading-none dark:text-gray-300 text-gray-600">
+							@gmail.com
+						</p>
+					</div>
+				</div>
+
+				<div class="pt-10 flex flex-col xl:flex-row justify-between">
+					<div class="flex flex-row md:gap-10 max-[1059px]:hidden">
+						<div class="flex items-start w-full">
+							<div class="pb-10 md:pb-0">
+								<h3
+									class="text-xl cursor-default font-semibold leading-tight dark:text-white text-gray-800 mb-8"
+								>
+									Product
+								</h3>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Email Marketing
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Website Builder
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Market Automation
+								</p>
+							</div>
+							<div class="pb-10 md:pb-0 2xl:pl-20 pl-16">
+								<h3
+									class="text-xl cursor-default font-semibold leading-tight dark:text-white text-gray-800 mb-8"
+								>
+									Support
+								</h3>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Generate lead
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Size Guide
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Shipping
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Payment Security
+								</p>
+							</div>
+							<div class="pb-10 md:pb-0 2xl:pl-20 pl-16 md:block hidden">
+								<h3
+									class="text-xl cursor-default font-semibold leading-tight dark:text-white text-gray-800 mb-8"
+								>
+									Solutions
+								</h3>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Generate Lead
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Self knowledge
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Work from home
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Engage customers
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Boost online sales
+								</p>
+							</div>
+							<div class="pb-10 md:pb-0 2xl:pl-20 pl-16 md:block hidden">
+								<h3
+									class="text-xl cursor-default font-semibold leading-tight dark:text-white text-gray-800 mb-8"
+								>
+									Visit us
+								</h3>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Mayfair
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Melbourne
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Wimbledon
+								</p>
+							</div>
+						</div>
+						<div class="flex items-start">
+							<div class="pb-10 md:pb-0 md:hidden">
+								<h3
+									class="text-xl cursor-default font-semibold leading-tight dark:text-white text-gray-800 mb-8"
+								>
+									Solutions
+								</h3>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Generate Lead
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Self knowledge
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Work from home
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Engage customers
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Boost online sales
+								</p>
+							</div>
+							<div class="pb-10 md:pb-0 pl-16 md:hidden">
+								<h3
+									class="text-xl cursor-default font-semibold leading-tight dark:text-white text-gray-800 mb-8"
+								>
+									Visit us
+								</h3>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Mayfair
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Melbourne
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Wimbledon
+								</p>
+							</div>
+						</div>
+						<div class="flex items-start w-full">
+							<div class="pb-10 md:pb-0">
+								<h3
+									class="text-xl cursor-default font-semibold leading-tight dark:text-white text-gray-800 mb-8"
+								>
+									Pricing
+								</h3>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Integration
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Affiliate program
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 mb-6"
+								>
+									Agency Partner
+								</p>
+							</div>
+							<div class="pb-10 md:pb-0 2xl:pl-20 pl-16">
+								<h3
+									class="text-xl cursor-default font-semibold leading-tight dark:text-white text-gray-800 pb-8"
+								>
+									Entreprenuer
+								</h3>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 pb-6"
+								>
+									Online Marketer
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 pb-6"
+								>
+									Marketing Manager
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 pb-6"
+								>
+									Mid and large companies
+								</p>
+							</div>
+							<div class="2xl:pl-20 md:pl-16 md:block hidden">
+								<h3
+									class="text-xl cursor-default font-semibold leading-tight dark:text-white text-gray-800 pb-8"
+								>
+									About Getresponce
+								</h3>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 pb-6"
+								>
+									Career
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 pb-6"
+								>
+									Api docs
+								</p>
+								<p
+									class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 pb-6"
+								>
+									Accessibility
+								</p>
+							</div>
+						</div>
+						<div class="2xl:pl-20 md:pl-16 md:hidden">
+							<h3
+								class="text-xl cursor-default font-semibold leading-tight dark:text-white text-gray-800 pb-8"
+							>
+								About Getresponce
+							</h3>
+							<p
+								class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 pb-6"
+							>
+								Career
+							</p>
+							<p
+								class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 pb-6"
+							>
+								Api docs
+							</p>
+							<p
+								class="text-sm cursor-pointer leading-none dark:text-gray-300 text-gray-600 pb-6"
+							>
+								Accessibility
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="pt-10 lg:pt-24 flex justify-center gap-12 items-center">
+					<img
+						class="bg-transparent rounded p-0.5 cursor-pointer"
+						src="/static/aboutUsPage/assets/thread.png"
+						alt="thread"
+					/>
+
+					<img
+						class="bg-transparent rounded p-0.5 cursor-pointer"
+						src="/static/aboutUsPage/assets/facebook.png"
+						alt="instagram"
+					/>
+					<img
+						class="bg-transparent rounded p-0.5 cursor-pointer"
+						src="/static/aboutUsPage/assets/linkedIn.png"
+						alt="youtube"
+					/>
+					<img
+						class="bg-transparent rounded p-0.5 cursor-pointer"
+						src="/static/aboutUsPage/assets/github.png"
+						alt="thread"
+					/>
+				</div>
+			</div>
+		</footer>
+		<script src="/static/theme.js" defer></script>
+	</body>
+</html>

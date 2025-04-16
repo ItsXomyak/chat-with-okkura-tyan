@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Вход и регистрация - Okkura-тян</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body class="bg-gray-900 text-white">
+		<!-- Header -->
+		<header class="fixed w-full bg-gray-900/80 backdrop-blur-sm z-50">
+			<nav class="container mx-auto px-4 py-4">
+				<div class="flex justify-between items-center">
+					<div class="text-2xl font-bold hover:text-purple-400 transition">
+						<a href="index.html">Okkura-тян</a>
+					</div>
+					<div class="hidden md:flex space-x-6">
+						<a href="chat.html" class="hover:text-purple-400 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-400 transition"
+							>Новости</a
+						>
+						<a href="about.html" class="hover:text-purple-400 transition"
+							>О нас</a
+						>
+						<a href="support.html" class="hover:text-purple-400 transition"
+							>Поддержка</a
+						>
+						<a href="donate.html" class="hover:text-purple-400 transition"
+							>Донаты</a
+						>
+					</div>
+					<button class="md:hidden">
+						<i class="fas fa-bars text-2xl"></i>
+					</button>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Main Content -->
+		<main class="pt-20 pb-12">
+			<div class="container mx-auto px-4">
+				<div class="max-w-md mx-auto">
+					<!-- Auth Tabs -->
+					<div class="flex mb-8">
+						<button
+							id="login-tab"
+							class="flex-1 py-4 text-center border-b-2 border-purple-600 text-purple-400"
+						>
+							Вход
+						</button>
+						<button
+							id="register-tab"
+							class="flex-1 py-4 text-center border-b-2 border-gray-700 text-gray-400"
+						>
+							Регистрация
+						</button>
+					</div>
+
+					<!-- Login Form -->
+					<div
+						id="login-form"
+						class="bg-gray-800/50 rounded-lg p-6 glass-effect"
+					>
+						<h2 class="text-2xl font-bold mb-6 text-center">Вход в аккаунт</h2>
+						<form class="space-y-6">
+							<div>
+								<label class="block text-gray-300 mb-2">Email</label>
+								<input
+									type="email"
+									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+								/>
+							</div>
+							<div>
+								<label class="block text-gray-300 mb-2">Пароль</label>
+								<input
+									type="password"
+									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+								/>
+							</div>
+							<div class="flex items-center justify-between">
+								<label class="flex items-center">
+									<input
+										type="checkbox"
+										class="form-checkbox h-4 w-4 text-purple-600"
+									/>
+									<span class="ml-2 text-gray-300">Запомнить меня</span>
+								</label>
+								<a href="#" class="text-purple-400 hover:text-purple-300"
+									>Забыли пароль?</a
+								>
+							</div>
+							<button
+								class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-lg transition"
+							>
+								Войти
+							</button>
+						</form>
+						<div class="mt-6">
+							<div class="relative">
+								<div class="absolute inset-0 flex items-center">
+									<div class="w-full border-t border-gray-700"></div>
+								</div>
+								<div class="relative flex justify-center text-sm">
+									<span class="px-2 bg-gray-800/50 text-gray-400"
+										>Или войдите через</span
+									>
+								</div>
+							</div>
+							<div class="mt-6 grid grid-cols-3 gap-3">
+								<button
+									class="flex-1 bg-gray-700/50 py-2 rounded-lg hover:bg-gray-700 transition"
+								>
+									<i class="fab fa-google text-red-400"></i>
+								</button>
+								<button
+									class="flex-1 bg-gray-700/50 py-2 rounded-lg hover:bg-gray-700 transition"
+								>
+									<i class="fab fa-discord text-indigo-400"></i>
+								</button>
+								<button
+									class="flex-1 bg-gray-700/50 py-2 rounded-lg hover:bg-gray-700 transition"
+								>
+									<i class="fab fa-vk text-blue-400"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<!-- Register Form -->
+					<div
+						id="register-form"
+						class="bg-gray-800/50 rounded-lg p-6 glass-effect hidden"
+					>
+						<h2 class="text-2xl font-bold mb-6 text-center">Создать аккаунт</h2>
+						<form class="space-y-6">
+							<div>
+								<label class="block text-gray-300 mb-2">Имя пользователя</label>
+								<input
+									type="text"
+									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+								/>
+							</div>
+							<div>
+								<label class="block text-gray-300 mb-2">Email</label>
+								<input
+									type="email"
+									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+								/>
+							</div>
+							<div>
+								<label class="block text-gray-300 mb-2">Пароль</label>
+								<input
+									type="password"
+									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+								/>
+							</div>
+							<div>
+								<label class="block text-gray-300 mb-2"
+									>Подтвердите пароль</label
+								>
+								<input
+									type="password"
+									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+								/>
+							</div>
+							<div class="flex items-center">
+								<input
+									type="checkbox"
+									class="form-checkbox h-4 w-4 text-purple-600"
+								/>
+								<span class="ml-2 text-gray-300">
+									Я согласен с
+									<a href="#" class="text-purple-400 hover:text-purple-300"
+										>условиями использования</a
+									>
+								</span>
+							</div>
+							<button
+								class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-lg transition"
+							>
+								Зарегистрироваться
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-gray-900/80 backdrop-blur-sm py-8">
+			<div class="container mx-auto px-4">
+				<div class="flex flex-col md:flex-row justify-between items-center">
+					<div class="mb-4 md:mb-0">
+						<p>&copy; 2025 Okkura-тян. Все права защищены.</p>
+					</div>
+					<div class="flex space-x-4">
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-discord text-2xl"></i
+						></a>
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-twitter text-2xl"></i
+						></a>
+						<a href="#" class="hover:text-purple-400 transition"
+							><i class="fab fa-github text-2xl"></i
+						></a>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/main.js"></script>
+		<script>
+			// Auth tabs functionality
+			const loginTab = document.getElementById('login-tab')
+			const registerTab = document.getElementById('register-tab')
+			const loginForm = document.getElementById('login-form')
+			const registerForm = document.getElementById('register-form')
+
+			function switchToLogin() {
+				loginTab.classList.add('border-purple-600', 'text-purple-400')
+				loginTab.classList.remove('border-gray-700', 'text-gray-400')
+				registerTab.classList.add('border-gray-700', 'text-gray-400')
+				registerTab.classList.remove('border-purple-600', 'text-purple-400')
+				loginForm.classList.remove('hidden')
+				registerForm.classList.add('hidden')
+			}
+
+			function switchToRegister() {
+				registerTab.classList.add('border-purple-600', 'text-purple-400')
+				registerTab.classList.remove('border-gray-700', 'text-gray-400')
+				loginTab.classList.add('border-gray-700', 'text-gray-400')
+				loginTab.classList.remove('border-purple-600', 'text-purple-400')
+				registerForm.classList.remove('hidden')
+				loginForm.classList.add('hidden')
+			}
+
+			loginTab.addEventListener('click', switchToLogin)
+			registerTab.addEventListener('click', switchToRegister)
+		</script>
+	</body>
+</html>
