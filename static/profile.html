@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Личный кабинет — Okkura-тян</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="css/styles.css" />
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+			body {
+				font-family: 'Comfortaa', sans-serif;
+			}
+			.fade-in {
+				animation: fadeIn 1s ease-in-out;
+			}
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		</style>
+	</head>
+	<body
+		class="bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300 text-purple-900"
+	>
+		<!-- Header -->
+		<header
+			class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm"
+		>
+			<nav
+				class="container mx-auto px-4 py-4 flex justify-between items-center"
+			>
+				<a
+					href="index.html"
+					class="text-2xl font-bold text-purple-700 hover:text-pink-500 transition"
+					>Okkura-тян</a
+				>
+				<div class="hidden md:flex space-x-6 text-sm font-medium">
+					<a
+						href="chat.html"
+						class="text-purple-700 hover:text-pink-500 transition"
+						>Чат</a
+					>
+					<a
+						href="news.html"
+						class="text-purple-700 hover:text-pink-500 transition"
+						>Новости</a
+					>
+					<a
+						href="donate.html"
+						class="text-purple-700 hover:text-pink-500 transition"
+						>Донаты</a
+					>
+					<a
+						href="profile.html"
+						class="text-purple-700 font-bold underline underline-offset-4"
+						>Профиль</a
+					>
+					<a
+						href="auth.html"
+						class="text-purple-700 hover:text-pink-500 transition"
+						>Выйти</a
+					>
+				</div>
+			</nav>
+		</header>
+
+		<!-- Main -->
+		<main class="pt-24 pb-20 fade-in">
+			<div class="container mx-auto px-4 max-w-5xl space-y-12">
+				<!-- Профиль -->
+				<section class="bg-white/70 backdrop-blur-md rounded-xl shadow-md p-6">
+					<h2 class="text-2xl font-bold mb-4">👤 Личная информация</h2>
+					<div id="profile-info" class="space-y-2 text-purple-800">
+						<p><strong>Имя:</strong> <span id="user-name">—</span></p>
+						<p><strong>Email:</strong> <span id="user-email">—</span></p>
+						<p><strong>ID:</strong> <span id="user-id">—</span></p>
+						<p><strong>Роль:</strong> <span id="user-role">—</span></p>
+					</div>
+				</section>
+
+				<!-- Редактирование профиля -->
+				<section
+					class="mt-12 max-w-3xl mx-auto bg-white/60 backdrop-blur-md p-6 rounded-xl shadow-md"
+				>
+					<h2 class="text-2xl font-bold mb-4 text-purple-800">
+						Редактировать профиль
+					</h2>
+					<div class="space-y-4">
+						<input
+							id="nickname"
+							class="w-full px-4 py-2 rounded-lg border"
+							placeholder="Никнейм"
+						/>
+						<input
+							id="first-name"
+							class="w-full px-4 py-2 rounded-lg border"
+							placeholder="Имя"
+						/>
+						<input
+							id="last-name"
+							class="w-full px-4 py-2 rounded-lg border"
+							placeholder="Фамилия"
+						/>
+						<input
+							id="avatar-url"
+							class="w-full px-4 py-2 rounded-lg border"
+							placeholder="Ссылка на аватар"
+						/>
+						<button
+							onclick="updateProfile()"
+							class="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition"
+						>
+							Сохранить изменения
+						</button>
+						<p id="update-status" class="mt-2 text-center text-sm"></p>
+					</div>
+				</section>
+
+				<!-- Статистика -->
+				<section class="bg-white/70 backdrop-blur-md rounded-xl shadow-md p-6">
+					<h2 class="text-2xl font-bold mb-4">📊 Ваша статистика</h2>
+					<div
+						id="stats"
+						class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center"
+					>
+						<div>
+							<p class="text-4xl font-bold text-purple-700" id="total-amount">
+								0₽
+							</p>
+							<p class="text-purple-800 mt-2">Всего пожертвовано</p>
+						</div>
+						<div>
+							<p class="text-4xl font-bold text-purple-700" id="donate-count">
+								0
+							</p>
+							<p class="text-purple-800 mt-2">Количество донатов</p>
+						</div>
+						<div>
+							<p class="text-4xl font-bold text-purple-700" id="subscription">
+								—
+							</p>
+							<p class="text-purple-800 mt-2">Подписка</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- История -->
+				<section class="bg-white/70 backdrop-blur-md rounded-xl shadow-md p-6">
+					<h2 class="text-2xl font-bold mb-4">💰 История донатов</h2>
+					<div class="overflow-x-auto">
+						<table class="w-full text-left text-sm">
+							<thead class="text-purple-800 border-b border-purple-300">
+								<tr>
+									<th class="py-2 pr-4">Сумма</th>
+									<th class="py-2 pr-4">Метод</th>
+									<th class="py-2 pr-4">Сообщение</th>
+									<th class="py-2">Дата</th>
+								</tr>
+							</thead>
+							<tbody id="donate-history" class="text-purple-900">
+								<tr>
+									<td colspan="4" class="py-4 text-center text-purple-500">
+										Загрузка...
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</section>
+			</div>
+		</main>
+
+		<!-- Footer -->
+		<footer class="w-full bg-white/80 backdrop-blur-sm py-6 shadow-sm">
+			<div
+				class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-gray-600"
+			>
+				<p class="mb-4 md:mb-0">&copy; 2025 Okkura-тян. Все права защищены.</p>
+				<div class="flex space-x-4 text-purple-600">
+					<a href="#"
+						><i
+							class="fab fa-discord text-2xl hover:text-pink-500 transition"
+						></i
+					></a>
+					<a href="#"
+						><i
+							class="fab fa-twitter text-2xl hover:text-pink-500 transition"
+						></i
+					></a>
+					<a href="#"
+						><i
+							class="fab fa-github text-2xl hover:text-pink-500 transition"
+						></i
+					></a>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/profile.js"></script>
+	</body>
+</html>

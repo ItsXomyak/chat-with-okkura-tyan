@@ -44,6 +44,18 @@ CREATE TABLE IF NOT EXISTS password_reset_tokens (
     CONSTRAINT uniq_reset_token UNIQUE(token)
 );
 
+CREATE TABLE IF NOT EXISTS user_profiles (
+    user_id UUID PRIMARY KEY,
+    nickname VARCHAR(255),
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    avatar_url TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_user FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
 CREATE INDEX IF NOT EXISTS idx_reset_tokens_user_id ON password_reset_tokens(user_id);
 
 CREATE OR REPLACE FUNCTION update_users_updated_at_column()

@@ -88,6 +88,11 @@ func (s *authService) RegisterUser(user *models.User, password string) error {
 		return err
 	}
 
+	if err := s.userRepo.CreateUserProfile(user.ID); err != nil {
+	logger.Error("Error creating profile for user ", user.Email, ": ", err)
+	// Не прерываем регистрацию, но логируем
+}
+
 	confirmationToken, err := generateRandomToken(32)
 	if err != nil {
 		logger.Error("Error generating confirmation token: ", err)

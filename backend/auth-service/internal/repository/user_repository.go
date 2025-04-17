@@ -5,10 +5,10 @@ import (
 	"errors"
 	"time"
 
+	"github.com/google/uuid"
+
 	"authforge/internal/logger"
 	"authforge/internal/models"
-
-	"github.com/google/uuid"
 )
 
 type UserRepository interface {
@@ -16,6 +16,7 @@ type UserRepository interface {
 	GetUserByEmail(email string) (*models.User, error)
 	GetUserByID(id uuid.UUID) (*models.User, error)
 	UpdateUser(user *models.User) error
+	CreateUserProfile(userID uuid.UUID) error
 }
 
 type PostgresUserRepository struct {
@@ -56,6 +57,20 @@ func (r *PostgresUserRepository) CreateUser(user *models.User) error {
 	}
 	return err
 }
+
+func (r *PostgresUserRepository) CreateUserProfile(userID uuid.UUID) error {
+	query := `
+		INSERT INTO user_profiles (user_id, nickname, first_name, last_name, avatar_url)
+		VALUES ($1, '', '', '', '')
+	`
+
+	_, err := r.DB.Exec(query, userID)
+	if err != nil {
+		logger.Error("Error creating user profile for ID ", userID, ": ", err)
+	}
+	return err
+}
+
 
 func (r *PostgresUserRepository) GetUserByEmail(email string) (*models.User, error) {
 	query := `

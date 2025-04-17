@@ -9,240 +9,410 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 		/>
-		<link rel="stylesheet" href="css/styles.css" />
-	</head>
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
-	<body class="bg-pink-200 text-white">
+			body {
+				font-family: 'Comfortaa', sans-serif;
+			}
+
+			.fade-in {
+				animation: fadeIn 1.5s ease-in-out;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.accordion-item {
+				transition: all 0.3s ease;
+			}
+
+			.accordion-content {
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.3s ease;
+			}
+
+			.accordion-item.active .accordion-content {
+				max-height: 1000px;
+			}
+
+			.accordion-item.active .accordion-icon {
+				transform: rotate(180deg);
+			}
+
+			.ticket-card {
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+
+			.ticket-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+			}
+
+			.status-badge {
+				position: relative;
+				padding-left: 1.5rem;
+			}
+
+			.status-badge::before {
+				content: '';
+				position: absolute;
+				left: 0.5rem;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 0.5rem;
+				height: 0.5rem;
+				border-radius: 50%;
+			}
+
+			.status-badge.open::before {
+				background-color: #10b981;
+			}
+
+			.status-badge.pending::before {
+				background-color: #f59e0b;
+			}
+
+			.status-badge.closed::before {
+				background-color: #ef4444;
+			}
+		</style>
+	</head>
+	<body class="bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300">
 		<!-- Header -->
 		<header
 			class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm"
 		>
 			<nav class="container mx-auto px-4 py-4">
 				<div class="flex justify-between items-center">
-					<!-- Логотип -->
-					<div class="text-2xl font-bold">
-						<a
-							href="index.html"
-							class="text-black hover:text-pink-600 transition"
-						>
-							Okkura-тян
-						</a>
-					</div>
-
-					<!-- Навигация -->
-					<div class="hidden md:flex space-x-6">
-						<a
-							href="chat.html"
-							class="text-black hover:text-purple-500 transition"
-							>Чат</a
-						>
-						<a
-							href="news.html"
-							class="text-black hover:text-purple-500 transition"
+					<a
+						href="index.html"
+						class="text-2xl font-bold text-purple-700 hover:text-pink-500 transition"
+						>Okkura-тян</a
+					>
+					<div class="hidden md:flex space-x-6 text-gray-700">
+						<a href="chat.html" class="hover:text-purple-500 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-500 transition"
 							>Новости</a
 						>
-						<a
-							href="about.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="about.html" class="hover:text-purple-500 transition"
 							>О нас</a
 						>
-						<a
-							href="support.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="support.html" class="hover:text-purple-500 transition"
 							>Поддержка</a
 						>
-						<a
-							href="contacts.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="contacts.html" class="hover:text-purple-500 transition"
 							>Контакты</a
 						>
-						<a
-							href="donate.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="donate.html" class="hover:text-purple-500 transition"
 							>Донаты</a
 						>
-						<a
-							href="lore.html"
-							class="text-black hover:text-purple-500 transition"
-							>Лор</a
-						>
-						<a
-							href="auth.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="lore.html" class="hover:text-purple-500 transition">Лор</a>
+						<a href="auth.html" class="hover:text-purple-500 transition"
 							>Вход</a
 						>
 					</div>
-
-					<!-- Мобильная кнопка -->
-					<button class="md:hidden">
-						<i class="fas fa-bars text-2xl text-black"></i>
+					<button class="md:hidden text-2xl text-purple-700">
+						<i class="fas fa-bars"></i>
 					</button>
 				</div>
 			</nav>
 		</header>
 
 		<!-- Main Content -->
-		<main class="pt-20 pb-12">
-			<div class="container mx-auto px-4">
-				<!-- Support Chat Bot -->
-				<div class="max-w-2xl mx-auto mb-16">
-					<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
-						<div class="flex items-center space-x-4 mb-6">
-							<div
-								class="w-12 h-12 rounded-full bg-violet-200 flex items-center justify-center"
-							>
-								<i class="fas fa-robot text-2xl"></i>
-							</div>
-							<div>
-								<h3 class="text-xl font-bold">Okkura-тян Support</h3>
-								<p class="text-gray-400">Чем могу помочь?</p>
-							</div>
-						</div>
-						<div class="space-y-4">
-							<div class="bg-gray-700/50 p-4 rounded-lg">
-								<p>
-									Здравствуйте! Я помогу вам решить вашу проблему. Выберите
-									категорию или опишите проблему:
-								</p>
-							</div>
-							<div class="grid grid-cols-2 gap-4">
-								<button
-									class="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700 transition"
-								>
-									<i class="fas fa-question-circle text-purple-200 mb-2"></i>
-									<p>Частые вопросы</p>
-								</button>
-								<button
-									class="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700 transition"
-								>
-									<i class="fas fa-book text-purple-200 mb-2"></i>
-									<p>Руководство</p>
-								</button>
-								<button
-									class="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700 transition"
-								>
-									<i class="fas fa-bug text-purple-200 mb-2"></i>
-									<p>Сообщить об ошибке</p>
-								</button>
-								<button
-									class="bg-gray-700/50 p-4 rounded-lg hover:bg-gray-700 transition"
-								>
-									<i class="fas fa-comments text-purple-200 mb-2"></i>
-									<p>Связаться с поддержкой</p>
-								</button>
-							</div>
-						</div>
-					</div>
+		<main class="min-h-screen pt-24 fade-in">
+			<div class="container mx-auto px-4 py-8">
+				<h1
+					class="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text"
+				>
+					Поддержка
+				</h1>
+
+				<!-- Быстрые действия -->
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+					<a
+						href="#faq"
+						class="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center hover:shadow-lg transition"
+					>
+						<i class="fas fa-question-circle text-4xl text-purple-500 mb-4"></i>
+						<h3 class="text-xl font-bold text-purple-700 mb-2">FAQ</h3>
+						<p class="text-gray-600">Часто задаваемые вопросы</p>
+					</a>
+					<a
+						href="#tickets"
+						class="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center hover:shadow-lg transition"
+					>
+						<i class="fas fa-ticket-alt text-4xl text-purple-500 mb-4"></i>
+						<h3 class="text-xl font-bold text-purple-700 mb-2">Мои тикеты</h3>
+						<p class="text-gray-600">История обращений</p>
+					</a>
+					<a
+						href="#contact"
+						class="bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center hover:shadow-lg transition"
+					>
+						<i class="fas fa-envelope text-4xl text-purple-500 mb-4"></i>
+						<h3 class="text-xl font-bold text-purple-700 mb-2">Связаться</h3>
+						<p class="text-gray-600">Написать в поддержку</p>
+					</a>
 				</div>
 
-				<!-- FAQ Section -->
-				<section class="mb-16">
-					<h2 class="text-3xl font-bold mb-8 text-center">
-						Часто задаваемые вопросы
-					</h2>
-					<div class="max-w-3xl mx-auto space-y-4">
+				<!-- FAQ -->
+				<section id="faq" class="mb-16">
+					<h2 class="text-3xl font-bold text-purple-700 mb-8">FAQ</h2>
+					<div class="space-y-4">
+						<!-- FAQ Item 1 -->
 						<div
-							class="faq-item bg-gray-800/50 rounded-lg overflow-hidden glass-effect"
+							class="accordion-item bg-white/80 backdrop-blur-sm rounded-xl p-6"
 						>
-							<button
-								class="w-full text-left p-4 flex justify-between items-center"
-							>
-								<span class="font-semibold"
-									>Как начать использовать Okkura-тян?</span
-								>
-								<i class="fas fa-chevron-down text-purple-200"></i>
+							<button class="w-full flex justify-between items-center">
+								<h3 class="text-xl font-bold text-purple-700">
+									Как начать общение с Okkura-тян?
+								</h3>
+								<i class="fas fa-chevron-down accordion-icon transition"></i>
 							</button>
-							<div class="p-4 border-t border-gray-700 hidden">
-								<p class="text-white-300">
-									Для начала использования Okkura-тян достаточно
-									зарегистрироваться на сайте и перейти в раздел чата. Вы можете
-									начать общение сразу после регистрации.
+							<div class="accordion-content mt-4 text-gray-700">
+								<p>
+									Для начала общения просто перейдите в раздел "Чат" и начните
+									диалог. Okkura-тян всегда готова к общению и поможет вам с
+									любыми вопросами.
 								</p>
 							</div>
 						</div>
 
+						<!-- FAQ Item 2 -->
 						<div
-							class="faq-item bg-gray-800/50 rounded-lg overflow-hidden glass-effect"
+							class="accordion-item bg-white/80 backdrop-blur-sm rounded-xl p-6"
 						>
-							<button
-								class="w-full text-left p-4 flex justify-between items-center"
-							>
-								<span class="font-semibold"
-									>Какие функции доступны в бесплатной версии?</span
-								>
-								<i class="fas fa-chevron-down text-purple-200"></i>
+							<button class="w-full flex justify-between items-center">
+								<h3 class="text-xl font-bold text-purple-700">
+									Какие языки поддерживает Okkura-тян?
+								</h3>
+								<i class="fas fa-chevron-down accordion-icon transition"></i>
 							</button>
-							<div class="p-4 border-t border-gray-700 hidden">
-								<p class="text-white-300">
-									В бесплатной версии доступны базовые функции чата,
-									ограниченное количество запросов в день и стандартные эмоции
-									Okkura-тян.
+							<div class="accordion-content mt-4 text-gray-700">
+								<p>
+									Okkura-тян поддерживает русский и английский языки. В будущем
+									планируется добавление поддержки других языков.
 								</p>
 							</div>
 						</div>
 
+						<!-- FAQ Item 3 -->
 						<div
-							class="faq-item bg-gray-800/50 rounded-lg overflow-hidden glass-effect"
+							class="accordion-item bg-white/80 backdrop-blur-sm rounded-xl p-6"
 						>
-							<button
-								class="w-full text-left p-4 flex justify-between items-center"
-							>
-								<span class="font-semibold"
-									>Как восстановить доступ к аккаунту?</span
-								>
-								<i class="fas fa-chevron-down text-purple-200"></i>
+							<button class="w-full flex justify-between items-center">
+								<h3 class="text-xl font-bold text-purple-700">
+									Как работает персонализация общения?
+								</h3>
+								<i class="fas fa-chevron-down accordion-icon transition"></i>
 							</button>
-							<div class="p-4 border-t border-gray-700 hidden">
-								<p class="text-white-300">
-									Для восстановления доступа используйте функцию "Забыли пароль"
-									на странице входа. Вам будет отправлена инструкция на
-									указанный email.
+							<div class="accordion-content mt-4 text-gray-700">
+								<p>
+									Вы можете настроить характер и стиль общения Okkura-тян в
+									настройках профиля. Доступны различные варианты: от
+									дружелюбного до профессионального стиля общения.
+								</p>
+							</div>
+						</div>
+
+						<!-- FAQ Item 4 -->
+						<div
+							class="accordion-item bg-white/80 backdrop-blur-sm rounded-xl p-6"
+						>
+							<button class="w-full flex justify-between items-center">
+								<h3 class="text-xl font-bold text-purple-700">
+									Как часто обновляется Okkura-тян?
+								</h3>
+								<i class="fas fa-chevron-down accordion-icon transition"></i>
+							</button>
+							<div class="accordion-content mt-4 text-gray-700">
+								<p>
+									Обновления выходят еженедельно. Каждое обновление включает
+									улучшения в работе ИИ, новые функции и исправления ошибок.
+								</p>
+							</div>
+						</div>
+
+						<!-- FAQ Item 5 -->
+						<div
+							class="accordion-item bg-white/80 backdrop-blur-sm rounded-xl p-6"
+						>
+							<button class="w-full flex justify-between items-center">
+								<h3 class="text-xl font-bold text-purple-700">
+									Как обеспечена конфиденциальность данных?
+								</h3>
+								<i class="fas fa-chevron-down accordion-icon transition"></i>
+							</button>
+							<div class="accordion-content mt-4 text-gray-700">
+								<p>
+									Все данные шифруются и хранятся в соответствии с GDPR. Мы не
+									передаем ваши данные третьим лицам и обеспечиваем полную
+									конфиденциальность общения.
 								</p>
 							</div>
 						</div>
 					</div>
 				</section>
 
-				<!-- Support Form -->
-				<section>
-					<h2 class="text-3xl font-bold mb-8 text-center">
-						Обращение в поддержку
+				<!-- Мои тикеты -->
+				<section id="tickets" class="mb-16">
+					<h2 class="text-3xl font-bold text-purple-700 mb-8">Мои тикеты</h2>
+					<div class="space-y-4">
+						<!-- Ticket 1 -->
+						<div
+							class="ticket-card bg-white/80 backdrop-blur-sm rounded-xl p-6"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<div>
+									<h3 class="text-xl font-bold text-purple-700">
+										Проблема с авторизацией
+									</h3>
+									<p class="text-gray-600">#TICKET-12345</p>
+								</div>
+								<span
+									class="status-badge open px-4 py-1 rounded-full text-sm bg-green-100 text-green-800"
+								>
+									Открыт
+								</span>
+							</div>
+							<p class="text-gray-700 mb-4">
+								Не могу войти в аккаунт, постоянно выдает ошибку...
+							</p>
+							<div class="flex justify-between items-center">
+								<span class="text-sm text-gray-500">Создан: 15.03.2025</span>
+								<button class="text-purple-600 hover:text-pink-500 transition">
+									Просмотреть
+								</button>
+							</div>
+						</div>
+
+						<!-- Ticket 2 -->
+						<div
+							class="ticket-card bg-white/80 backdrop-blur-sm rounded-xl p-6"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<div>
+									<h3 class="text-xl font-bold text-purple-700">
+										Вопрос по функционалу
+									</h3>
+									<p class="text-gray-600">#TICKET-12344</p>
+								</div>
+								<span
+									class="status-badge pending px-4 py-1 rounded-full text-sm bg-yellow-100 text-yellow-800"
+								>
+									В обработке
+								</span>
+							</div>
+							<p class="text-gray-700 mb-4">
+								Как настроить персонализацию общения?
+							</p>
+							<div class="flex justify-between items-center">
+								<span class="text-sm text-gray-500">Создан: 14.03.2025</span>
+								<button class="text-purple-600 hover:text-pink-500 transition">
+									Просмотреть
+								</button>
+							</div>
+						</div>
+
+						<!-- Ticket 3 -->
+						<div
+							class="ticket-card bg-white/80 backdrop-blur-sm rounded-xl p-6"
+						>
+							<div class="flex justify-between items-start mb-4">
+								<div>
+									<h3 class="text-xl font-bold text-purple-700">
+										Предложение по улучшению
+									</h3>
+									<p class="text-gray-600">#TICKET-12343</p>
+								</div>
+								<span
+									class="status-badge closed px-4 py-1 rounded-full text-sm bg-red-100 text-red-800"
+								>
+									Закрыт
+								</span>
+							</div>
+							<p class="text-gray-700 mb-4">Идея для новой функции в чате</p>
+							<div class="flex justify-between items-center">
+								<span class="text-sm text-gray-500">Создан: 13.03.2025</span>
+								<button class="text-purple-600 hover:text-pink-500 transition">
+									Просмотреть
+								</button>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Форма обратной связи -->
+				<section id="contact" class="mb-16">
+					<h2 class="text-3xl font-bold text-purple-700 mb-8">
+						Связаться с поддержкой
 					</h2>
-					<div class="max-w-2xl mx-auto">
+					<div class="bg-white/80 backdrop-blur-sm rounded-xl p-8">
 						<form class="space-y-6">
 							<div>
-								<label class="block text-white-300 mb-2">Тип обращения</label>
-								<select
-									class="w-full bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+								<label
+									for="subject"
+									class="block text-sm font-medium text-gray-700 mb-2"
+									>Тема обращения</label
 								>
-									<option>Техническая проблема</option>
-									<option>Вопрос по функционалу</option>
-									<option>Предложение по улучшению</option>
-									<option>Другое</option>
+								<select
+									id="subject"
+									class="w-full px-4 py-3 rounded-lg bg-white/80 backdrop-blur-sm border-2 border-purple-200 focus:border-purple-500 outline-none transition"
+								>
+									<option value="">Выберите тему</option>
+									<option value="technical">Техническая проблема</option>
+									<option value="functional">Вопрос по функционалу</option>
+									<option value="suggestion">Предложение по улучшению</option>
+									<option value="other">Другое</option>
 								</select>
 							</div>
 							<div>
-								<label class="block text-white-300 mb-2"
-									>Описание проблемы</label
+								<label
+									for="message"
+									class="block text-sm font-medium text-gray-700 mb-2"
+									>Сообщение</label
 								>
 								<textarea
-									class="w-full bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 h-32"
-									placeholder="Опишите вашу проблему как можно подробнее..."
+									id="message"
+									rows="6"
+									class="w-full px-4 py-3 rounded-lg bg-white/80 backdrop-blur-sm border-2 border-purple-200 focus:border-purple-500 outline-none transition"
+									placeholder="Опишите вашу проблему или вопрос подробно..."
 								></textarea>
 							</div>
 							<div>
-								<label class="block text-white-300 mb-2"
-									>Email для ответа</label
+								<label
+									for="attachments"
+									class="block text-sm font-medium text-gray-700 mb-2"
+									>Прикрепить файлы</label
 								>
-								<input
-									type="email"
-									class="w-full bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-								/>
+								<div
+									class="border-2 border-dashed border-purple-200 rounded-lg p-6 text-center"
+								>
+									<input type="file" id="attachments" class="hidden" multiple />
+									<label
+										for="attachments"
+										class="cursor-pointer text-purple-600 hover:text-pink-500 transition"
+									>
+										<i class="fas fa-cloud-upload-alt text-3xl mb-2"></i>
+										<p>Перетащите файлы сюда или нажмите для выбора</p>
+									</label>
+								</div>
 							</div>
 							<button
-								class="w-full bg-violet-200 hover:bg-purple-700 py-3 rounded-lg transition"
+								type="submit"
+								class="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition"
 							>
-								Отправить обращение
+								Отправить
 							</button>
 						</form>
 					</div>
@@ -251,28 +421,45 @@
 		</main>
 
 		<!-- Footer -->
-		<footer class="bottom-0 w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
-			<div class="container mx-auto px-4">
-				<div class="flex justify-center">
-					<p class="text-gray-600">
-						&copy; 2025 Okkura-тян. Все права защищены.
-					</p>
-				</div>
+		<footer class="w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
+			<div class="container mx-auto px-4 text-center text-gray-600">
+				&copy; 2025 Okkura-тян. Все права защищены.
 			</div>
 		</footer>
 
 		<script src="js/main.js"></script>
 		<script>
-			// FAQ Accordion
-			document.querySelectorAll('.faq-item button').forEach(button => {
-				button.addEventListener('click', () => {
-					const content = button.nextElementSibling
-					const icon = button.querySelector('i')
-
-					content.classList.toggle('hidden')
-					icon.classList.toggle('fa-chevron-down')
-					icon.classList.toggle('fa-chevron-up')
+			// Аккордеон FAQ
+			document.querySelectorAll('.accordion-item').forEach(item => {
+				item.addEventListener('click', () => {
+					item.classList.toggle('active')
 				})
+			})
+
+			// Drag and drop для файлов
+			const dropZone = document.querySelector('.border-dashed')
+			dropZone.addEventListener('dragover', e => {
+				e.preventDefault()
+				dropZone.classList.add('border-purple-500')
+			})
+
+			dropZone.addEventListener('dragleave', () => {
+				dropZone.classList.remove('border-purple-500')
+			})
+
+			dropZone.addEventListener('drop', e => {
+				e.preventDefault()
+				dropZone.classList.remove('border-purple-500')
+				const files = e.dataTransfer.files
+				// Обработка загруженных файлов
+				console.log('Загружены файлы:', files)
+			})
+
+			// Отправка формы
+			document.querySelector('form').addEventListener('submit', e => {
+				e.preventDefault()
+				// Логика отправки формы
+				alert('Ваше обращение отправлено!')
 			})
 		</script>
 	</body>

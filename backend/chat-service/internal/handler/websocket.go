@@ -8,8 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 
-	"otaku-verse/chat-service/internal/model"
-	"otaku-verse/chat-service/internal/service"
+	"chat-service/internal/model"
+	"chat-service/internal/service"
 )
 
 var upgrader = websocket.Upgrader{

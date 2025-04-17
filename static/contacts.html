@@ -9,261 +9,284 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 		/>
-		<link rel="stylesheet" href="css/styles.css" />
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
+			body {
+				font-family: 'Comfortaa', sans-serif;
+			}
+
+			.fade-in {
+				animation: fadeIn 1.5s ease-in-out;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.contact-card {
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+
+			.contact-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+			}
+
+			.map-container {
+				height: 400px;
+				border-radius: 1rem;
+				overflow: hidden;
+			}
+
+			.social-link {
+				transition: transform 0.3s ease;
+			}
+
+			.social-link:hover {
+				transform: scale(1.1);
+			}
+		</style>
 	</head>
-	<body class="bg-pink-200 text-white">
+	<body class="bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300">
 		<!-- Header -->
 		<header
 			class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm"
 		>
 			<nav class="container mx-auto px-4 py-4">
 				<div class="flex justify-between items-center">
-					<!-- Логотип -->
-					<div class="text-2xl font-bold">
-						<a
-							href="index.html"
-							class="text-black hover:text-pink-600 transition"
-						>
-							Okkura-тян
-						</a>
-					</div>
-
-					<!-- Навигация -->
-					<div class="hidden md:flex space-x-6">
-						<a
-							href="chat.html"
-							class="text-black hover:text-purple-500 transition"
-							>Чат</a
-						>
-						<a
-							href="news.html"
-							class="text-black hover:text-purple-500 transition"
+					<a
+						href="index.html"
+						class="text-2xl font-bold text-purple-700 hover:text-pink-500 transition"
+						>Okkura-тян</a
+					>
+					<div class="hidden md:flex space-x-6 text-gray-700">
+						<a href="chat.html" class="hover:text-purple-500 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-500 transition"
 							>Новости</a
 						>
-						<a
-							href="about.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="about.html" class="hover:text-purple-500 transition"
 							>О нас</a
 						>
-						<a
-							href="support.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="support.html" class="hover:text-purple-500 transition"
 							>Поддержка</a
 						>
-						<a
-							href="contacts.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="contacts.html" class="hover:text-purple-500 transition"
 							>Контакты</a
 						>
-						<a
-							href="donate.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="donate.html" class="hover:text-purple-500 transition"
 							>Донаты</a
 						>
-						<a
-							href="lore.html"
-							class="text-black hover:text-purple-500 transition"
-							>Лор</a
-						>
-						<a
-							href="auth.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="lore.html" class="hover:text-purple-500 transition">Лор</a>
+						<a href="auth.html" class="hover:text-purple-500 transition"
 							>Вход</a
 						>
 					</div>
-
-					<!-- Мобильная кнопка -->
-					<button class="md:hidden">
-						<i class="fas fa-bars text-2xl text-black"></i>
+					<button class="md:hidden text-2xl text-purple-700">
+						<i class="fas fa-bars"></i>
 					</button>
 				</div>
 			</nav>
 		</header>
 
 		<!-- Main Content -->
-		<main class="pt-20 pb-12">
-			<div class="container mx-auto px-4">
-				<!-- Hero Section -->
-				<section class="text-center mb-16">
-					<h1 class="text-4xl font-bold mb-4">Свяжитесь с нами</h1>
-					<p class="text-xl text-white-300 max-w-2xl mx-auto">
-						Мы всегда рады общению с нашими пользователями. Выберите удобный
-						способ связи или заполните форму обратной связи.
-					</p>
+		<main class="min-h-screen pt-24 fade-in">
+			<div class="container mx-auto px-4 py-8">
+				<h1
+					class="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text"
+				>
+					Контакты
+				</h1>
+
+				<!-- Контактные карточки -->
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+					<!-- Email -->
+					<div
+						class="contact-card bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center"
+					>
+						<i class="fas fa-envelope text-4xl text-purple-500 mb-4"></i>
+						<h3 class="text-xl font-bold text-purple-700 mb-2">Email</h3>
+						<p class="text-gray-600 mb-4">support@okkura-tyan.com</p>
+						<a
+							href="mailto:support@okkura-tyan.com"
+							class="text-purple-600 hover:text-pink-500 transition"
+							>Написать письмо</a
+						>
+					</div>
+
+					<!-- Телефон -->
+					<div
+						class="contact-card bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center"
+					>
+						<i class="fas fa-phone text-4xl text-purple-500 mb-4"></i>
+						<h3 class="text-xl font-bold text-purple-700 mb-2">Телефон</h3>
+						<p class="text-gray-600 mb-4">+7 (XXX) XXX-XX-XX</p>
+						<a
+							href="tel:+7XXXXXXXXXX"
+							class="text-purple-600 hover:text-pink-500 transition"
+							>Позвонить</a
+						>
+					</div>
+
+					<!-- Адрес -->
+					<div
+						class="contact-card bg-white/80 backdrop-blur-sm rounded-xl p-6 text-center"
+					>
+						<i class="fas fa-map-marker-alt text-4xl text-purple-500 mb-4"></i>
+						<h3 class="text-xl font-bold text-purple-700 mb-2">Адрес</h3>
+						<p class="text-gray-600 mb-4">
+							Alem, Mangilik El Avenue, C4.5, Astana
+						</p>
+						<a
+							href="#map"
+							class="text-purple-600 hover:text-pink-500 transition"
+							>Посмотреть на карте</a
+						>
+					</div>
+				</div>
+
+				<!-- Карта -->
+				<section id="map" class="mb-12">
+					<div class="map-container bg-white/80 backdrop-blur-sm">
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.371787409134!2d37.618423!3d55.751244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414ab7c8d1a3f9e5%3A0x1b8f8c8f8c8f8c8f!2z0JzQvtGB0LrQstCw!5e0!3m2!1sru!2sru!4v1645000000000!5m2!1sru!2sru"
+							width="100%"
+							height="100%"
+							style="border: 0"
+							allowfullscreen=""
+							loading="lazy"
+						></iframe>
+					</div>
 				</section>
 
-				<!-- Contact Methods -->
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-					<!-- Contact Form -->
-					<div class="bg-gray-800/50 rounded-lg p-8 glass-effect">
-						<h2 class="text-2xl font-bold mb-6">Форма обратной связи</h2>
+				<!-- Форма обратной связи -->
+				<section class="mb-12">
+					<h2 class="text-3xl font-bold text-purple-700 mb-8">
+						Форма обратной связи
+					</h2>
+					<div class="bg-white/80 backdrop-blur-sm rounded-xl p-8">
 						<form class="space-y-6">
 							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 								<div>
-									<label class="block text-white-300 mb-2">Имя</label>
+									<label
+										for="name"
+										class="block text-sm font-medium text-gray-700 mb-2"
+										>Ваше имя</label
+									>
 									<input
 										type="text"
-										class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+										id="name"
+										class="w-full px-4 py-3 rounded-lg bg-white/80 backdrop-blur-sm border-2 border-purple-200 focus:border-purple-500 outline-none transition"
+										placeholder="Введите ваше имя"
 									/>
 								</div>
 								<div>
-									<label class="block text-white-300 mb-2">Email</label>
+									<label
+										for="email"
+										class="block text-sm font-medium text-gray-700 mb-2"
+										>Email</label
+									>
 									<input
 										type="email"
-										class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+										id="email"
+										class="w-full px-4 py-3 rounded-lg bg-white/80 backdrop-blur-sm border-2 border-purple-200 focus:border-purple-500 outline-none transition"
+										placeholder="Введите ваш email"
 									/>
 								</div>
 							</div>
 							<div>
-								<label class="block text-white-300 mb-2">Тема</label>
+								<label
+									for="subject"
+									class="block text-sm font-medium text-gray-700 mb-2"
+									>Тема</label
+								>
 								<input
 									type="text"
-									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+									id="subject"
+									class="w-full px-4 py-3 rounded-lg bg-white/80 backdrop-blur-sm border-2 border-purple-200 focus:border-purple-500 outline-none transition"
+									placeholder="Введите тему сообщения"
 								/>
 							</div>
 							<div>
-								<label class="block text-white-300 mb-2">Сообщение</label>
+								<label
+									for="message"
+									class="block text-sm font-medium text-gray-700 mb-2"
+									>Сообщение</label
+								>
 								<textarea
-									class="w-full bg-gray-700/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 h-32"
+									id="message"
+									rows="6"
+									class="w-full px-4 py-3 rounded-lg bg-white/80 backdrop-blur-sm border-2 border-purple-200 focus:border-purple-500 outline-none transition"
+									placeholder="Введите ваше сообщение"
 								></textarea>
 							</div>
 							<button
-								class="w-full bg-violet-200 hover:bg-purple-700 py-3 rounded-lg transition"
+								type="submit"
+								class="w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition"
 							>
 								Отправить сообщение
 							</button>
 						</form>
 					</div>
-
-					<!-- Contact Info -->
-					<div class="space-y-8">
-						<!-- Email -->
-						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
-							<div class="flex items-center space-x-4">
-								<div
-									class="w-12 h-12 rounded-full bg-violet-200 flex items-center justify-center"
-								>
-									<i class="fas fa-envelope text-2xl"></i>
-								</div>
-								<div>
-									<h3 class="text-xl font-bold">Email</h3>
-									<p class="text-white-300">support@okkura-tyan.com</p>
-									<p class="text-gray-400 text-sm">Ответ в течение 24 часов</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- Discord -->
-						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
-							<div class="flex items-center space-x-4">
-								<div
-									class="w-12 h-12 rounded-full bg-violet-200 flex items-center justify-center"
-								>
-									<i class="fab fa-discord text-2xl"></i>
-								</div>
-								<div>
-									<h3 class="text-xl font-bold">Discord</h3>
-									<p class="text-white-300">Okkura-тян Community</p>
-									<p class="text-gray-400 text-sm">
-										Присоединяйтесь к нашему сообществу
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- Social Media -->
-						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
-							<h3 class="text-xl font-bold mb-4">Мы в социальных сетях</h3>
-							<div class="flex space-x-4">
-								<a
-									href="#"
-									class="w-12 h-12 rounded-full bg-gray-700/50 flex items-center justify-center hover:bg-gray-700 transition"
-								>
-									<i class="fab fa-twitter text-2xl"></i>
-								</a>
-								<a
-									href="#"
-									class="w-12 h-12 rounded-full bg-gray-700/50 flex items-center justify-center hover:bg-gray-700 transition"
-								>
-									<i class="fab fa-github text-2xl"></i>
-								</a>
-								<a
-									href="#"
-									class="w-12 h-12 rounded-full bg-gray-700/50 flex items-center justify-center hover:bg-gray-700 transition"
-								>
-									<i class="fab fa-vk text-2xl"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Map Section -->
-				<section class="mb-16">
-					<h2 class="text-3xl font-bold mb-8 text-center">
-						Наше местоположение
-					</h2>
-					<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
-						<div class="aspect-w-16 aspect-h-9">
-							<iframe
-								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.3729499448334!2d37.617299315930474!3d55.75582628055214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a50b315e573%3A0xa886bf5a3d9b2e68!2z0JzQvtGB0LrQvtCy0YHQutC40Lkg0JrRgNC10LzQu9GM!5e0!3m2!1sru!2sru!4v1645000000000!5m2!1sru!2sru"
-								class="w-full h-96 rounded-lg"
-								style="border: 0"
-								allowfullscreen=""
-								loading="lazy"
-							>
-							</iframe>
-						</div>
-					</div>
 				</section>
 
-				<!-- FAQ Section -->
+				<!-- Социальные сети -->
 				<section>
-					<h2 class="text-3xl font-bold mb-8 text-center">
-						Часто задаваемые вопросы
+					<h2 class="text-3xl font-bold text-purple-700 mb-8">
+						Мы в социальных сетях
 					</h2>
-					<div class="max-w-3xl mx-auto space-y-4">
-						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
-							<h3 class="text-xl font-bold mb-2">
-								Как быстро вы отвечаете на сообщения?
-							</h3>
-							<p class="text-white-300">
-								Мы стараемся отвечать на все сообщения в течение 24 часов. В
-								экстренных случаях ответ может быть получен быстрее.
-							</p>
-						</div>
-						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
-							<h3 class="text-xl font-bold mb-2">
-								Можно ли встретиться лично?
-							</h3>
-							<p class="text-white-300">
-								Да, мы организуем встречи с нашими пользователями. Пожалуйста,
-								свяжитесь с нами для согласования деталей.
-							</p>
-						</div>
-						<div class="bg-gray-800/50 rounded-lg p-6 glass-effect">
-							<h3 class="text-xl font-bold mb-2">Как стать частью команды?</h3>
-							<p class="text-white-300">
-								Мы всегда рады новым талантам! Отправьте нам своё резюме и
-								портфолио на email, указанный выше.
-							</p>
-						</div>
+					<div class="flex justify-center space-x-8">
+						<a
+							href="#"
+							class="social-link text-4xl text-purple-500 hover:text-pink-500"
+						>
+							<i class="fab fa-vk"></i>
+						</a>
+						<a
+							href="#"
+							class="social-link text-4xl text-purple-500 hover:text-pink-500"
+						>
+							<i class="fab fa-telegram"></i>
+						</a>
+						<a
+							href="#"
+							class="social-link text-4xl text-purple-500 hover:text-pink-500"
+						>
+							<i class="fab fa-discord"></i>
+						</a>
+						<a
+							href="#"
+							class="social-link text-4xl text-purple-500 hover:text-pink-500"
+						>
+							<i class="fab fa-github"></i>
+						</a>
 					</div>
 				</section>
 			</div>
 		</main>
 
 		<!-- Footer -->
-		<footer class="bottom-0 w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
-			<div class="container mx-auto px-4">
-				<div class="flex justify-center">
-					<p class="text-gray-600">
-						&copy; 2025 Okkura-тян. Все права защищены.
-					</p>
-				</div>
+		<footer class="w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
+			<div class="container mx-auto px-4 text-center text-gray-600">
+				&copy; 2025 Okkura-тян. Все права защищены.
 			</div>
 		</footer>
 
 		<script src="js/main.js"></script>
+		<script>
+			// Обработка отправки формы
+			document.querySelector('form').addEventListener('submit', e => {
+				e.preventDefault()
+				// Логика отправки формы
+				alert('Ваше сообщение отправлено!')
+			})
+		</script>
 	</body>
 </html>

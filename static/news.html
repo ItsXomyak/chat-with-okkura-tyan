@@ -9,229 +9,415 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 		/>
-		<link rel="stylesheet" href="css/styles.css" />
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
+			body {
+				font-family: 'Comfortaa', sans-serif;
+			}
+
+			.fade-in {
+				animation: fadeIn 1.5s ease-in-out;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.news-card {
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+			}
+
+			.news-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+			}
+
+			.filter-btn.active {
+				background: linear-gradient(45deg, #9333ea, #ec4899);
+				color: white;
+			}
+
+			.search-input:focus {
+				box-shadow: 0 0 0 2px rgba(147, 51, 234, 0.2);
+			}
+
+			.subscribe-form {
+				background: linear-gradient(
+					135deg,
+					rgba(255, 255, 255, 0.9),
+					rgba(255, 255, 255, 0.7)
+				);
+				backdrop-filter: blur(10px);
+			}
+		</style>
 	</head>
-	<body class="bg-pink-200 text-white">
+	<body class="bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300">
 		<!-- Header -->
 		<header
 			class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm"
 		>
 			<nav class="container mx-auto px-4 py-4">
 				<div class="flex justify-between items-center">
-					<!-- Логотип -->
-					<div class="text-2xl font-bold">
-						<a
-							href="index.html"
-							class="text-black hover:text-pink-600 transition"
-						>
-							Okkura-тян
-						</a>
-					</div>
-
-					<!-- Навигация -->
-					<div class="hidden md:flex space-x-6">
-						<a
-							href="chat.html"
-							class="text-black hover:text-purple-500 transition"
-							>Чат</a
-						>
-						<a
-							href="news.html"
-							class="text-black hover:text-purple-500 transition"
+					<a
+						href="index.html"
+						class="text-2xl font-bold text-purple-700 hover:text-pink-500 transition"
+						>Okkura-тян</a
+					>
+					<div class="hidden md:flex space-x-6 text-gray-700">
+						<a href="chat.html" class="hover:text-purple-500 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-500 transition"
 							>Новости</a
 						>
-						<a
-							href="about.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="about.html" class="hover:text-purple-500 transition"
 							>О нас</a
 						>
-						<a
-							href="support.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="support.html" class="hover:text-purple-500 transition"
 							>Поддержка</a
 						>
-						<a
-							href="contacts.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="contacts.html" class="hover:text-purple-500 transition"
 							>Контакты</a
 						>
-						<a
-							href="donate.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="donate.html" class="hover:text-purple-500 transition"
 							>Донаты</a
 						>
-						<a
-							href="lore.html"
-							class="text-black hover:text-purple-500 transition"
-							>Лор</a
-						>
-						<a
-							href="auth.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="lore.html" class="hover:text-purple-500 transition">Лор</a>
+						<a href="auth.html" class="hover:text-purple-500 transition"
 							>Вход</a
 						>
 					</div>
-
-					<!-- Мобильная кнопка -->
-					<button class="md:hidden">
-						<i class="fas fa-bars text-2xl text-black"></i>
+					<button class="md:hidden text-2xl text-purple-700">
+						<i class="fas fa-bars"></i>
 					</button>
 				</div>
 			</nav>
 		</header>
 
 		<!-- Main Content -->
-		<main class="pt-20 pb-20">
-			<div class="container mx-auto px-4">
-				<!-- Search and Filters -->
-				<div class="mb-8">
-					<div class="flex flex-col md:flex-row gap-4">
-						<div class="flex-1">
-							<div class="relative">
-								<input
-									type="text"
-									placeholder="Поиск новостей..."
-									class="w-full bg-gray-800/50 px-4 py-3 rounded-lg pl-12 focus:outline-none focus:ring-2 focus:ring-purple-600"
-								/>
-								<i
-									class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
-								></i>
+		<main class="min-h-screen pt-24 fade-in">
+			<div class="container mx-auto px-4 py-8">
+				<h1
+					class="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text"
+				>
+					Новости проекта
+				</h1>
+
+				<!-- Поиск и фильтры -->
+				<div class="max-w-4xl mx-auto mb-12">
+					<!-- Поиск -->
+					<div class="relative mb-6">
+						<input
+							type="text"
+							placeholder="Поиск новостей..."
+							class="w-full px-4 py-3 rounded-xl bg-white/80 backdrop-blur-sm border-2 border-purple-200 focus:border-purple-500 outline-none transition search-input"
+						/>
+						<button
+							class="absolute right-3 top-1/2 transform -translate-y-1/2 text-purple-500 hover:text-pink-500 transition"
+						>
+							<i class="fas fa-search"></i>
+						</button>
+					</div>
+
+					<!-- Категории -->
+					<div class="flex flex-wrap md:flex-nowrap items-center gap-2 mb-6">
+
+  <!-- Кнопки фильтра -->
+  <button class="filter-btn px-4 py-2 rounded-lg bg-white/80 backdrop-blur-sm text-purple-700 hover:bg-purple-100 transition w-[140px] text-center">
+    Все
+  </button>
+  <button class="filter-btn px-4 py-2 rounded-lg bg-white/80 backdrop-blur-sm text-purple-700 hover:bg-purple-100 transition w-[140px] text-center">
+    Обновления
+  </button>
+  <button class="filter-btn px-4 py-2 rounded-lg bg-white/80 backdrop-blur-sm text-purple-700 hover:bg-purple-100 transition w-[140px] text-center">
+    Технологии
+  </button>
+  <button class="filter-btn px-4 py-2 rounded-lg bg-white/80 backdrop-blur-sm text-purple-700 hover:bg-purple-100 transition w-[140px] text-center">
+    События
+  </button>
+  <button class="filter-btn px-4 py-2 rounded-lg bg-white/80 backdrop-blur-sm text-purple-700 hover:bg-purple-100 transition w-[140px] text-center">
+    Сообщество
+  </button>
+
+  <!-- Выпадающий фильтр -->
+  <div class="relative w-[160px]">
+    <select class="block w-full px-4 py-2 pr-10 rounded-lg bg-white/80 backdrop-blur-sm text-purple-700 border-2 border-purple-300 hover:bg-purple-100 focus:border-purple-500 outline-none appearance-none transition">
+      <option disabled selected>Фильтр</option>
+      <option value="newest">Сначала новые</option>
+      <option value="oldest">Сначала старые</option>
+      <option value="popular">По популярности</option>
+    </select>
+    <!-- Иконка стрелки вниз -->
+    <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-purple-500">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+				<!-- Новости -->
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					<!-- Новость 1 -->
+					<article
+						class="news-card bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+					>
+						<div class="flex items-center mb-4">
+							<span class="text-sm text-purple-600">15 марта 2025</span>
+							<span class="mx-2 text-gray-400">•</span>
+							<span class="text-sm text-pink-500">Обновление</span>
+						</div>
+						<h2 class="text-2xl font-bold text-purple-700 mb-3">
+							Новые функции в чате
+						</h2>
+						<p class="text-gray-700 mb-4">
+							Добавлены новые возможности для персонализации общения с
+							Okkura-тян. Теперь вы можете настроить характер и стиль общения
+							под свои предпочтения.
+						</p>
+						<div class="flex justify-between items-center">
+							<a
+								href="#"
+								class="text-purple-600 hover:text-pink-500 transition flex items-center"
+							>
+								Читать далее
+								<i class="fas fa-arrow-right ml-2"></i>
+							</a>
+							<div class="flex items-center text-gray-500">
+								<i class="fas fa-eye mr-1"></i>
+								<span class="text-sm">1.2k</span>
+								<i class="fas fa-heart ml-3 mr-1"></i>
+								<span class="text-sm">256</span>
 							</div>
 						</div>
-						<div class="flex gap-2">
-							<button
-								class="filter-btn active bg-violet-200 px-4 py-2 rounded-lg"
-							>
-								Все
-							</button>
-							<button
-								class="filter-btn bg-gray-800/50 px-4 py-2 rounded-lg hover:bg-gray-700"
-							>
-								Обновления
-							</button>
-							<button
-								class="filter-btn bg-gray-800/50 px-4 py-2 rounded-lg hover:bg-gray-700"
-							>
-								AI
-							</button>
-							<button
-								class="filter-btn bg-gray-800/50 px-4 py-2 rounded-lg hover:bg-gray-700"
-							>
-								Сообщество
-							</button>
+					</article>
+
+					<!-- Новость 2 -->
+					<article
+						class="news-card bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+					>
+						<div class="flex items-center mb-4">
+							<span class="text-sm text-purple-600">10 марта 2025</span>
+							<span class="mx-2 text-gray-400">•</span>
+							<span class="text-sm text-pink-500">Событие</span>
 						</div>
-					</div>
+						<h2 class="text-2xl font-bold text-purple-700 mb-3">
+							Достигнута отметка в 100,000 пользователей
+						</h2>
+						<p class="text-gray-700 mb-4">
+							Мы рады сообщить, что наше сообщество выросло до 100,000 активных
+							пользователей! Спасибо за вашу поддержку и доверие.
+						</p>
+						<a
+							href="#"
+							class="text-purple-600 hover:text-pink-500 transition flex items-center"
+						>
+							Читать далее
+							<i class="fas fa-arrow-right ml-2"></i>
+						</a>
+					</article>
+
+					<!-- Новость 3 -->
+					<article
+						class="news-card bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+					>
+						<div class="flex items-center mb-4">
+							<span class="text-sm text-purple-600">5 марта 2025</span>
+							<span class="mx-2 text-gray-400">•</span>
+							<span class="text-sm text-pink-500">Технологии</span>
+						</div>
+						<h2 class="text-2xl font-bold text-purple-700 mb-3">
+							Улучшение алгоритмов машинного обучения
+						</h2>
+						<p class="text-gray-700 mb-4">
+							Внедрены новые алгоритмы, которые делают общение с Okkura-тян еще
+							более естественным и эмоциональным.
+						</p>
+						<a
+							href="#"
+							class="text-purple-600 hover:text-pink-500 transition flex items-center"
+						>
+							Читать далее
+							<i class="fas fa-arrow-right ml-2"></i>
+						</a>
+					</article>
+
+					<!-- Новость 4 -->
+					<article
+						class="news-card bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+					>
+						<div class="flex items-center mb-4">
+							<span class="text-sm text-purple-600">1 марта 2025</span>
+							<span class="mx-2 text-gray-400">•</span>
+							<span class="text-sm text-pink-500">Сообщество</span>
+						</div>
+						<h2 class="text-2xl font-bold text-purple-700 mb-3">
+							Новые конкурсы и мероприятия
+						</h2>
+						<p class="text-gray-700 mb-4">
+							Анонсированы новые конкурсы и мероприятия для нашего сообщества.
+							Приготовьтесь к интересным призам и активностям!
+						</p>
+						<a
+							href="#"
+							class="text-purple-600 hover:text-pink-500 transition flex items-center"
+						>
+							Читать далее
+							<i class="fas fa-arrow-right ml-2"></i>
+						</a>
+					</article>
+
+					<!-- Новость 5 -->
+					<article
+						class="news-card bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+					>
+						<div class="flex items-center mb-4">
+							<span class="text-sm text-purple-600">25 февраля 2025</span>
+							<span class="mx-2 text-gray-400">•</span>
+							<span class="text-sm text-pink-500">Обновление</span>
+						</div>
+						<h2 class="text-2xl font-bold text-purple-700 mb-3">
+							Улучшение интерфейса
+						</h2>
+						<p class="text-gray-700 mb-4">
+							Проведен редизайн интерфейса для улучшения пользовательского
+							опыта. Теперь все стало еще удобнее и красивее!
+						</p>
+						<a
+							href="#"
+							class="text-purple-600 hover:text-pink-500 transition flex items-center"
+						>
+							Читать далее
+							<i class="fas fa-arrow-right ml-2"></i>
+						</a>
+					</article>
+
+					<!-- Новость 6 -->
+					<article
+						class="news-card bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg"
+					>
+						<div class="flex items-center mb-4">
+							<span class="text-sm text-purple-600">20 февраля 2025</span>
+							<span class="mx-2 text-gray-400">•</span>
+							<span class="text-sm text-pink-500">Технологии</span>
+						</div>
+						<h2 class="text-2xl font-bold text-purple-700 mb-3">
+							Новые языковые модели
+						</h2>
+						<p class="text-gray-700 mb-4">
+							Добавлена поддержка новых языковых моделей, что значительно
+							улучшило качество и разнообразие ответов Okkura-тян.
+						</p>
+						<a
+							href="#"
+							class="text-purple-600 hover:text-pink-500 transition flex items-center"
+						>
+							Читать далее
+							<i class="fas fa-arrow-right ml-2"></i>
+						</a>
+					</article>
 				</div>
 
-				<!-- News Grid -->
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-					<!-- News Card 1 -->
-					<div
-						class="news-card bg-gray-800/50 rounded-lg overflow-hidden glass-effect hover:transform hover:scale-105 transition duration-300"
-					>
-						<div class="p-6">
-							<div class="flex items-center justify-between mb-4">
-								<span class="text-purple-200 text-sm">Обновления</span>
-								<span class="text-gray-400 text-sm">12.03.2025</span>
-							</div>
-							<h3 class="text-xl font-bold mb-2">Новые функции в Okkura-тян</h3>
-							<p class="text-white-300 mb-4">
-								Добавлены новые эмоции и реакции для Okkura-тян, улучшена
-								производительность чата...
-							</p>
-							<button class="text-purple-200 hover:text-purple-300 transition">
-								Читать далее →
-							</button>
-						</div>
-					</div>
-
-					<!-- News Card 2 -->
-					<div
-						class="news-card bg-gray-800/50 rounded-lg overflow-hidden glass-effect hover:transform hover:scale-105 transition duration-300"
-					>
-						<div class="p-6">
-							<div class="flex items-center justify-between mb-4">
-								<span class="text-purple-200 text-sm">AI</span>
-								<span class="text-gray-400 text-sm">10.03.2025</span>
-							</div>
-							<h3 class="text-xl font-bold mb-2">Улучшения в работе AI</h3>
-							<p class="text-white-300 mb-4">
-								Обновлена модель машинного обучения, теперь Okkura-тян стала ещё
-								умнее...
-							</p>
-							<button class="text-purple-200 hover:text-purple-300 transition">
-								Читать далее →
-							</button>
-						</div>
-					</div>
-
-					<!-- News Card 3 -->
-					<div
-						class="news-card bg-gray-800/50 rounded-lg overflow-hidden glass-effect hover:transform hover:scale-105 transition duration-300"
-					>
-						<div class="p-6">
-							<div class="flex items-center justify-between mb-4">
-								<span class="text-purple-200 text-sm">Сообщество</span>
-								<span class="text-gray-400 text-sm">08.03.2025</span>
-							</div>
-							<h3 class="text-xl font-bold mb-2">Конкурс артов Okkura-тян</h3>
-							<p class="text-white-300 mb-4">
-								Объявляем конкурс на лучший арт с Okkura-тян! Призы и награды
-								ждут победителей...
-							</p>
-							<button class="text-purple-200 hover:text-purple-300 transition">
-								Читать далее →
-							</button>
-						</div>
-					</div>
+				<!-- Пагинация -->
+				<div class="flex justify-center mt-12">
+					<nav class="flex space-x-2">
+						<a
+							href="#"
+							class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg text-purple-700 hover:bg-purple-100 transition"
+							>1</a
+						>
+						<a
+							href="#"
+							class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg text-purple-700 hover:bg-purple-100 transition"
+							>2</a
+						>
+						<a
+							href="#"
+							class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg text-purple-700 hover:bg-purple-100 transition"
+							>3</a
+						>
+						<a
+							href="#"
+							class="px-4 py-2 bg-white/80 backdrop-blur-sm rounded-lg text-purple-700 hover:bg-purple-100 transition"
+							>Следующая →</a
+						>
+					</nav>
 				</div>
 
-				<!-- Subscribe Section -->
-				<div class="mt-12 text-center">
-					<h2 class="text-2xl font-bold mb-4">Подпишитесь на обновления</h2>
-					<p class="text-white-300 mb-6">
-						Будьте в курсе всех новостей и обновлений Okkura-тян
+				<!-- Подписка на новости -->
+				<div
+					class="max-w-2xl mx-auto mt-16 subscribe-form rounded-xl p-8 shadow-lg"
+				>
+					<h2 class="text-2xl font-bold text-center text-purple-700 mb-4">
+						Подпишитесь на новости
+					</h2>
+					<p class="text-gray-700 text-center mb-6">
+						Будьте в курсе всех обновлений и новостей Okkura-тян
 					</p>
-					<div class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+					<form class="flex flex-col md:flex-row gap-4">
 						<input
 							type="email"
 							placeholder="Ваш email"
-							class="flex-1 bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
+							class="flex-1 px-4 py-3 rounded-lg bg-white/80 backdrop-blur-sm border-2 border-purple-200 focus:border-purple-500 outline-none transition"
 						/>
 						<button
-							class="bg-violet-200 hover:bg-purple-700 px-6 py-3 rounded-lg transition"
+							type="submit"
+							class="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-purple-600 hover:to-pink-600 transition"
 						>
 							Подписаться
 						</button>
+					</form>
+					<div class="flex items-center justify-center mt-4">
+						<label class="flex items-center text-sm text-gray-600">
+							<input type="checkbox" class="mr-2" />
+							Я согласен получать новости и обновления
+						</label>
 					</div>
 				</div>
 			</div>
 		</main>
 
 		<!-- Footer -->
-		<footer
-			class="fixed bottom-0 w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm"
-		>
-			<div class="container mx-auto px-4">
-				<div class="flex justify-center">
-					<p class="text-gray-600">
-						&copy; 2025 Okkura-тян. Все права защищены.
-					</p>
-				</div>
+		<footer class="w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
+			<div class="container mx-auto px-4 text-center text-gray-600">
+				&copy; 2025 Okkura-тян. Все права защищены.
 			</div>
 		</footer>
 
 		<script src="js/main.js"></script>
 		<script>
-			// News filtering functionality
+			// Фильтрация новостей
 			document.querySelectorAll('.filter-btn').forEach(btn => {
 				btn.addEventListener('click', () => {
 					document
 						.querySelectorAll('.filter-btn')
-						.forEach(b => b.classList.remove('active', 'bg-violet-200'))
-					btn.classList.add('active', 'bg-violet-200')
+						.forEach(b => b.classList.remove('active'))
+					btn.classList.add('active')
 					// Здесь будет логика фильтрации новостей
 				})
+			})
+
+			// Поиск
+			const searchInput = document.querySelector('input[type="text"]')
+			searchInput.addEventListener('input', e => {
+				// Здесь будет логика поиска
+				console.log('Поиск:', e.target.value)
+			})
+
+			// Сортировка
+			const sortSelect = document.querySelector('select')
+			sortSelect.addEventListener('change', e => {
+				// Здесь будет логика сортировки
+				console.log('Сортировка:', e.target.value)
 			})
 		</script>
 	</body>

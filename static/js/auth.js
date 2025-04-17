@@ -87,8 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 
 			const data = await response.json()
-			// Сохраняем токен в localStorage
-			localStorage.setItem('token', data.token)
+			localStorage.setItem('token', data.accessToken)
 			showMessage('success', 'Вход выполнен успешно!')
 			loginForm.reset()
 			// Перенаправляем на главную страницу

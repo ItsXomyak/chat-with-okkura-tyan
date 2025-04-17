@@ -3,8 +3,8 @@ package service
 import (
 	"strings"
 
-	"otaku-verse/chat-service/internal/db"
-	"otaku-verse/chat-service/internal/model"
+	"chat-service/internal/db"
+	"chat-service/internal/model"
 )
 
 type ChatService struct {

@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"otaku-verse/chat-service/internal/service"
-
 	"github.com/gin-gonic/gin"
+
+	"chat-service/internal/service"
 )
 
 type ChatHandler struct {

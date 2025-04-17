@@ -9,208 +9,114 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 		/>
-		<link rel="stylesheet" href="css/styles.css" />
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
+			body {
+				font-family: 'Comfortaa', sans-serif;
+			}
+
+			.fade-in {
+				animation: fadeIn 1.5s ease-in-out;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		</style>
 	</head>
-	<body class="bg-pink-200 text-white">
+	<body class="bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300">
 		<!-- Header -->
 		<header
 			class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm"
 		>
 			<nav class="container mx-auto px-4 py-4">
 				<div class="flex justify-between items-center">
-					<!-- Логотип -->
-					<div class="text-2xl font-bold">
-						<a
-							href="index.html"
-							class="text-black hover:text-pink-600 transition"
-						>
-							Okkura-тян
-						</a>
-					</div>
-
-					<!-- Навигация -->
-					<div class="hidden md:flex space-x-6">
-						<a
-							href="chat.html"
-							class="text-black hover:text-purple-500 transition"
-							>Чат</a
-						>
-						<a
-							href="news.html"
-							class="text-black hover:text-purple-500 transition"
+					<a
+						href="index.html"
+						class="text-2xl font-bold text-purple-700 hover:text-pink-500 transition"
+						>Okkura-тян</a
+					>
+					<div class="hidden md:flex space-x-6 text-gray-700">
+						<a href="chat.html" class="hover:text-purple-500 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-500 transition"
 							>Новости</a
 						>
-						<a
-							href="about.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="about.html" class="hover:text-purple-500 transition"
 							>О нас</a
 						>
-						<a
-							href="support.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="support.html" class="hover:text-purple-500 transition"
 							>Поддержка</a
 						>
-						<a
-							href="contacts.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="contacts.html" class="hover:text-purple-500 transition"
 							>Контакты</a
 						>
-						<a
-							href="donate.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="donate.html" class="hover:text-purple-500 transition"
 							>Донаты</a
 						>
-						<a
-							href="lore.html"
-							class="text-black hover:text-purple-500 transition"
-							>Лор</a
-						>
-						<a
-							href="auth.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="lore.html" class="hover:text-purple-500 transition">Лор</a>
+						<a href="auth.html" class="hover:text-purple-500 transition"
 							>Вход</a
 						>
 					</div>
-
-					<!-- Мобильная кнопка -->
-					<button class="md:hidden">
-						<i class="fas fa-bars text-2xl text-black"></i>
+					<button class="md:hidden text-2xl text-purple-700">
+						<i class="fas fa-bars"></i>
 					</button>
 				</div>
 			</nav>
 		</header>
 
 		<!-- Main Content -->
-		<main class="pt-20 pb-12">
-			<div class="container mx-auto px-4">
-				<!-- About Section -->
-				<section class="mb-16">
-					<h1 class="text-4xl font-bold mb-8 text-center">
-						О проекте Okkura-тян
-					</h1>
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-						<div>
-							<h2 class="text-2xl font-bold mb-4">Наша миссия</h2>
-							<p class="text-white-300 mb-6">
-								Okkura-тян - это не просто AI-ассистент, это ваш верный друг и
-								помощник. Наша цель - сделать взаимодействие с искусственным
-								интеллектом приятным, удобным и персонализированным.
-							</p>
-							<h2 class="text-2xl font-bold mb-4">История проекта</h2>
-							<p class="text-white-300">
-								Проект начался в 2023 году с простой идеи - создать
-								AI-ассистента, который не только помогает, но и радует
-								пользователей. Сегодня Okkura-тян развивается благодаря
-								поддержке сообщества и постоянным улучшениям.
-								<a
-									href="lore.html"
-									class="text-purple-200 hover:text-purple-600"
-									>Подробнее...</a
-								>
-							</p>
-						</div>
-						<div class="bg-gray-800/50 rounded-lg p-8 glass-effect">
-							<div class="text-center">
-								<div
-									class="w-32 h-32 mx-auto bg-violet-200 rounded-full flex items-center justify-center mb-6"
-								>
-									<i class="fas fa-robot text-6xl"></i>
-								</div>
-								<h3 class="text-xl font-bold mb-2">Okkura-тян</h3>
-								<p class="text-gray-400 mb-4">Ваш AI-ассистент</p>
-								<div class="flex justify-center space-x-4">
-									<a href="#" class="hover:text-purple-200 transition"
-										><i class="fab fa-discord text-2xl"></i
-									></a>
-									<a href="#" class="hover:text-purple-200 transition"
-										><i class="fab fa-twitter text-2xl"></i
-									></a>
-									<a href="#" class="hover:text-purple-200 transition"
-										><i class="fab fa-github text-2xl"></i
-									></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+		<main class="min-h-screen pt-24 fade-in">
+			<div class="container mx-auto px-4 py-8">
+				<h1
+					class="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text"
+				>
+					О нас
+				</h1>
+				<div
+					class="max-w-3xl mx-auto bg-white/80 backdrop-blur-sm rounded-xl p-8 shadow-lg"
+				>
+					<div class="prose prose-purple mx-auto">
+						<h2 class="text-2xl font-bold text-purple-700 mb-4">Кто мы?</h2>
+						<p class="text-gray-700 mb-6">
+							Okkura-тян - это ваш персональный AI-ассистент, созданный с
+							любовью и заботой. Мы стремимся сделать общение с искусственным
+							интеллектом приятным и комфортным. <a href="history.html" class="text-pink-200">Подробнее...</a>
+						</p>
 
-				<!-- Contact Form -->
-				<section class="mb-16">
-					<h2 class="text-3xl font-bold mb-8 text-center">Свяжитесь с нами</h2>
-					<div class="max-w-2xl mx-auto">
-						<form class="space-y-6">
-							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-								<div>
-									<label class="block text-white-300 mb-2">Имя</label>
-									<input
-										type="text"
-										class="w-full bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-									/>
-								</div>
-								<div>
-									<label class="block text-white-300 mb-2">Email</label>
-									<input
-										type="email"
-										class="w-full bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-									/>
-								</div>
-							</div>
-							<div>
-								<label class="block text-white-300 mb-2">Тема</label>
-								<input
-									type="text"
-									class="w-full bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"
-								/>
-							</div>
-							<div>
-								<label class="block text-white-300 mb-2">Сообщение</label>
-								<textarea
-									class="w-full bg-gray-800/50 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 h-32"
-								></textarea>
-							</div>
-							<button
-								class="w-full bg-violet-200 hover:bg-purple-700 py-3 rounded-lg transition"
-							>
-								Отправить сообщение
-							</button>
-						</form>
-					</div>
-				</section>
+						<h2 class="text-2xl font-bold text-purple-700 mb-4">Наша миссия</h2>
+						<p class="text-gray-700 mb-6">
+							Мы хотим, чтобы каждый пользователь чувствовал себя как дома,
+							общаясь с Okkura-тян. Наша цель - создать дружелюбную и
+							поддерживающую атмосферу для всех.
+						</p>
 
-				<!-- Contact Info -->
-				<section>
-					<h2 class="text-3xl font-bold mb-8 text-center">
-						Контактная информация
-					</h2>
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-						<div class="bg-gray-800/50 rounded-lg p-6 text-center glass-effect">
-							<i class="fas fa-envelope text-4xl text-purple-200 mb-4"></i>
-							<h3 class="text-xl font-bold mb-2">Email</h3>
-							<p class="text-white-300">support@okkura-tyan.com</p>
-						</div>
-						<div class="bg-gray-800/50 rounded-lg p-6 text-center glass-effect">
-							<i class="fab fa-discord text-4xl text-purple-200 mb-4"></i>
-							<h3 class="text-xl font-bold mb-2">Discord</h3>
-							<p class="text-white-300">Okkura-тян Community</p>
-						</div>
-						<div class="bg-gray-800/50 rounded-lg p-6 text-center glass-effect">
-							<i class="fas fa-clock text-4xl text-purple-200 mb-4"></i>
-							<h3 class="text-xl font-bold mb-2">Время работы</h3>
-							<p class="text-white-300">24/7</p>
-						</div>
+						<h2 class="text-2xl font-bold text-purple-700 mb-4">
+							Наши особенности
+						</h2>
+						<ul class="list-disc list-inside text-gray-700 mb-6">
+							<li>Дружелюбный и отзывчивый характер</li>
+							<li>Постоянное обучение и улучшение</li>
+							<li>Безопасное и конфиденциальное общение</li>
+							<li>Поддержка на русском языке</li>
+						</ul>
 					</div>
-				</section>
+				</div>
 			</div>
 		</main>
 
 		<!-- Footer -->
-		<footer class="bottom-0 w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
-			<div class="container mx-auto px-4">
-				<div class="flex justify-center">
-					<p class="text-gray-600">
-						&copy; 2025 Okkura-тян. Все права защищены.
-					</p>
-				</div>
+		<footer class="w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
+			<div class="container mx-auto px-4 text-center text-gray-600">
+				&copy; 2025 Okkura-тян. Все права защищены.
 			</div>
 		</footer>
 

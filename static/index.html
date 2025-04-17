@@ -9,110 +9,109 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 		/>
-		<link rel="stylesheet" href="css/styles.css" />
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
+
+			body {
+				font-family: 'Comfortaa', sans-serif;
+			}
+
+			.fade-in {
+				animation: fadeIn 1.5s ease-in-out;
+			}
+
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		</style>
 	</head>
-	<body class="bg-pink-200 text-white">
+	<body class="bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300">
 		<!-- Header -->
 		<header
 			class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm"
 		>
 			<nav class="container mx-auto px-4 py-4">
 				<div class="flex justify-between items-center">
-					<!-- Логотип -->
-					<div class="text-2xl font-bold">
-						<a
-							href="index.html"
-							class="text-black hover:text-pink-600 transition"
-						>
-							Okkura-тян
-						</a>
-					</div>
-
-					<!-- Навигация -->
-					<div class="hidden md:flex space-x-6">
-						<a
-							href="chat.html"
-							class="text-black hover:text-purple-500 transition"
-							>Чат</a
-						>
-						<a
-							href="news.html"
-							class="text-black hover:text-purple-500 transition"
+					<a
+						href="index.html"
+						class="text-2xl font-bold text-purple-700 hover:text-pink-500 transition"
+						>Okkura-тян</a
+					>
+					<div class="hidden md:flex space-x-6 text-gray-700">
+						<a href="chat.html" class="hover:text-purple-500 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-500 transition"
 							>Новости</a
 						>
-						<a
-							href="about.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="about.html" class="hover:text-purple-500 transition"
 							>О нас</a
 						>
-						<a
-							href="support.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="support.html" class="hover:text-purple-500 transition"
 							>Поддержка</a
 						>
-						<a
-							href="contacts.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="contacts.html" class="hover:text-purple-500 transition"
 							>Контакты</a
 						>
-						<a
-							href="donate.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="donate.html" class="hover:text-purple-500 transition"
 							>Донаты</a
 						>
-						<a
-							href="lore.html"
-							class="text-black hover:text-purple-500 transition"
-							>Лор</a
-						>
-						<a
-							href="auth.html"
-							class="text-black hover:text-purple-500 transition"
+						<a href="lore.html" class="hover:text-purple-500 transition">Лор</a>
+						<a href="auth.html" class="hover:text-purple-500 transition"
 							>Вход</a
 						>
 					</div>
-
-					<!-- Мобильная кнопка -->
-					<button class="md:hidden">
-						<i class="fas fa-bars text-2xl text-black"></i>
+					<button class="md:hidden text-2xl text-purple-700">
+						<i class="fas fa-bars"></i>
 					</button>
 				</div>
 			</nav>
 		</header>
 
 		<!-- Main Content -->
-		<main class="min-h-screen pt-20">
-			<div class="container mx-auto px-4">
-				<div
-					class="flex flex-col items-center justify-center min-h-[80vh] text-center"
-				>
+		<main class="min-h-screen pt-24 fade-in">
+			<div
+				class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10 min-h-[80vh]"
+			>
+				<!-- Текстовый блок -->
+				<div class="text-center md:text-left">
 					<h1
-						class="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text"
+						class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text mb-4"
 					>
 						Добро пожаловать к Okkura-тян!
 					</h1>
-					<p class="text-xl md:text-2xl mb-8 text-white-300">
+					<p class="text-xl md:text-2xl text-purple-800 mb-6">
 						Ваш AI-ассистент и просто клёвая тянка
 					</p>
-					<a href="chat.html"
-						><button
-							class="bg-violet-200 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105"
+					<a href="chat.html">
+						<button
+							class="bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 rounded-full transition duration-300 hover:scale-105 shadow-lg"
 						>
 							Начать общение
-						</button></a
-					>
+						</button>
+					</a>
+				</div>
+
+				<!-- Иллюстрация персонажа -->
+				<div>
+					<img
+						src="images/okkura-tan.png"
+						alt="Okkura-тян"
+						class="w-72 md:w-96 drop-shadow-lg hover:scale-105 transition duration-500"
+					/>
 				</div>
 			</div>
 		</main>
 
 		<!-- Footer -->
-				<footer class="bottom-0 w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
-			<div class="container mx-auto px-4">
-				<div class="flex justify-center">
-					<p class="text-gray-600">
-						&copy; 2025 Okkura-тян. Все права защищены.
-					</p>
-				</div>
+		<footer class="w-full bg-white/80 backdrop-blur-sm py-4 shadow-sm">
+			<div class="container mx-auto px-4 text-center text-gray-600">
+				&copy; 2025 Okkura-тян. Все права защищены.
 			</div>
 		</footer>
 
