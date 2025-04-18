@@ -13,6 +13,7 @@ import (
 
 func RequireAuth(db *gorm.DB) fiber.Handler {
 	return func(c *fiber.Ctx) error {
+		// Получаем заголовок авторизации
 		authHeader := c.Get("Authorization")
 		if authHeader == "" {
 			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
@@ -20,7 +21,15 @@ func RequireAuth(db *gorm.DB) fiber.Handler {
 			})
 		}
 
+		// Извлекаем токен
 		tokenStr := strings.TrimPrefix(authHeader, "Bearer ")
+		if tokenStr == "" {
+			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+				"error": "Invalid token format",
+			})
+		}
+
+		// Проверяем токен
 		token, err := jwt.Parse(tokenStr, func(token *jwt.Token) (interface{}, error) {
 			return []byte(os.Getenv("JWT_SECRET")), nil
 		})
@@ -30,6 +39,7 @@ func RequireAuth(db *gorm.DB) fiber.Handler {
 			})
 		}
 
+		// Извлекаем claims
 		claims, ok := token.Claims.(jwt.MapClaims)
 		if !ok || claims["user_id"] == nil {
 			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
@@ -40,16 +50,26 @@ func RequireAuth(db *gorm.DB) fiber.Handler {
 		userID := claims["user_id"].(string)
 		c.Locals("user_id", userID)
 
-		// 🔧 Автосоздание профиля, если нет
+		// Автосоздание профиля, если его нет
 		var profile model.UserProfile
 		if err := db.First(&profile, "user_id = ?", userID).Error; err == gorm.ErrRecordNotFound {
-			db.Create(&model.UserProfile{
+			// Получаем email из токена, если есть
+			email, _ := claims["email"].(string)
+			
+			newProfile := model.UserProfile{
 				UserID:    userID,
+				Email:     email,
 				Nickname:  "Okkura chan fan",
+				Role:      "user",
 				FirstName: "",
 				LastName:  "",
 				AvatarURL: "",
-			})
+			}
+
+			if err := db.Create(&newProfile).Error; err != nil {
+				// Логируем ошибку, но позволяем запросу продолжиться
+				c.Locals("profile_create_error", err.Error())
+			}
 		}
 
 		return c.Next()

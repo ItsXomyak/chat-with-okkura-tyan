@@ -19,14 +19,17 @@ POST /donate	Новый донат (привязывается к user_id)
 */
 
 func RegisterRoutes(app *fiber.App, db *gorm.DB) {
-	// Группа маршрутов с авторизацией
+	// Группа защищенных маршрутов
 	auth := app.Group("/", middleware.RequireAuth(db))
 
-auth.Get("/me/profile", GetProfile(db))
-	auth.Patch("/me/profile", UpdateProfile(db))
-	auth.Get("/me/donates", GetMyDonates(db))
-	auth.Get("/me/summary", GetMySummary(db))
+	// Подгруппа для /me эндпоинтов
+	me := auth.Group("/me")
+	me.Get("/profile", GetProfile(db))
+	me.Patch("/profile", UpdateProfile(db))
+	me.Get("/donates", GetMyDonates(db))
+	me.Get("/summary", GetMySummary(db))
 
+	// Донаты (защищенный эндпоинт)
 	auth.Post("/donate", func(c *fiber.Ctx) error {
 		var donation model.Donation
 		if err := c.BodyParser(&donation); err != nil {
@@ -44,7 +47,7 @@ auth.Get("/me/profile", GetProfile(db))
 		return c.Status(fiber.StatusCreated).JSON(donation)
 	})
 
-	// Публичный эндпоинт — список всех донатов
+	// Публичный эндпоинт
 	app.Get("/donates", func(c *fiber.Ctx) error {
 		var donations []model.Donation
 		if err := db.Order("created_at desc").Find(&donations).Error; err != nil {

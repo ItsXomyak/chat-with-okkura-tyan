@@ -41,3 +41,28 @@ document.addEventListener('mousemove', e => {
 		okkura.style.transform = `rotate(${angle}deg)`
 	}
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+	const token = localStorage.getItem('token')
+
+	const loginLink = document.getElementById('login-link')
+	const profileLink = document.getElementById('profile-link')
+	const logoutLink = document.getElementById('logout-link')
+
+	if (token) {
+		loginLink?.classList.add('hidden')
+		profileLink?.classList.remove('hidden')
+		logoutLink?.classList.remove('hidden')
+	} else {
+		loginLink?.classList.remove('hidden')
+		profileLink?.classList.add('hidden')
+		logoutLink?.classList.add('hidden')
+	}
+
+	// Обработка выхода
+	logoutLink?.addEventListener('click', e => {
+		e.preventDefault()
+		localStorage.removeItem('token')
+		location.reload()
+	})
+})	

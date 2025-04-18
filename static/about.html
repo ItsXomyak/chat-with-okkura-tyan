@@ -42,9 +42,11 @@
 					<a
 						href="index.html"
 						class="text-2xl font-bold text-purple-700 hover:text-pink-500 transition"
-						>Okkura-тян</a
 					>
-					<div class="hidden md:flex space-x-6 text-gray-700">
+						Okkura-тян
+					</a>
+					<!-- Навигация -->
+					<div class="hidden md:flex space-x-6 text-gray-700 items-center">
 						<a href="chat.html" class="hover:text-purple-500 transition">Чат</a>
 						<a href="news.html" class="hover:text-purple-500 transition"
 							>Новости</a
@@ -62,10 +64,32 @@
 							>Донаты</a
 						>
 						<a href="lore.html" class="hover:text-purple-500 transition">Лор</a>
-						<a href="auth.html" class="hover:text-purple-500 transition"
+
+						<!-- До авторизации -->
+						<a
+							href="auth.html"
+							id="login-link"
+							class="hover:text-purple-500 transition"
 							>Вход</a
 						>
+
+						<!-- После авторизации -->
+						<a
+							href="profile.html"
+							id="profile-link"
+							class="hover:text-purple-500 transition hidden"
+						>
+							<i class="fas fa-user-circle mr-1"></i> Профиль
+						</a>
+						<button
+							id="logout-link"
+							onclick="logout()"
+							class="hover:text-purple-500 transition hidden"
+						>
+							Выйти
+						</button>
 					</div>
+
 					<button class="md:hidden text-2xl text-purple-700">
 						<i class="fas fa-bars"></i>
 					</button>
@@ -89,7 +113,8 @@
 						<p class="text-gray-700 mb-6">
 							Okkura-тян - это ваш персональный AI-ассистент, созданный с
 							любовью и заботой. Мы стремимся сделать общение с искусственным
-							интеллектом приятным и комфортным. <a href="history.html" class="text-pink-200">Подробнее...</a>
+							интеллектом приятным и комфортным.
+							<a href="history.html" class="text-pink-200">Подробнее...</a>
 						</p>
 
 						<h2 class="text-2xl font-bold text-purple-700 mb-4">Наша миссия</h2>

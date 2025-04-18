@@ -1,8 +1,6 @@
 package handler
 
 import (
-	"database/sql"
-
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"
 
@@ -27,7 +25,7 @@ func GetMySummary(db *gorm.DB) fiber.Handler {
 		userID := c.Locals("user_id").(string)
 
 		var count int64
-		var total sql.NullInt64
+		var total float64
 
 		// Считаем количество донатов
 		db.Model(&model.Donation{}).
@@ -37,32 +35,26 @@ func GetMySummary(db *gorm.DB) fiber.Handler {
 		// Суммируем сумму донатов
 		db.Model(&model.Donation{}).
 			Where("user_id = ?", userID).
-			Select("SUM(amount)").
+			Select("COALESCE(SUM(amount), 0)").
 			Scan(&total)
-
-		sum := int64(0)
-		if total.Valid {
-			sum = total.Int64
-		}
 
 		// Определяем подписку
 		subscription := "—"
-		if sum >= 999 {
+		if total >= 999 {
 			subscription = "Ультимативный"
-		} else if sum >= 599 {
+		} else if total >= 599 {
 			subscription = "Премиум"
-		} else if sum >= 299 {
+		} else if total >= 299 {
 			subscription = "Базовый"
 		}
 
 		return c.JSON(fiber.Map{
 			"donateCount":  count,
-			"totalAmount":  sum,	
+			"totalAmount":  total,
 			"subscription": subscription,
 		})
 	}
 }
-
 
 func GetProfile(db *gorm.DB) fiber.Handler {
 	return func(c *fiber.Ctx) error {
@@ -71,32 +63,34 @@ func GetProfile(db *gorm.DB) fiber.Handler {
 		// Получаем профиль
 		var profile model.UserProfile
 		if err := db.First(&profile, "user_id = ?", userID).Error; err != nil {
-			return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
-				"error": "Profile not found",
-			})
+			if err == gorm.ErrRecordNotFound {
+				// Если профиль не найден, создаем новый
+				profile = model.UserProfile{
+					UserID: userID,
+				}
+				if err := db.Create(&profile).Error; err != nil {
+					return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+						"error": "Failed to create profile",
+					})
+				}
+			} else {
+				return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+					"error": "Failed to load profile",
+				})
+			}
 		}
 
-		// Получаем email и роль из основной таблицы users
-		var email, role string
-		err := db.Raw("SELECT email, role FROM users WHERE id = ?", userID).Row().Scan(&email, &role)
-		if err != nil {
-			return c.Status(500).JSON(fiber.Map{
-				"error": "Failed to load user info",
-			})
-		}
-
-return c.JSON(fiber.Map{
-	"user_id":    userID,
-	"nickname":   profile.Nickname,
-	"first_name": profile.FirstName,
-	"last_name":  profile.LastName,
-	"avatar_url": profile.AvatarURL,
-})
-
+		return c.JSON(fiber.Map{
+			"user_id":    userID,
+			"nickname":   profile.Nickname,
+			"first_name": profile.FirstName,
+			"last_name":  profile.LastName,
+			"avatar_url": profile.AvatarURL,
+			"email":      profile.Email,
+			"role":       profile.Role,
+		})
 	}
 }
-
-
 
 func UpdateProfile(db *gorm.DB) fiber.Handler {
 	return func(c *fiber.Ctx) error {

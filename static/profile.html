@@ -16,7 +16,7 @@
 				font-family: 'Comfortaa', sans-serif;
 			}
 			.fade-in {
-				animation: fadeIn 1s ease-in-out;
+				animation: fadeIn 1.5s ease-in-out;
 			}
 			@keyframes fadeIn {
 				from {
@@ -28,147 +28,286 @@
 					transform: translateY(0);
 				}
 			}
+			.bubble {
+				position: absolute;
+				border-radius: 50%;
+				background: rgba(255, 255, 255, 0.2);
+				animation: floatUp 12s infinite ease-in;
+			}
+			@keyframes floatUp {
+				0% {
+					transform: translateY(0) scale(0.8);
+					opacity: 0.6;
+				}
+				50% {
+					opacity: 1;
+				}
+				100% {
+					transform: translateY(-1000px) scale(1.2);
+					opacity: 0;
+				}
+			}
+			.glass-card {
+				background: rgba(255, 255, 255, 0.7);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+			}
+			.stats-card {
+				transition: all 0.3s ease;
+			}
+			.stats-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 12px 36px 0 rgba(31, 38, 135, 0.2);
+			}
 		</style>
 	</head>
 	<body
 		class="bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300 text-purple-900"
 	>
+		<!-- Floating Bubbles -->
+		<div
+			class="pointer-events-none fixed top-0 left-0 w-full h-full z-0 overflow-hidden"
+		>
+			<div
+				class="bubble"
+				style="width: 30px; height: 30px; left: 10%; animation-delay: 0s"
+			></div>
+			<div
+				class="bubble"
+				style="width: 20px; height: 20px; left: 25%; animation-delay: 2s"
+			></div>
+			<div
+				class="bubble"
+				style="width: 40px; height: 40px; left: 40%; animation-delay: 4s"
+			></div>
+			<div
+				class="bubble"
+				style="width: 25px; height: 25px; left: 60%; animation-delay: 1s"
+			></div>
+			<div
+				class="bubble"
+				style="width: 35px; height: 35px; left: 75%; animation-delay: 3s"
+			></div>
+			<div
+				class="bubble"
+				style="width: 30px; height: 30px; left: 90%; animation-delay: 5s"
+			></div>
+		</div>
+
 		<!-- Header -->
 		<header
 			class="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 shadow-sm"
 		>
-			<nav
-				class="container mx-auto px-4 py-4 flex justify-between items-center"
-			>
-				<a
-					href="index.html"
-					class="text-2xl font-bold text-purple-700 hover:text-pink-500 transition"
-					>Okkura-тян</a
-				>
-				<div class="hidden md:flex space-x-6 text-sm font-medium">
+			<nav class="container mx-auto px-4 py-4">
+				<div class="flex justify-between items-center">
 					<a
-						href="chat.html"
-						class="text-purple-700 hover:text-pink-500 transition"
-						>Чат</a
+						href="index.html"
+						class="text-2xl font-bold text-purple-700 hover:text-pink-500 transition"
 					>
-					<a
-						href="news.html"
-						class="text-purple-700 hover:text-pink-500 transition"
-						>Новости</a
-					>
-					<a
-						href="donate.html"
-						class="text-purple-700 hover:text-pink-500 transition"
-						>Донаты</a
-					>
-					<a
-						href="profile.html"
-						class="text-purple-700 font-bold underline underline-offset-4"
-						>Профиль</a
-					>
-					<a
-						href="auth.html"
-						class="text-purple-700 hover:text-pink-500 transition"
-						>Выйти</a
-					>
+						Okkura-тян
+					</a>
+					<!-- Навигация -->
+					<div class="hidden md:flex space-x-6 text-gray-700 items-center">
+						<a href="chat.html" class="hover:text-purple-500 transition">Чат</a>
+						<a href="news.html" class="hover:text-purple-500 transition"
+							>Новости</a
+						>
+						<a href="about.html" class="hover:text-purple-500 transition"
+							>О нас</a
+						>
+						<a href="support.html" class="hover:text-purple-500 transition"
+							>Поддержка</a
+						>
+						<a href="contacts.html" class="hover:text-purple-500 transition"
+							>Контакты</a
+						>
+						<a href="donate.html" class="hover:text-purple-500 transition"
+							>Донаты</a
+						>
+						<a href="lore.html" class="hover:text-purple-500 transition">Лор</a>
+
+						<!-- До авторизации -->
+						<a
+							href="auth.html"
+							id="login-link"
+							class="hover:text-purple-500 transition"
+							>Вход</a
+						>
+
+						<!-- После авторизации -->
+						<a
+							href="profile.html"
+							id="profile-link"
+							class="hover:text-purple-500 transition hidden"
+						>
+							<i class="fas fa-user-circle mr-1"></i> Профиль
+						</a>
+						<button
+							id="logout-link"
+							onclick="logout()"
+							class="hover:text-purple-500 transition hidden"
+						>
+							Выйти
+						</button>
+					</div>
+
+					<button class="md:hidden text-2xl text-purple-700">
+						<i class="fas fa-bars"></i>
+					</button>
 				</div>
 			</nav>
 		</header>
 
 		<!-- Main -->
 		<main class="pt-24 pb-20 fade-in">
-			<div class="container mx-auto px-4 max-w-5xl space-y-12">
-				<!-- Профиль -->
-				<section class="bg-white/70 backdrop-blur-md rounded-xl shadow-md p-6">
-					<h2 class="text-2xl font-bold mb-4">👤 Личная информация</h2>
-					<div id="profile-info" class="space-y-2 text-purple-800">
-						<p><strong>Имя:</strong> <span id="user-name">—</span></p>
-						<p><strong>Email:</strong> <span id="user-email">—</span></p>
-						<p><strong>ID:</strong> <span id="user-id">—</span></p>
-						<p><strong>Роль:</strong> <span id="user-role">—</span></p>
-					</div>
-				</section>
-
-				<!-- Редактирование профиля -->
-				<section
-					class="mt-12 max-w-3xl mx-auto bg-white/60 backdrop-blur-md p-6 rounded-xl shadow-md"
-				>
-					<h2 class="text-2xl font-bold mb-4 text-purple-800">
-						Редактировать профиль
-					</h2>
-					<div class="space-y-4">
-						<input
-							id="nickname"
-							class="w-full px-4 py-2 rounded-lg border"
-							placeholder="Никнейм"
-						/>
-						<input
-							id="first-name"
-							class="w-full px-4 py-2 rounded-lg border"
-							placeholder="Имя"
-						/>
-						<input
-							id="last-name"
-							class="w-full px-4 py-2 rounded-lg border"
-							placeholder="Фамилия"
-						/>
-						<input
-							id="avatar-url"
-							class="w-full px-4 py-2 rounded-lg border"
-							placeholder="Ссылка на аватар"
-						/>
-						<button
-							onclick="updateProfile()"
-							class="bg-purple-600 text-white px-6 py-2 rounded-full hover:bg-purple-700 transition"
-						>
-							Сохранить изменения
-						</button>
-						<p id="update-status" class="mt-2 text-center text-sm"></p>
-					</div>
-				</section>
-
-				<!-- Статистика -->
-				<section class="bg-white/70 backdrop-blur-md rounded-xl shadow-md p-6">
-					<h2 class="text-2xl font-bold mb-4">📊 Ваша статистика</h2>
-					<div
-						id="stats"
-						class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center"
+			<div class="container mx-auto px-4 max-w-6xl">
+				<div class="text-center mb-12">
+					<h1
+						class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text mb-4"
 					>
-						<div>
-							<p class="text-4xl font-bold text-purple-700" id="total-amount">
-								0₽
-							</p>
-							<p class="text-purple-800 mt-2">Всего пожертвовано</p>
-						</div>
-						<div>
-							<p class="text-4xl font-bold text-purple-700" id="donate-count">
-								0
-							</p>
-							<p class="text-purple-800 mt-2">Количество донатов</p>
-						</div>
-						<div>
-							<p class="text-4xl font-bold text-purple-700" id="subscription">
+						Личный кабинет
+					</h1>
+					<p class="text-lg text-purple-800">
+						Управляйте своим профилем и отслеживайте активность
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+					<!-- Левая колонка - Профиль -->
+					<div class="glass-card rounded-2xl p-6 lg:col-span-1">
+						<div class="text-center mb-8">
+							<div class="w-32 h-32 mx-auto mb-4 relative">
+								<img
+									id="profile-avatar"
+									src="images/default-avatar.png"
+									alt="Аватар"
+									class="w-full h-full object-cover rounded-full border-4 border-white/50"
+								/>
+							</div>
+							<h2
+								id="user-name"
+								class="text-2xl font-bold text-purple-800 mb-2"
+							>
 								—
-							</p>
-							<p class="text-purple-800 mt-2">Подписка</p>
+							</h2>
+							<p id="user-email" class="text-purple-600">—</p>
+						</div>
+						<div class="space-y-3 text-purple-800">
+							<div class="flex items-center space-x-2">
+								<i class="fas fa-id-card"></i>
+								<span>ID: <span id="user-id">—</span></span>
+							</div>
+							<div class="flex items-center space-x-2">
+								<i class="fas fa-user-tag"></i>
+								<span>Роль: <span id="user-role">—</span></span>
+							</div>
 						</div>
 					</div>
-				</section>
 
-				<!-- История -->
-				<section class="bg-white/70 backdrop-blur-md rounded-xl shadow-md p-6">
-					<h2 class="text-2xl font-bold mb-4">💰 История донатов</h2>
+					<!-- Центральная колонка - Статистика -->
+					<div class="lg:col-span-2 space-y-8">
+						<!-- Статистика -->
+						<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+							<div class="glass-card stats-card rounded-2xl p-6 text-center">
+								<div
+									class="text-3xl font-bold text-purple-700"
+									id="total-amount"
+								>
+									0₽
+								</div>
+								<p class="text-purple-600 mt-2">Всего пожертвовано</p>
+							</div>
+							<div class="glass-card stats-card rounded-2xl p-6 text-center">
+								<div
+									class="text-3xl font-bold text-purple-700"
+									id="donate-count"
+								>
+									0
+								</div>
+								<p class="text-purple-600 mt-2">Количество донатов</p>
+							</div>
+							<div class="glass-card stats-card rounded-2xl p-6 text-center">
+								<div
+									class="text-3xl font-bold text-purple-700"
+									id="subscription"
+								>
+									—
+								</div>
+								<p class="text-purple-600 mt-2">Подписка</p>
+							</div>
+						</div>
+
+						<!-- Редактирование профиля -->
+						<div class="glass-card rounded-2xl p-6">
+							<h3 class="text-xl font-bold text-purple-800 mb-6">
+								Редактировать профиль
+							</h3>
+							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+								<div>
+									<label class="block text-purple-600 mb-2">Никнейм</label>
+									<input
+										id="nickname"
+										class="w-full px-4 py-2 rounded-xl bg-white/50 border border-purple-200 focus:border-purple-500 focus:ring focus:ring-purple-200 transition"
+										placeholder="Никнейм"
+									/>
+								</div>
+								<div>
+									<label class="block text-purple-600 mb-2">Имя</label>
+									<input
+										id="first-name"
+										class="w-full px-4 py-2 rounded-xl bg-white/50 border border-purple-200 focus:border-purple-500 focus:ring focus:ring-purple-200 transition"
+										placeholder="Имя"
+									/>
+								</div>
+								<div>
+									<label class="block text-purple-600 mb-2">Фамилия</label>
+									<input
+										id="last-name"
+										class="w-full px-4 py-2 rounded-xl bg-white/50 border border-purple-200 focus:border-purple-500 focus:ring focus:ring-purple-200 transition"
+										placeholder="Фамилия"
+									/>
+								</div>
+								<div>
+									<label class="block text-purple-600 mb-2"
+										>Ссылка на аватар</label
+									>
+									<input
+										id="avatar-url"
+										class="w-full px-4 py-2 rounded-xl bg-white/50 border border-purple-200 focus:border-purple-500 focus:ring focus:ring-purple-200 transition"
+										placeholder="https://..."
+									/>
+								</div>
+							</div>
+							<div class="mt-6 text-center">
+								<button
+									onclick="updateProfile()"
+									class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-xl hover:opacity-90 transition-all duration-300 transform hover:scale-[1.02]"
+								>
+									Сохранить изменения
+								</button>
+								<p id="update-status" class="mt-3 text-sm"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- История донатов -->
+				<div class="glass-card rounded-2xl p-6 mt-8">
+					<h3 class="text-xl font-bold text-purple-800 mb-6">
+						История донатов
+					</h3>
 					<div class="overflow-x-auto">
-						<table class="w-full text-left text-sm">
-							<thead class="text-purple-800 border-b border-purple-300">
+						<table class="w-full text-left">
+							<thead class="text-purple-800 border-b border-purple-200">
 								<tr>
-									<th class="py-2 pr-4">Сумма</th>
-									<th class="py-2 pr-4">Метод</th>
-									<th class="py-2 pr-4">Сообщение</th>
-									<th class="py-2">Дата</th>
+									<th class="py-3 px-4 font-semibold">Сумма</th>
+									<th class="py-3 px-4 font-semibold">Метод</th>
+									<th class="py-3 px-4 font-semibold">Сообщение</th>
+									<th class="py-3 px-4 font-semibold">Дата</th>
 								</tr>
 							</thead>
-							<tbody id="donate-history" class="text-purple-900">
+							<tbody id="donate-history" class="text-purple-700">
 								<tr>
 									<td colspan="4" class="py-4 text-center text-purple-500">
 										Загрузка...
@@ -177,12 +316,12 @@
 							</tbody>
 						</table>
 					</div>
-				</section>
+				</div>
 			</div>
 		</main>
 
 		<!-- Footer -->
-		<footer class="w-full bg-white/80 backdrop-blur-sm py-6 shadow-sm">
+		<footer class="w-full bg-white/80 backdrop-blur-sm py-6 shadow-sm mt-auto">
 			<div
 				class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-gray-600"
 			>

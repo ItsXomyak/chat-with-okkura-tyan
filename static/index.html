@@ -9,6 +9,27 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
 		/>
+
+		<!-- SEO -->
+		<meta
+			name="description"
+			content="Okkura-тян — ваш милый AI-ассистент. Общайтесь с нейронкой в дружелюбной атмосфере на русском языке."
+		/>
+		<meta
+			name="keywords"
+			content="AI, чат, ассистент, аниме, нейросеть, Okkura-тян, виртуальный помощник, искусственный интеллект"
+		/>
+		<meta name="author" content="Команда Okkura" />
+		<meta property="og:title" content="Okkura-тян — Ваш AI-ассистент" />
+		<meta
+			property="og:description"
+			content="Милая, умная, дружелюбная — Okkura-тян уже ждёт вас в чате!"
+		/>
+		<meta property="og:image" content="images/okkura-tan.png" />
+		<meta property="og:url" content="https://your-site.com/" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="icon" href="images/favicon.ico" />
+
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
@@ -42,9 +63,11 @@
 					<a
 						href="index.html"
 						class="text-2xl font-bold text-purple-700 hover:text-pink-500 transition"
-						>Okkura-тян</a
 					>
-					<div class="hidden md:flex space-x-6 text-gray-700">
+						Okkura-тян
+					</a>
+					<!-- Навигация -->
+					<div class="hidden md:flex space-x-6 text-gray-700 items-center">
 						<a href="chat.html" class="hover:text-purple-500 transition">Чат</a>
 						<a href="news.html" class="hover:text-purple-500 transition"
 							>Новости</a
@@ -62,10 +85,32 @@
 							>Донаты</a
 						>
 						<a href="lore.html" class="hover:text-purple-500 transition">Лор</a>
-						<a href="auth.html" class="hover:text-purple-500 transition"
+
+						<!-- До авторизации -->
+						<a
+							href="auth.html"
+							id="login-link"
+							class="hover:text-purple-500 transition"
 							>Вход</a
 						>
+
+						<!-- После авторизации -->
+						<a
+							href="profile.html"
+							id="profile-link"
+							class="hover:text-purple-500 transition hidden"
+						>
+							<i class="fas fa-user-circle mr-1"></i> Профиль
+						</a>
+						<button
+							id="logout-link"
+							onclick="logout()"
+							class="hover:text-purple-500 transition hidden"
+						>
+							Выйти
+						</button>
 					</div>
+
 					<button class="md:hidden text-2xl text-purple-700">
 						<i class="fas fa-bars"></i>
 					</button>
@@ -78,7 +123,7 @@
 			<div
 				class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-10 min-h-[80vh]"
 			>
-				<!-- Текстовый блок -->
+				<!-- Text Block -->
 				<div class="text-center md:text-left">
 					<h1
 						class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text mb-4"
@@ -97,11 +142,11 @@
 					</a>
 				</div>
 
-				<!-- Иллюстрация персонажа -->
+				<!-- Image -->
 				<div>
 					<img
 						src="images/okkura-tan.png"
-						alt="Okkura-тян"
+						alt="Милая Okkura-тян — аниме AI-помощница"
 						class="w-72 md:w-96 drop-shadow-lg hover:scale-105 transition duration-500"
 					/>
 				</div>

@@ -16,6 +16,8 @@
 				transition: transform 0.3s ease-in-out;
 				width: 100%;
 				max-width: 300px;
+				z-index: 51;
+				position: fixed;
 			}
 
 			@media (min-width: 768px) {
@@ -145,11 +147,13 @@
 			}
 		</style>
 	</head>
-	<body class="bg-pink-200 text-white">
+	<body
+		class="bg-gradient-to-br from-pink-200 via-purple-200 to-pink-300 text-white"
+	>
 		<div class="flex h-screen">
 			<!-- Chat List (Left Sidebar) -->
 			<div
-				class="chat-list bg-gray-800/50 glass-effect border-r border-gray-700 fixed left-0 top-0 bottom-0 z-50"
+				class="chat-list bg-black/10 backdrop-blur-md glass-effect border-r border-gray-700 fixed left-0 top-0 bottom-0 z-100"
 			>
 				<div class="p-4 h-full flex flex-col">
 					<!-- Navigation -->
@@ -191,20 +195,106 @@
 					</div>
 
 					<!-- Chat Search -->
-					<div class="flex items-center justify-between mb-4">
-						<div class="flex items-center space-x-2 flex-1">
-							<button class="p-2 hover:bg-gray-700 rounded-lg">
-								<i class="fas fa-search"></i>
-							</button>
-							<input
-								type="text"
-								placeholder="Поиск чатов..."
-								class="bg-gray-700/50 px-4 py-2 rounded-lg w-full"
-							/>
+					<div
+						class="chat-list bg-black/10 backdrop-blur-md glass-effect border-r border-gray-700 fixed left-0 top-0 bottom-0 w-64 z-50"
+					>
+						<div class="p-4 h-full flex flex-col">
+							<!-- App Logo -->
+							<div class="mb-6">
+								<div class="flex items-center space-x-2 mb-4">
+									<div
+										class="w-8 h-8 rounded-full bg-violet-200 flex items-center justify-center text-purple-800"
+									>
+										<i class="fas fa-robot"></i>
+									</div>
+									<span class="font-bold text-white">Okkura-тян</span>
+								</div>
+
+								<!-- Nav -->
+								<nav class="space-y-1 text-sm text-gray-300">
+									<a
+										href="index.html"
+										class="nav-item flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-700 transition"
+									>
+										<i class="fas fa-home"></i>
+										<span>Главная</span>
+									</a>
+									<a
+										href="chat.html"
+										class="nav-item flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-700 text-white"
+									>
+										<i class="fas fa-comments"></i>
+										<span>Чат</span>
+									</a>
+									<a
+										href="news.html"
+										class="nav-item flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-700 transition"
+									>
+										<i class="fas fa-newspaper"></i>
+										<span>Новости</span>
+									</a>
+									<a
+										href="about.html"
+										class="nav-item flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-700 transition"
+									>
+										<i class="fas fa-info-circle"></i>
+										<span>О нас</span>
+									</a>
+									<a
+										href="support.html"
+										class="nav-item flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-700 transition"
+									>
+										<i class="fas fa-question-circle"></i>
+										<span>Поддержка</span>
+									</a>
+									<a
+										href="donate.html"
+										class="nav-item flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-700 transition"
+									>
+										<i class="fas fa-heart"></i>
+										<span>Донаты</span>
+									</a>
+								</nav>
+							</div>
+
+							<!-- Search -->
+							<div class="flex items-center justify-between mb-4">
+								<div class="flex items-center space-x-2 flex-1">
+									<button
+										class="p-2 hover:bg-gray-700 rounded-lg text-gray-400"
+									>
+										<i class="fas fa-search"></i>
+									</button>
+									<input
+										type="text"
+										placeholder="Поиск чатов..."
+										class="bg-gray-700/50 px-4 py-2 rounded-lg w-full text-sm placeholder-gray-400 text-white"
+									/>
+								</div>
+								<button
+									class="p-2 hover:bg-gray-700 rounded-lg text-gray-400 ml-2"
+								>
+									<i class="fas fa-plus"></i>
+								</button>
+							</div>
+
+							<!-- Chat Previews -->
+							<div class="space-y-2 flex-1 overflow-y-auto text-white text-sm">
+								<div
+									class="chat-item p-3 hover:bg-gray-700/50 rounded-lg cursor-pointer flex justify-between items-center"
+								>
+									<div>
+										<h3 class="font-semibold">Новый чат</h3>
+										<p class="text-sm text-gray-400">Начните новый диалог</p>
+									</div>
+									<button
+										class="p-2 hover:bg-gray-700 rounded-lg text-gray-400"
+									>
+										<i class="fas fa-ellipsis-v"></i>
+									</button>
+								</div>
+							</div>
 						</div>
-						<button class="p-2 hover:bg-gray-700 rounded-lg">
-							<i class="fas fa-plus"></i>
-						</button>
 					</div>
 
 					<!-- Chat List -->
@@ -223,16 +313,45 @@
 					</div>
 
 					<!-- User Profile -->
-					<div class="mt-auto pt-4 border-t border-gray-700">
-						<div class="flex items-center space-x-3">
+					<div class="mt-auto pt-6 border-t border-gray-700">
+						<div
+							class="flex items-center gap-4 px-4 py-4 rounded-lg hover:bg-white/10 transition"
+						>
+							<!-- Аватар -->
 							<div
-								class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center"
+								class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-white text-xl"
 							>
 								<i class="fas fa-user"></i>
 							</div>
-							<div>
-								<p class="font-medium">Гость</p>
-								<p class="text-sm text-gray-400">Войти</p>
+
+							<!-- Ссылки -->
+							<div class="flex flex-col text-base">
+								<!-- Вход -->
+								<a
+									href="auth.html"
+									id="login-link"
+									class="text-purple-300 hover:underline"
+								>
+									Войти
+								</a>
+
+								<!-- Профиль -->
+								<a
+									href="profile.html"
+									id="profile-link"
+									class="hidden text-purple-300 hover:underline"
+								>
+									Профиль
+								</a>
+
+								<!-- Выход -->
+								<a
+									href="#"
+									id="logout-link"
+									class="hidden text-red-400 hover:underline"
+								>
+									Выйти
+								</a>
 							</div>
 						</div>
 					</div>
@@ -241,7 +360,7 @@
 
 			<!-- Main Chat Area -->
 			<div
-				class="flex-1 flex flex-col ml-0 transition-all duration-300"
+				class="flex-1 flex flex-col ml-0 transition-all duration-300 relative z-0"
 				id="mainContent"
 			>
 				<!-- Chat Messages -->
@@ -253,7 +372,7 @@
 						>
 							<i class="fas fa-robot"></i>
 						</div>
-						<div class="flex-1 bg-gray-800/50 p-4 rounded-lg">
+						<div class="flex-1 bg-black/10 backdrop-blur-md p-4 rounded-lg">
 							<p>Привет! Я Okkura-тян, твой AI-ассистент. Чем могу помочь?</p>
 							<div class="flex space-x-2 mt-2">
 								<button class="p-1 hover:bg-gray-700 rounded">
@@ -271,7 +390,7 @@
 				<div class="message-input">
 					<div class="flex items-center space-x-4">
 						<textarea
-							class="flex-1 bg-gray-800/50 p-4 rounded-lg resize-none focus:outline-none"
+							class="flex-1 bg-black/10 backdrop-blur-md p-4 rounded-lg resize-none focus:outline-none"
 							placeholder="Введите ваше сообщение..."
 							rows="1"
 						></textarea>
@@ -286,7 +405,7 @@
 
 			<!-- Okkura Character (Right Sidebar) -->
 			<div
-				class="model-sidebar bg-gray-800/50 glass-effect border-l border-gray-700 p-4"
+				class="model-sidebar bg-black/10 backdrop-blur-md glass-effect border-l border-gray-700 p-4"
 			>
 				<div class="okkura-character float-animation">
 					<!-- Здесь будет анимированная моделька Okkura-тян -->
@@ -309,6 +428,7 @@
 		</button>
 
 		<script src="js/main.js"></script>
+
 		<script>
 			const toggleChatList = document.getElementById('toggleChatList')
 			const chatList = document.querySelector('.chat-list')
