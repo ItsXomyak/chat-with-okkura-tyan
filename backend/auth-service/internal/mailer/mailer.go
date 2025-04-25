@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/smtp"
 
-	"authforge/config"
-	"authforge/internal/logger"
+	"auth-service/config"
+	"auth-service/internal/logger"
 )
 
 type Mailer interface {

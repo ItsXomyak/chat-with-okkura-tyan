@@ -3,8 +3,8 @@ package handlers
 import (
 	"net/http"
 
-	"authforge/internal/logger"
-	"authforge/internal/services"
+	"auth-service/internal/logger"
+	"auth-service/internal/services"
 )
 
 type ConfirmHandler struct {

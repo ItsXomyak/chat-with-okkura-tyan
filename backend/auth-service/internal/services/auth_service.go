@@ -10,11 +10,11 @@ import (
 	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 
-	"authforge/config"
-	"authforge/internal/logger"
-	"authforge/internal/mailer"
-	"authforge/internal/models"
-	"authforge/internal/repository"
+	"auth-service/config"
+	"auth-service/internal/logger"
+	"auth-service/internal/mailer"
+	"auth-service/internal/models"
+	"auth-service/internal/repository"
 )
 
 type AuthService interface {
@@ -89,9 +89,9 @@ func (s *authService) RegisterUser(user *models.User, password string) error {
 	}
 
 	if err := s.userRepo.CreateUserProfile(user.ID); err != nil {
-	logger.Error("Error creating profile for user ", user.Email, ": ", err)
-	// Не прерываем регистрацию, но логируем
-}
+		logger.Error("Error creating profile for user ", user.Email, ": ", err)
+		// Не прерываем регистрацию, но логируем
+	}
 
 	confirmationToken, err := generateRandomToken(32)
 	if err != nil {

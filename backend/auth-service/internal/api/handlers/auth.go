@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"authforge/internal/logger"
-	"authforge/internal/models"
-	"authforge/internal/services"
+	"auth-service/internal/logger"
+	"auth-service/internal/models"
+	"auth-service/internal/services"
 )
 
 type AuthHandler struct {

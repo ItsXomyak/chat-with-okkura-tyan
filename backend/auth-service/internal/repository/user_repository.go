@@ -7,8 +7,8 @@ import (
 
 	"github.com/google/uuid"
 
-	"authforge/internal/logger"
-	"authforge/internal/models"
+	"auth-service/internal/logger"
+	"auth-service/internal/models"
 )
 
 type UserRepository interface {
@@ -70,7 +70,6 @@ func (r *PostgresUserRepository) CreateUserProfile(userID uuid.UUID) error {
 	}
 	return err
 }
-
 
 func (r *PostgresUserRepository) GetUserByEmail(email string) (*models.User, error) {
 	query := `

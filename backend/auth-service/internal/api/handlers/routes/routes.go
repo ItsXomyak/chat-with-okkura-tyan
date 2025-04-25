@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"authforge/internal/api/handlers"
+	"auth-service/internal/api/handlers"
 	"net/http"
 )
 

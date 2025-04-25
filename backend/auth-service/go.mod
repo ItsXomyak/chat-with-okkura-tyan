@@ -1,4 +1,4 @@
-module authforge
+module auth-service
 
 go 1.23.4
 

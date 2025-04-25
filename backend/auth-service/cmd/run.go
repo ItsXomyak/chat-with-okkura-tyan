@@ -6,13 +6,13 @@ import (
 
 	"github.com/rs/cors"
 
-	"authforge/config"
-	"authforge/internal/api/handlers"
-	"authforge/internal/api/handlers/routes"
-	"authforge/internal/logger"
-	"authforge/internal/mailer"
-	"authforge/internal/repository"
-	"authforge/internal/services"
+	"auth-service/config"
+	"auth-service/internal/api/handlers"
+	"auth-service/internal/api/handlers/routes"
+	"auth-service/internal/logger"
+	"auth-service/internal/mailer"
+	"auth-service/internal/repository"
+	"auth-service/internal/services"
 )
 
 func Run() {
@@ -44,7 +44,7 @@ func Run() {
 
 	routes.RegisterRoutes(authHandler, confirmHandler, passwordResetHandler)
 
-		corsHandler := cors.New(cors.Options{
+	corsHandler := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Authorization", "Content-Type"},

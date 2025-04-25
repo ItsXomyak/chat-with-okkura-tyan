@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"authforge/internal/logger"
-	"authforge/internal/services"
+	"auth-service/internal/logger"
+	"auth-service/internal/services"
 )
 
 type PasswordResetHandler struct {

@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"time"
 
-	"authforge/internal/logger"
-	"authforge/internal/models"
+	"auth-service/internal/logger"
+	"auth-service/internal/models"
 )
 
 type ConfirmationTokenRepository interface {

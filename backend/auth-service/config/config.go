@@ -34,7 +34,7 @@ func LoadConfig(path string) (*Config, error) {
 	viper.SetDefault("DB_PORT", 5432)
 	viper.SetDefault("DB_USER", "postgres")
 	viper.SetDefault("DB_PASSWORD", "12345678")
-	viper.SetDefault("DB_NAME", "authforge")
+	viper.SetDefault("DB_NAME", "auth-service")
 
 	viper.SetDefault("SERVER_PORT", "8080")
 	viper.SetDefault("JWT_EXPIRY", "24h")

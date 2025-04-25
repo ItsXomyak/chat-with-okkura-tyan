@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"authforge/internal/logger"
-	"authforge/internal/services"
+	"auth-service/internal/logger"
+	"auth-service/internal/services"
 	"encoding/json"
 	"net/http"
 	"strings"
